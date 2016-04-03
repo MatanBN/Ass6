@@ -211,7 +211,7 @@ public class Line {
     public Point closestIntersectionToStartOfLine(Rectangle rect) {
         List<Object> intersectList = rect.intersectionPoints(this);
         // Check if there aren't any intersection points.
-        if (intersectList == null) {
+        if (intersectList.isEmpty()) {
             return null;
         }
         // Find the closest intersection point to the start point.

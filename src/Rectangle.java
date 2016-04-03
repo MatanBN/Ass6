@@ -46,6 +46,19 @@ public class Rectangle {
      * @param y the y coordinate to start the rectangle from.
      * @param width the desired width of the rectangle.
      * @param height the desired height of the rectangle.
+     */
+    public Rectangle(int x, int y, int width, int height) {
+        this.upperLeft = new Point(x,y);
+        this.width = width;
+        this.height = height;
+    }
+
+    /**
+     * Rectangle is the constructor and creates the rectangle according to the user parameters.
+     * @param x the x coordinate to start the rectangle from.
+     * @param y the y coordinate to start the rectangle from.
+     * @param width the desired width of the rectangle.
+     * @param height the desired height of the rectangle.
      * @param c the desired color of the rectangle.
      */
     public Rectangle(int x, int y, int width, int height, Color c) {
