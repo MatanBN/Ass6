@@ -24,7 +24,7 @@ public class Block implements Collidable {
      * @param height is the rectangle's height.
      */
     public Block (int width, int height){
-        this.rectangle=new Rectangle(width, height, Color.blue);
+        this.rectangle = new Rectangle(width, height, Color.blue);
     }
 
     /**
@@ -35,7 +35,7 @@ public class Block implements Collidable {
      * @param height is the rectangle's height.
      */
     public Block (int x, int y, int width, int height){
-        this.rectangle=new Rectangle(x, y, width, height, Color.blue);
+        this.rectangle = new Rectangle(x, y, width, height, Color.blue);
     }
 
     public void drawOn (DrawSurface d){

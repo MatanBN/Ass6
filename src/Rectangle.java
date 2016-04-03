@@ -38,6 +38,7 @@ public class Rectangle {
         this.upperLeft = new Point(0,0);
         this.width = width;
         this.height = height;
+        this.color = c;
     }
 
     /**
@@ -157,6 +158,7 @@ public class Rectangle {
         try {
             d.setColor(this.color);
             d.drawRectangle(this.getX(), this.getY(), this.width, this.height);
+            //d.fillRectangle(this.getX(), this.getY(), this.width, this.height);
             // If the color of the rectangle hasn't been initialized yet.
         } catch (NullPointerException e) {
             System.out.println("You must set a color for the rectangle in order to draw it.");

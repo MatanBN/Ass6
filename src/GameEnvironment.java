@@ -1,3 +1,5 @@
+import biuoop.DrawSurface;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,13 @@ public class GameEnvironment {
             }
         }
         return min;
+    }
+
+    public void drawOn(DrawSurface d) {
+        for (Object o: collidables) {
+            ((Block) o).drawOn(d);
+        }
+
     }
 
 

@@ -151,8 +151,8 @@ public class Ball {
         Line traj = new Line(this.center, this.v.applyToPoint(this.center));
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
         if (myInfo.collisionPoint != null) {
-            Velocity tempV = new Velocity(myInfo.collisionPoint.getX()-this.getX(),
-                    myInfo.collisionPoint().getY() - this.getY());
+            Velocity tempV = new Velocity(this.getX() - myInfo.collisionPoint.getX(),
+                    this.getY() - myInfo.collisionPoint().getY());
             tempV.applyToPoint(this.center);
             setVelocity(((Block)myInfo.collisionObject()).hit(myInfo.collisionPoint,v));
         }
