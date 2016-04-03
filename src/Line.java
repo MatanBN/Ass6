@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * The Line class has starting a point and and end point and it connects the two points.
  * @author Matan Ben Noach Nir Ben Shalom
@@ -109,6 +111,7 @@ public class Line {
         return null;
     }
 
+
     /**
      * parallelTo method checks if this line and another line are parallel.
      * @param other line to check if it is parallel to mine.
@@ -199,4 +202,26 @@ public class Line {
     public double yCoordinate(double xCoordinate) {
         return (this.slope() * xCoordinate) + this.constant();
     }
+
+    /**
+     * closestIntersectionToStartOfLine method finds the closest intersection point to the start of the line.
+     * @param rect the rectangle to check the intersection point with.
+     * @return the closest intersection to the start point.
+     */
+    public Point closestIntersectionToStartOfLine(Rectangle rect) {
+        List<Object> intersectList = rect.intersectionPoints(this);
+        // Check if there aren't any intersection points.
+        if (intersectList == null) {
+            return null;
+        }
+        // Find the closest intersection point to the start point.
+        Point minPoint = (Point) intersectList.get(0);
+        for (Object o : intersectList) {
+            if ((minPoint.distance(start) > ((Point) o).distance(start))) {
+                minPoint = (Point) o;
+            }
+        }
+        return minPoint;
+    }
+
 }
