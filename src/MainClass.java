@@ -16,7 +16,7 @@ public class MainClass {
         game.addCollidable(new Block(new Rectangle(400,300,Color.white)));
         game.addCollidable(new Block(100,10, 30, 10));
         game.addCollidable(new Block(140, 10, 30, 10));
-        game.addCollidable(new Block(180, 10, 30, 10));
+        game.addCollidable(new Block(180, 10, 49, 10));
 
         Ball b = new Ball(100, 100, 5, Color.BLUE, game);
         b.setVelocity(2,-2);
