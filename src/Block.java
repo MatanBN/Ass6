@@ -7,7 +7,7 @@ import biuoop.DrawSurface;
 
 import java.awt.Color;
 
-public class Block implements Collidable {
+public class Block implements Collidable, Sprite {
     private Rectangle rectangle;
 
     /**
@@ -63,16 +63,31 @@ public class Block implements Collidable {
     public Velocity hit(Point collisionPoint, Velocity currentVelocity){
         Velocity newVelocity = currentVelocity;
         //checks whether the collision point is on the right or left edges
-        if (rectangle.getLeftEdge().inSegment(collisionPoint.getX(),collisionPoint.getY())
-            || rectangle.getRightEdge().inSegment(collisionPoint.getX(),collisionPoint.getY())) {
-             newVelocity.setDx(-currentVelocity.getDx());
+        if (checkCollisionSide(collisionPoint,rectangle.getLeftEdge())){
+            newVelocity.setDx(-currentVelocity.getDx());
+        }
+        if (checkCollisionSide(collisionPoint,rectangle.getLeftEdge())){
+            newVelocity.setDx(-currentVelocity.getDx());
         }
         //checks whether the collision point is on the top or bottom edges
-        if (rectangle.getTopEdge().inSegment(collisionPoint.getX(),collisionPoint.getY())
-            || rectangle.getBottomEdge().inSegment(collisionPoint.getX(),collisionPoint.getY())){
-            newVelocity.setDy (-currentVelocity.getDy());
+        if (checkCollisionSide(collisionPoint,rectangle.getTopEdge())){
+            newVelocity.setDy(-currentVelocity.getDy());
+        }
+        if (checkCollisionSide(collisionPoint,rectangle.getBottomEdge())){
+            newVelocity.setDy(-currentVelocity.getDy());
         }
         return newVelocity;
+    }
+
+    public boolean checkCollisionSide(Point collisionPoint, Line edge){
+        if (edge.inSegment(collisionPoint.getX(),collisionPoint.getY())){
+            return true;
+        }
+        return false;
+    }
+
+    public void timePassed(){
+
     }
 
 }
