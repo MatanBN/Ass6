@@ -182,7 +182,7 @@ public class Rectangle {
         // Find all of the intersection points.
         for (Object l : linesList) {
             if (((Line) l).isIntersecting(line)) {
-                intersectionList.add(l);
+                intersectionList.add(((Line) l).intersectionWith(line));
             }
         }
         return intersectionList;

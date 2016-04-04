@@ -27,11 +27,11 @@ public class GameEnvironment {
         CollisionInfo min = new CollisionInfo((Collidable) collidables.get(0),
                 trajectory.closestIntersectionToStartOfLine(r));
         for (Object o: collidables) {
+            r = ((Collidable) o).getCollisionRectangle();
             if (min.collisionPoint == null) {
                 min = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
                 continue;
             }
-            r = ((Collidable) o).getCollisionRectangle();
             CollisionInfo coll = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
             if (coll.collisionPoint == null)
                 continue;
