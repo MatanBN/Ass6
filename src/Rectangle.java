@@ -129,8 +129,8 @@ public class Rectangle {
      * getMaxY method returns the maximum y coordinate that the rectangle reaches.
      * @return the maximum y coordinate that the rectangle reaches.
      */
-    public int getMaxY() {
-        return this.height + (int) upperLeft.getY();
+    public int getMinY() {
+        return (int) upperLeft.getY()- this.height;
     }
 
     /**
@@ -194,7 +194,7 @@ public class Rectangle {
      * @return The left edge of the rectangle.
      */
     public Line getLeftEdge() {
-        return new Line(this.getX(), this.getY(), this.getMaxX(), this.getY());
+        return new Line(this.getX(), this.getY(), this.getX(), this.getMinY());
     }
 
     /**
@@ -202,7 +202,7 @@ public class Rectangle {
      * @return The right edge of the rectangle.
      */
     public Line getRightEdge() {
-        return new Line(this.getX(), this.getY(), this.getX(), this.getMaxY());
+        return new Line(this.getMaxX(), this.getY(), this.getMaxX(), this.getMinY());
     }
 
     /**
@@ -210,7 +210,7 @@ public class Rectangle {
      * @return The top edge of the rectangle.
      */
     public Line getTopEdge() {
-        return new Line(this.getX(), this.getY(), this.getX(), this.getMaxY());
+        return new Line(this.getX(), this.getY(), this.getMaxX(), this.getY());
     }
 
     /**
@@ -218,7 +218,7 @@ public class Rectangle {
      * @return The bottom edge of the rectangle.
      */
     public Line getBottomEdge() {
-        return new Line(this.getMaxX(), this.getY(), this.getMaxX(), this.getMaxY());
+        return new Line(this.getX(), this.getMinY(), this.getMaxX(), this.getMinY());
     }
 
     /**

@@ -66,14 +66,14 @@ public class Block implements Collidable, Sprite {
         if (checkCollisionSide(collisionPoint,rectangle.getLeftEdge())){
             newVelocity.setDx(-currentVelocity.getDx());
         }
-        if (checkCollisionSide(collisionPoint,rectangle.getLeftEdge())){
+        else if (checkCollisionSide(collisionPoint,rectangle.getRightEdge())){
             newVelocity.setDx(-currentVelocity.getDx());
         }
         //checks whether the collision point is on the top or bottom edges
         if (checkCollisionSide(collisionPoint,rectangle.getTopEdge())){
             newVelocity.setDy(-currentVelocity.getDy());
         }
-        if (checkCollisionSide(collisionPoint,rectangle.getBottomEdge())){
+        else if (checkCollisionSide(collisionPoint,rectangle.getBottomEdge())){
             newVelocity.setDy(-currentVelocity.getDy());
         }
         return newVelocity;
