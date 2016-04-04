@@ -61,7 +61,7 @@ public class Block implements Collidable, Sprite {
      * @return the new velocity after the hit.
      */
     public Velocity hit(Point collisionPoint, Velocity currentVelocity){
-        Velocity newVelocity = currentVelocity;
+        Velocity newVelocity = new Velocity(currentVelocity.getDx(),currentVelocity.getDy());
         //checks whether the collision point is on the right or left edges
         if (checkCollisionSide(collisionPoint,rectangle.getLeftEdge())){
             newVelocity.setDx(-currentVelocity.getDx());

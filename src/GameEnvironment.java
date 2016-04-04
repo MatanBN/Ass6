@@ -28,14 +28,15 @@ public class GameEnvironment {
                 trajectory.closestIntersectionToStartOfLine(r));
         for (Object o: collidables) {
             r = ((Collidable) o).getCollisionRectangle();
-            if (min.collisionPoint == null) {
+            if (min.collisionPoint() == null) {
                 min = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
                 continue;
             }
             CollisionInfo coll = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
-            if (coll.collisionPoint == null)
+            if (coll.collisionPoint() == null)
                 continue;
-            if (coll.collisionPoint.distance(trajectory.start()) < min.collisionPoint.distance(trajectory.start())) {
+            if (coll.collisionPoint().distance(trajectory.start()) <
+                    min.collisionPoint().distance(trajectory.start())) {
                 min = coll;
             }
         }
@@ -46,7 +47,6 @@ public class GameEnvironment {
         for (Object o: collidables) {
             ((Block) o).drawOn(d);
         }
-
     }
 
 

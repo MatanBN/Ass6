@@ -150,11 +150,11 @@ public class Ball {
     public void moveOneStep() {
         Line traj = new Line(this.center, this.v.applyToPoint(this.center));
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
-        if (myInfo.collisionPoint != null) {
-            Velocity tempV = new Velocity(this.getX() - myInfo.collisionPoint.getX(),
-                    this.getY() - myInfo.collisionPoint().getY());
+        if (myInfo.collisionPoint() != null) {
+            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() - (int) Math.signum(v.getDx()),
+                    myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
             this.center=tempV.applyToPoint(this.center);
-            Velocity newV = ((Block)myInfo.collisionObject()).hit(myInfo.collisionPoint,v);
+            Velocity newV = ((Block)myInfo.collisionObject()).hit(myInfo.collisionPoint(),v);
             setVelocity(newV);
         }
         else {
