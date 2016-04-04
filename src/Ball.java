@@ -148,14 +148,14 @@ public class Ball {
      * moveOneStep Changes the center of the ball according to the balls velocity.
      */
     public void moveOneStep() {
-        Point sideOfBall= new Point (this.center.getX()+this.getSize(), this.center.getY()+this.getSize());
-        Line traj = new Line(sideOfBall, this.v.applyToPoint(this.center));
+        Line traj = new Line(this.center, this.v.applyToPoint(this.center));
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
         if (myInfo.collisionPoint != null) {
             Velocity tempV = new Velocity(this.getX() - myInfo.collisionPoint.getX(),
                     this.getY() - myInfo.collisionPoint().getY());
-            tempV.applyToPoint(this.center);
-            setVelocity(((Block)myInfo.collisionObject()).hit(myInfo.collisionPoint,v));
+            this.center=tempV.applyToPoint(this.center);
+            Velocity newV = ((Block)myInfo.collisionObject()).hit(myInfo.collisionPoint,v);
+            setVelocity(newV);
         }
         else {
             this.center = v.applyToPoint(this.center);
