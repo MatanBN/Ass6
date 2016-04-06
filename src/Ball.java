@@ -8,7 +8,7 @@ import java.awt.Color;
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 19 May 2016
  */
-public class Ball {
+public class Ball implements Sprite{
     private Point center; // The center point of the ball.
     private int radius; // The radius of the ball.
     private Color color; // The color of the blue.
@@ -164,5 +164,12 @@ public class Ball {
 
     }
 
+    public void timePassed(){
+        moveOneStep();
+    }
+
+    public void addToGame (Game g){
+        g.addSprite(this);
+    }
 
 }

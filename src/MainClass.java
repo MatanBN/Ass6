@@ -13,7 +13,6 @@ public class MainClass {
         GUI gui = new GUI("Pollock Painting", 400, 300);
 
         GameEnvironment game = new GameEnvironment();
-        //game.addCollidable(new Block(new Rectangle(400,300,Color.black)));
         game.addCollidable(new Block(0,0, 1, 300));
         game.addCollidable(new Block(0,0, 400, 1));
         game.addCollidable(new Block(0,298, 400, 1));

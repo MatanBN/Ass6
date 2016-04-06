@@ -5,26 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 import biuoop.DrawSurface;
 
-/**public class SpriteCollection {
-    List<Object> sprites;
+public class SpriteCollection {
+    private List <Sprite> sprites;
 
-    public SpriteCollection (){
-        sprites = new ArrayList<>(Object);
+    public SpriteCollection() {
+        sprites = new ArrayList ();
     }
-    public void addSprite(Sprite s){
-        private sprites.add(s);
 
-    // call timePassed() on all sprites.
-    public void notifyAllTimePassed(){
-        for (Object o : sprites){
-            o.timePassed();
+    public void addSprite(Sprite s) {
+        sprites.add(s);
+    }
+
+        // call timePassed() on all sprites.
+
+    public void notifyAllTimePassed() {
+        for ( Sprite s : sprites) {
+             s.timePassed();
         }
     }
 
     // call drawOn(d) on all sprites.
-    public void drawAllOn(DrawSurface d){
-        for (Object o : sprites) {
-          o.drawOn(d);
+    public void drawAllOn(DrawSurface d) {
+        for (Sprite s : sprites) {
+            s.drawOn(d);
         }
     }
-}*/
+
+}
