@@ -10,6 +10,7 @@ import java.awt.Color;
 public class Block implements Collidable, Sprite {
     private Rectangle rectangle;
 
+
     /**
      * Block creates a new rectangle block by a given rectangle.
      * @param r is a given rectangle.
@@ -23,8 +24,8 @@ public class Block implements Collidable, Sprite {
      * @param width is the rectangle's width.
      * @param height is the rectangle's height.
      */
-    public Block (int width, int height){
-        this.rectangle = new Rectangle(width, height, Color.blue);
+    public Block (int width, int height, Color c){
+        this.rectangle = new Rectangle(width, height, c);
     }
 
     /**
@@ -34,8 +35,9 @@ public class Block implements Collidable, Sprite {
      * @param width is the rectangle's width.
      * @param height is the rectangle's height.
      */
-    public Block (int x, int y, int width, int height){
-        this.rectangle = new Rectangle(x, y, width, height, Color.blue);
+    public Block (int x, int y, int width, int height, Color c){
+        this.rectangle = new Rectangle(x, y, width, height, c);
+
     }
 
     /**
@@ -61,6 +63,10 @@ public class Block implements Collidable, Sprite {
      * @return the new velocity after the hit.
      */
     public Velocity hit(Point collisionPoint, Velocity currentVelocity){
+        int hits = this.getCollisionRectangle().gethitsNumber();
+        if (hits>0){
+            this.getCollisionRectangle().sethitsNumber(--hits);
+        }
         Velocity newVelocity = new Velocity(currentVelocity.getDx(),currentVelocity.getDy());
         //checks whether the collision point is on the right or left edges
         if (checkCollisionSide(collisionPoint,rectangle.getLeftEdge())){

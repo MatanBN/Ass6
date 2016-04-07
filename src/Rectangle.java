@@ -14,6 +14,7 @@ public class Rectangle {
     private int width; // The width of the rectangle.
     private int height; // The height of the rectangle
     private Color color; // The color of the rectangle
+    private int hitsNumber;
 
     /**
      * Rectangle is the constructor and creates the rectangle with upper left point at (0,0) and initialize the width
@@ -157,7 +158,19 @@ public class Rectangle {
     public void drawOn(DrawSurface d) throws NullPointerException {
         try {
             d.setColor(this.color);
+            d.fillRectangle(this.getX(), this.getY(), this.width, this.height);
+            d.setColor(Color.black);
             d.drawRectangle(this.getX(), this.getY(), this.width, this.height);
+            d.setColor(Color.WHITE);
+            String s;
+            if (hitsNumber>=0) {
+                if (hitsNumber != 0) {
+                    s = Integer.toString(hitsNumber);
+                } else {
+                    s = "X";
+                }
+                d.drawText(this.getX() + this.width / 2, this.getY() + this.height / 2, s, 10);
+            }
             //d.fillRectangle(this.getX(), this.getY(), this.width, this.height);
             // If the color of the rectangle hasn't been initialized yet.
         } catch (NullPointerException e) {
@@ -228,5 +241,14 @@ public class Rectangle {
     public Point getUpperLeft() {
         return upperLeft;
     }
+
+    public int gethitsNumber() {
+        return hitsNumber;
+    }
+
+    public void sethitsNumber (int hits){
+        hitsNumber=hits;
+    }
+
 
 }
