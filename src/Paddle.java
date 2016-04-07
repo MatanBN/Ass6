@@ -96,7 +96,7 @@ public class Paddle implements Sprite, Collidable {
     }
 
     /**
-     * addToGame is in charge of adding the paddle as a sprite.
+     * addToGame is in charge of adding the paddle as a sprite
      * and as a collidable to the game's suitable lists.
      * @param g is the game object we created.
      */

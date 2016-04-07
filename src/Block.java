@@ -38,6 +38,10 @@ public class Block implements Collidable, Sprite {
         this.rectangle = new Rectangle(x, y, width, height, Color.blue);
     }
 
+    /**
+     * drawOn method draws the block on a given surface.
+     * @param d is the surface to draw the blocks on.
+     */
     public void drawOn (DrawSurface d){
         rectangle.drawOn(d);
     }
@@ -50,10 +54,6 @@ public class Block implements Collidable, Sprite {
         return this.rectangle;
     }
 
-    // Notify the object that we collided with it at collisionPoint with
-    // a given velocity.
-    // The return is the new velocity expected after the hit (based on
-    // the force the object inflicted on us).
     /**
      * hit return the new velocity after the hit based on force the object inflicted on us.
      * @param collisionPoint is the collision point of an object with the block.
@@ -79,6 +79,13 @@ public class Block implements Collidable, Sprite {
         return newVelocity;
     }
 
+    /**
+     * checkCollisionSide gets a collision point and an edge and checks
+     * whether the collision point is inside the given edge.
+     * @param collisionPoint is the collision point of the ball with the object
+     * @param edge is a given edge of an object
+     * @return true if the collision point is inside the edge and false otherwise
+     */
     public boolean checkCollisionSide(Point collisionPoint, Line edge){
         if (edge.inSegment(collisionPoint.getX(),collisionPoint.getY())){
             return true;
@@ -86,10 +93,18 @@ public class Block implements Collidable, Sprite {
         return false;
     }
 
+    /**
+     *
+     */
     public void timePassed(){
 
     }
 
+    /**
+     * addToGame is in charge of adding the block as a sprite
+     * and as a collidable to the game's suitable lists.
+     * @param g is the game object we created.
+     */
     public void addToGame (Game g){
         g.addCollidable(this);
         g.addSprite(this);
