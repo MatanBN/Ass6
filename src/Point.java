@@ -54,4 +54,14 @@ public class Point {
     public double getY() {
         return this.y;
     }
+
+    /**
+     * setX method sets a new value for the point's x coordinate.
+     * @param x is the new x value for the point.
+     */
+    public void setX(double x) {
+        this.x = x;
+    }
 }
+
+

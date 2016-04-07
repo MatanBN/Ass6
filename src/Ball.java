@@ -4,7 +4,7 @@ import java.awt.Color;
 
 /**
  * The Ball class has a center Point, a radius, a color, and a velocity.
- * the class has method to draw the ball, and move the ball according to its velocity
+ * The class has method to draw the ball, and move the ball according to its velocity.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 19 May 2016
  */
@@ -154,7 +154,7 @@ public class Ball implements Sprite{
             Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() - (int) Math.signum(v.getDx()),
                     myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
             this.center=tempV.applyToPoint(this.center);
-            Velocity newV = ((Block)myInfo.collisionObject()).hit(myInfo.collisionPoint(),v);
+            Velocity newV = (myInfo.collisionObject()).hit(myInfo.collisionPoint(),v);
             setVelocity(newV);
         }
         else {
@@ -164,12 +164,18 @@ public class Ball implements Sprite{
 
     }
 
+    /**
+     * timePassed calls the moveOneStep method in order to move the ball.
+     */
     public void timePassed(){
         moveOneStep();
     }
 
+    /**
+     * addToGame is in charge of adding the paddle as a sprite to the game's sprites list.
+     * @param g is the game object we created.
+     */
     public void addToGame (Game g){
         g.addSprite(this);
     }
-
 }

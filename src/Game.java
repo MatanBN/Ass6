@@ -1,5 +1,6 @@
 import biuoop.GUI;
 import biuoop.DrawSurface;
+import biuoop.KeyboardSensor;
 import biuoop.Sleeper;
 
 import java.awt.*;
@@ -15,8 +16,8 @@ public class Game {
     private Sleeper sleeper;
 
     public Game () {
-        SpriteCollection sprites = new SpriteCollection();
-        GameEnvironment environment = new GameEnvironment();
+        sprites = new SpriteCollection();
+        environment = new GameEnvironment();
     }
 
     public void addCollidable(Collidable c){
@@ -25,15 +26,18 @@ public class Game {
     }
     public void addSprite(Sprite s){
         sprites.addSprite(s);
-
-
     }
 
     // Initialize a new game: create the Blocks and Ball (and Paddle)
     // and add them to the game.
     public void initialize() {
-        this.gui = new GUI("Pollock Painting", 400, 300);
+        Rectangle borders = new Rectangle(400, 300);
+        this.gui = new GUI("Pollock Painting", borders.getWidth(), borders.getHeight());
         this.sleeper = new Sleeper();
+        KeyboardSensor keyboard = gui.getKeyboardSensor();
+        Rectangle paddleRec = new Rectangle(198, borders.getHeight()-33, 70, 30);
+        Paddle paddle= new Paddle (keyboard, paddleRec, borders, Color.GREEN);
+        paddle.addToGame(this);
         Ball ball = new Ball(50, 10, 5, Color.BLUE, environment);
         ball.setVelocity(2,-2);
         Block block1 = new Block (0,0, 1, 300);
@@ -45,11 +49,11 @@ public class Game {
         Block block4 = new Block(398,0, 1, 300);
         block4.addToGame(this);
         ball.addToGame(this);
-
         for (int i=0; i<=4; i++){
-            Block block = new Block(10+i*2,0, 30, 50);
+            Block block = new Block(i*100,100, 50, 30);
             block.addToGame(this);
         }
+
     }
 
     // Run the game -- start the animation loop.

@@ -7,10 +7,10 @@ import java.util.List;
  * Created by Matan on 03/04/2016.
  */
 public class GameEnvironment {
-    List<Object> collidables;
+    private ArrayList collidables;
 
     public GameEnvironment() {
-        collidables = new ArrayList<Object>();
+        collidables = new ArrayList();
     }
 
     // add the given collidable to the environment.

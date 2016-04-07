@@ -6,7 +6,7 @@ import java.util.List;
 import biuoop.DrawSurface;
 
 public class SpriteCollection {
-    private List <Sprite> sprites;
+    private ArrayList sprites;
 
     public SpriteCollection() {
         sprites = new ArrayList ();
@@ -19,15 +19,15 @@ public class SpriteCollection {
         // call timePassed() on all sprites.
 
     public void notifyAllTimePassed() {
-        for ( Sprite s : sprites) {
-             s.timePassed();
+        for ( Object s : sprites) {
+            ((Sprite)s).timePassed();
         }
     }
 
     // call drawOn(d) on all sprites.
     public void drawAllOn(DrawSurface d) {
-        for (Sprite s : sprites) {
-            s.drawOn(d);
+        for (Object s : sprites) {
+            ((Sprite)s).drawOn(d);
         }
     }
 
