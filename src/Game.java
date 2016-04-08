@@ -56,7 +56,7 @@ public class Game {
         ball.addToGame(this);
         for (int i=0; i<=5; i++){
             for (int j=0; j<=12-i; j++) {
-                Block block = new Block(borders.getWidth() - 60 - (j*40), 50+i*20, 40, 20, );
+                Block block = new Block(borders.getWidth() - 60 - (j*40), 50+i*20, 40, 20, Color.blue);
                 if (i==0){
                     block.getCollisionRectangle().sethitsNumber(2);
                 } else {
