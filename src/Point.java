@@ -2,7 +2,7 @@
  * The Point class has two coordinates, x and and y and has methods to calculate the distance between to points and
  * check whether two points are equal.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 19 May 2016
+ * @version 1.0 9 April 2016
  */
 public class Point {
     private double x; // The x value of the point.

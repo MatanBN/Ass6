@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * The Line class has starting a point and and end point and it connects the two points.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 19 May 2016
+ * @version 1.0 9 April 2016
  */
 public class Line {
     private Point start; // The first point of the line

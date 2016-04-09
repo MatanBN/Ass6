@@ -1,14 +1,10 @@
-/**
- * Created by user on 04/04/2016.
- */
 import java.util.ArrayList;
-import java.util.List;
 import biuoop.DrawSurface;
 
 /**
  * SpriteCollection is a list of the sprites in the game.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 19 May 2016
+ * @version 1.0 9 April 2016
  */
 
 public class SpriteCollection {
@@ -38,10 +34,8 @@ public class SpriteCollection {
         }
     }
 
-    // call drawOn(d) on all sprites.
-
     /**
-     * drawAllOn calls rawOn(d) on all sprites.
+     * drawAllOn calls drawOn on all sprites.
      * @param d is the surface to draw the sprites on.
      */
     public void drawAllOn(DrawSurface d) {

@@ -1,7 +1,7 @@
 /**
  * The Velocity specifies the change in position on the `x` and the `y` axes.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 19 May 2016
+ * @version 1.0 9 April 2016
  */
 public class Velocity {
     private double dx;
@@ -25,8 +25,9 @@ public class Velocity {
      * @return the Velocity created.
      */
     public static Velocity fromAngleAndSpeed(double angle, double speed) {
-        double dx = speed * Math.cos(angle);
-        double dy = speed * Math.sin(angle);
+        double radainAngle = Math.toRadians(angle);
+        double dx = speed * Math.sin(radainAngle);
+        double dy = -speed * Math.cos(radainAngle);
         return new Velocity(dx, dy);
     }
 

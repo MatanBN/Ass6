@@ -6,7 +6,7 @@ import java.awt.Color;
  * The Ball class has a center Point, a radius, a color, and a velocity.
  * The class has method to draw the ball, and move the ball according to its velocity.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 19 May 2016
+ * @version 1.0 9 April 2016
  */
 public class Ball implements Sprite{
     private Point center; // The center point of the ball.
@@ -149,20 +149,22 @@ public class Ball implements Sprite{
      * moveOneStep Changes the center of the ball according to the balls velocity.
      */
     public void moveOneStep() {
+        // Get the trajectory.
         Line traj = new Line(this.center, this.v.applyToPoint(this.center));
+        // Calculate the collision point if such exists.
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
         if (myInfo.collisionPoint() != null) {
+            // Calculate and apply the brake speed so the ball's center point wont go over the border.
             Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() - (int) Math.signum(v.getDx()),
                     myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
             this.center=tempV.applyToPoint(this.center);
+            // Adjust the speed after collision
             Velocity newV = (myInfo.collisionObject()).hit(myInfo.collisionPoint(),v);
             setVelocity(newV);
         }
         else {
             this.center = v.applyToPoint(this.center);
         }
-
-
     }
 
     /**
