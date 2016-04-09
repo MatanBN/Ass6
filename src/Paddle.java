@@ -120,6 +120,7 @@ public class Paddle implements Sprite, Collidable {
                     Math.pow(currentVelocity.getDy(),2)));
     }
 
+
     /**
      * determineHitPoint checks in what region was the collision and returns the angle accordingly.
      * @param collisionPoint is the collision point of an object with the paddle.
@@ -153,7 +154,6 @@ public class Paddle implements Sprite, Collidable {
                 break;
         }
         return angle;
-
     }
 
     /**

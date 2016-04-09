@@ -155,9 +155,10 @@ public class Ball implements Sprite{
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
         if (myInfo.collisionPoint() != null) {
             // Calculate and apply the brake speed so the ball's center point wont go over the border.
-            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() - (int) Math.signum(v.getDx()),
-                    myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
-            this.center=tempV.applyToPoint(this.center);
+            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() -
+                    (int) Math.signum(v.getDx()), myInfo.collisionPoint().getY() - this.getY()
+                    - (int) Math.signum(v.getDy()));
+            this.center = tempV.applyToPoint(this.center);
             // Adjust the speed after collision
             Velocity newV = (myInfo.collisionObject()).hit(myInfo.collisionPoint(),v);
             setVelocity(newV);

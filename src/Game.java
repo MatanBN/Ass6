@@ -57,8 +57,11 @@ public class Game {
 
         // Create the ball.
         Ball ball = new Ball(50, 30, 5, Color.BLUE, environment);
+        Ball ball2 = new Ball(30, 70, 5, Color.BLUE, environment);
         ball.setVelocity(2,-2);
+        ball2.setVelocity(2,2);
         ball.addToGame(this);
+        ball2.addToGame(this);
 
         // Create the borders.
         createBlock(0,0, 20, 450, Color.gray,0);
@@ -77,7 +80,7 @@ public class Game {
                 } else {
                     hits = 1;
                 }
-                createBlock(borders.getWidth() - 60 - (j*40), rowYCoordinate , 40, 20, chooseRowColor(i), hits);
+                createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate , 40, 20, chooseRowColor(i), hits);
             }
         }
     }
@@ -152,6 +155,7 @@ public class Game {
             if (milliSecondLeftToSleep > 0) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
+
         }
     }
 
