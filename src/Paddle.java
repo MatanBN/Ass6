@@ -114,6 +114,10 @@ public class Paddle implements Sprite, Collidable {
      * @return the new velocity after the hit.
      */
     public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+        if (collisionPoint.getY() > this.rectangle.getY()) {
+            Block block = new Block(this.getCollisionRectangle());
+            return block.hit(collisionPoint, currentVelocity);
+        }
         double angle = determineHitPoint(collisionPoint);
         if (angle == 3) {
             Block block = new Block(this.getCollisionRectangle());

@@ -18,9 +18,9 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param p       a Point which will be the center of the ball.
-     * @param r       the radius of the ball.
-     * @param color   the color of the ball.
+     * @param p a Point which will be the center of the ball.
+     * @param r the radius of the ball.
+     * @param color the color of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(Point p, int r, java.awt.Color color, GameEnvironment gameEnv) {
@@ -32,10 +32,10 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param x       the x center of the ball.
-     * @param y       the y center of the ball.
-     * @param r       the radius of the ball.
-     * @param color   the color of the ball.
+     * @param x the x center of the ball.
+     * @param y the y center of the ball.
+     * @param r the radius of the ball.
+     * @param color the color of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(int x, int y, int r, Color color, GameEnvironment gameEnv) {
@@ -47,10 +47,10 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param p       a Point which will be the center of the ball.
-     * @param r       the radius of the ball.
-     * @param color   the color of the ball.
-     * @param v       velocity of the ball.
+     * @param p a Point which will be the center of the ball.
+     * @param r the radius of the ball.
+     * @param color the color of the ball.
+     * @param v velocity of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(Point p, int r, java.awt.Color color, Velocity v, GameEnvironment gameEnv) {
@@ -63,11 +63,11 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param x       the x center of the ball.
-     * @param y       the y center of the ball.
-     * @param r       the radius of the ball.
-     * @param color   the color of the ball.
-     * @param v       velocity of the ball.
+     * @param x the x center of the ball.
+     * @param y the y center of the ball.
+     * @param r the radius of the ball.
+     * @param color the color of the ball.
+     * @param v velocity of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(int x, int y, int r, Color color, Velocity v, GameEnvironment gameEnv) {

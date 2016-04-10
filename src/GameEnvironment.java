@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * The GameEnvironment class contains an ArrayList of Collidables, and has
- * methods to add a Collidable object, get the colsest collision from the list
+ * methods to add a Collidable object, get the closest collision from the list
  * of Collidables, and draw all of the Collidables.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
