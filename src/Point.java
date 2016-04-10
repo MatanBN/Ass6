@@ -60,6 +60,6 @@ public class Point {
      * @param newX is the new x value for the point.
      */
     public void setX(double newX) {
-        this.x = x;
+        this.x = newX;
     }
 }

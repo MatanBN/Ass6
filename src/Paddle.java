@@ -139,24 +139,24 @@ public class Paddle implements Sprite, Collidable {
         }
         int angle;
         switch (i) {
-        case 0:
-            angle = 300;
-            break;
-        case 1:
-            angle = 330;
-            break;
-        case 2:
-            angle = 3;
-            break;
-        case 3:
-            angle = 30;
-            break;
-        case 4:
-            angle = 60;
-            break;
-        default:
-            angle = 0;
-            break;
+            case 0:
+                angle = 300;
+                break;
+            case 1:
+                angle = 330;
+                break;
+            case 2:
+                angle = 3;
+                break;
+            case 3:
+                angle = 30;
+                break;
+            case 4:
+                angle = 60;
+                break;
+            default:
+                angle = 0;
+                break;
         }
         return angle;
     }

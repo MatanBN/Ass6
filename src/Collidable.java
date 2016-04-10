@@ -8,7 +8,7 @@ public interface Collidable {
      * getCollisionRectangle returns the rectangle shape of the collision.
      * @return the "collision shape" of the object.
      */
-    public Rectangle getCollisionRectangle();
+    Rectangle getCollisionRectangle();
 
     /**
      * Notify the object that we collided with it at collisionPoint with a given
@@ -17,5 +17,5 @@ public interface Collidable {
      * @param currentVelocity is the current velocity of the object that will collide with the block.
      * @return the new velocity after the hit.
      */
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity);
+    Velocity hit(Point collisionPoint, Velocity currentVelocity);
 }
