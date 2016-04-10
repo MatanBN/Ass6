@@ -3,7 +3,7 @@ import biuoop.DrawSurface;
 import java.awt.Color;
 
 /**
- * The Block is a Collidable and a Sprie object that can block moving objects.
+ * The Block is a Collidable and a Sprite object that can block moving objects.
  * The class has methods to draw the block, and a method hit which will change the velocity of the object that hits
  * the block.
  * @author Matan Ben Noach Nir Ben Shalom
@@ -113,7 +113,7 @@ public class Block implements Collidable, Sprite {
     }
 
     /**
-     * Current doesn't do anything.
+     * Currently doesn't do anything.
      */
     public void timePassed() {
 

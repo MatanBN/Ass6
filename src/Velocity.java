@@ -32,7 +32,7 @@ public class Velocity {
     }
 
     /**
-     * applyToPoint methods get a point and returns an upated point according to the velocity.
+     * applyToPoint methods get a point and returns an updated point according to the velocity.
      * @param p The current coordinates.
      * @return the updated coordinates.
      */
