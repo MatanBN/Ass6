@@ -3,8 +3,9 @@ import biuoop.DrawSurface;
 import java.util.ArrayList;
 
 /**
- * The GameEnvironment class contains an ArrayList of Collidables, and has methods to add a Collidable object, get
- * the colsest collision from the list of Collidables, and draw all of the Collidables.
+ * The GameEnvironment class contains an ArrayList of Collidables, and has
+ * methods to add a Collidable object, get the colsest collision from the list
+ * of Collidables, and draw all of the Collidables.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -21,13 +22,14 @@ public class GameEnvironment {
     /**
      * addCollidable method adds the given Collidable to the environment.
      * @param c the Collidable object to add.
-      */
+     */
     public void addCollidable(Collidable c) {
         collidables.add(c);
     }
 
     /**
-     * getClosestCollision method returns the CollisionInfo of the closest collision from all of the Collidables.
+     * getClosestCollision method returns the CollisionInfo of the closest
+     * collision from all of the Collidables.
      * @param trajectory of the object that will hit one of the Collidables.
      * @return the CollisionInfo of the collision.
      */
@@ -36,19 +38,22 @@ public class GameEnvironment {
         CollisionInfo min = new CollisionInfo((Collidable) collidables.get(0),
                 trajectory.closestIntersectionToStartOfLine(r));
         // Find the closest collision from the given trajectory.
-        for (Object o: collidables) {
+        for (Object o : collidables) {
             r = ((Collidable) o).getCollisionRectangle();
-            // Check if the current Collidable wasn't been hit from the trajectory.
+            // Check if the current Collidable wasn't been hit from the
+            // trajectory.
             if (min.collisionPoint() == null) {
                 min = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
                 continue;
             }
             CollisionInfo coll = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
-            if (coll.collisionPoint() == null)
+            if (coll.collisionPoint() == null) {
                 continue;
-            // Check if the current Collidable the currently closest to the trajectory start point.
-            if (coll.collisionPoint().distance(trajectory.start()) <
-                    min.collisionPoint().distance(trajectory.start())) {
+            }
+            // Check if the current Collidable the currently closest to the
+            // trajectory start point.
+            if (coll.collisionPoint().distance(trajectory.start()) < min.collisionPoint()
+                    .distance(trajectory.start())) {
                 min = coll;
             }
         }
@@ -60,9 +65,8 @@ public class GameEnvironment {
      * @param d the drawSurface to draw the Collidables.
      */
     public void drawOn(DrawSurface d) {
-        for (Object o: collidables) {
+        for (Object o : collidables) {
             ((Block) o).drawOn(d);
         }
     }
-
 }

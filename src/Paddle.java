@@ -5,9 +5,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- * The Paddle is a moving block in the lowest row on the surface.
- * It's members are rectangle, the surface borders and a keyboard sensor.
- *
+ * The Paddle is a moving block in the lowest row on the surface. It's members
+ * are rectangle, the surface borders and a keyboard sensor.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -19,11 +18,10 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * The constructor creates the paddle.
-     *
-     * @param key    is the keyboard sensor in order to move it with the keyboard.
-     * @param rec    is the rectangle with the parameter for the paddle.
+     * @param key is the keyboard sensor in order to move it with the keyboard.
+     * @param rec is the rectangle with the parameter for the paddle.
      * @param border is surface border.
-     * @param color  is the color of the paddle.
+     * @param color is the color of the paddle.
      */
     public Paddle(biuoop.KeyboardSensor key, Rectangle rec, Rectangle border, Color color) {
         this.keyboard = key;
@@ -43,9 +41,9 @@ public class Paddle implements Sprite, Collidable {
     }
 
     /**
-     * moveLeft is in charge of moving the paddle left.
-     * The method checks whether the next x coordinate is out left edge or not
-     * and moves it as it should.
+     * moveLeft is in charge of moving the paddle left. The method checks
+     * whether the next x coordinate is out left edge or not and moves it as it
+     * should.
      */
     public void moveLeft() {
         if (rectangle.getX() - 5 >= borders.getX() + 20) {
@@ -61,9 +59,9 @@ public class Paddle implements Sprite, Collidable {
     }
 
     /**
-     * moveRight is in charge of moving the paddle right.
-     * The method checks whether the next x coordinate is out right edge or not
-     * and moves it as it should.
+     * moveRight is in charge of moving the paddle right. The method checks
+     * whether the next x coordinate is out right edge or not and moves it as it
+     * should.
      */
     public void moveRight() {
         if (rectangle.getX() + rectangle.getWidth() + 5 <= borders.getWidth() - 20) {
@@ -79,8 +77,9 @@ public class Paddle implements Sprite, Collidable {
     }
 
     /**
-     * timePassed checks whether the key that the user pressed is left key or right
-     * key and calls the suitable method in order to move it to the right side.
+     * timePassed checks whether the key that the user pressed is left key or
+     * right key and calls the suitable method in order to move it to the right
+     * side.
      */
     public void timePassed() {
         if (keyboard.isPressed(KeyboardSensor.LEFT_KEY)) {
@@ -93,7 +92,6 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * drawOn method draws the paddle on a given surface.
-     *
      * @param d is the surface to draw the paddle on
      */
     public void drawOn(DrawSurface d) {
@@ -102,7 +100,6 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * getCollisionRectangle returns the paddle's shape.
-     *
      * @return the given rectangle.
      */
     public Rectangle getCollisionRectangle() {
@@ -110,9 +107,9 @@ public class Paddle implements Sprite, Collidable {
     }
 
     /**
-     * hit return the new velocity after the hit based on force the object inflicted on us.
-     *
-     * @param collisionPoint  is the collision point of an object with the paddle.
+     * hit return the new velocity after the hit based on force the object
+     * inflicted on us.
+     * @param collisionPoint is the collision point of an object with the paddle.
      * @param currentVelocity is the current velocity of the object that will collide with the paddle.
      * @return the new velocity after the hit.
      */
@@ -121,52 +118,52 @@ public class Paddle implements Sprite, Collidable {
         if (angle == 3) {
             Block block = new Block(this.getCollisionRectangle());
             return block.hit(collisionPoint, currentVelocity);
-        } else
-            return Velocity.fromAngleAndSpeed(angle, Math.sqrt(Math.pow(currentVelocity.getDx(), 2) +
-                    Math.pow(currentVelocity.getDy(), 2)));
+        } else {
+            return Velocity.fromAngleAndSpeed(angle,
+                    Math.sqrt(Math.pow(currentVelocity.getDx(), 2) + Math.pow(currentVelocity.getDy(), 2)));
+        }
     }
 
-
     /**
-     * determineHitPoint checks in what region was the collision and returns the angle accordingly.
-     *
+     * determineHitPoint checks in what region was the collision and returns the
+     * angle accordingly.
      * @param collisionPoint is the collision point of an object with the paddle.
      * @return the angle to adjust the velocity.
      */
     private double determineHitPoint(Point collisionPoint) {
         int i;
         for (i = 0; i < 5; ++i) {
-            if (((Line) (regions.get(i))).inXSegment(collisionPoint.getX()))
+            if (((Line) (regions.get(i))).inXSegment(collisionPoint.getX())) {
                 break;
+            }
         }
         int angle;
         switch (i) {
-            case 0:
-                angle = 300;
-                break;
-            case 1:
-                angle = 330;
-                break;
-            case 2:
-                angle = 3;
-                break;
-            case 3:
-                angle = 30;
-                break;
-            case 4:
-                angle = 60;
-                break;
-            default:
-                angle = 0;
-                break;
+        case 0:
+            angle = 300;
+            break;
+        case 1:
+            angle = 330;
+            break;
+        case 2:
+            angle = 3;
+            break;
+        case 3:
+            angle = 30;
+            break;
+        case 4:
+            angle = 60;
+            break;
+        default:
+            angle = 0;
+            break;
         }
         return angle;
     }
 
     /**
-     * addToGame is in charge of adding the paddle as a sprite
-     * and as a Collidable to the game's suitable lists.
-     *
+     * addToGame is in charge of adding the paddle as a sprite and as a
+     * Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
     public void addToGame(Game g) {

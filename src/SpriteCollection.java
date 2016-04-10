@@ -11,10 +11,10 @@ public class SpriteCollection {
     private ArrayList sprites;
 
     /**
-     * The constructor creates a new list for the sprites
+     * The constructor creates a new list for the sprites.
      */
     public SpriteCollection() {
-        sprites = new ArrayList ();
+        sprites = new ArrayList();
     }
 
     /**
@@ -29,8 +29,8 @@ public class SpriteCollection {
      * notifyAllTimePassed calls the timePassed method on all sprites.
      */
     public void notifyAllTimePassed() {
-        for ( Object s : sprites) {
-            ((Sprite)s).timePassed();
+        for (Object s : sprites) {
+            ((Sprite) s).timePassed();
         }
     }
 
@@ -40,7 +40,7 @@ public class SpriteCollection {
      */
     public void drawAllOn(DrawSurface d) {
         for (Object s : sprites) {
-            ((Sprite)s).drawOn(d);
+            ((Sprite) s).drawOn(d);
         }
     }
 

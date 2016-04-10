@@ -9,11 +9,11 @@ public interface Sprite {
     /**
      * drawOn method draws the Sprite to the screen.
      * @param d the DrawSurface to draw the sprite on.
-      */
+     */
     void drawOn(DrawSurface d);
 
     /**
-     * Notify the sprite that time has passed
+     * Notify the sprite that time has passed.
      */
     void timePassed();
 }

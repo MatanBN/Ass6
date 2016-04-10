@@ -3,12 +3,13 @@ import biuoop.DrawSurface;
 import java.awt.Color;
 
 /**
- * The Ball class has a center Point, a radius, a color, and a velocity.
- * The class has method to draw the ball, and move the ball according to its velocity.
+ * The Ball class has a center Point, a radius, a color, and a velocity. The
+ * class has method to draw the ball, and move the ball according to its
+ * velocity.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
-public class Ball implements Sprite{
+public class Ball implements Sprite {
     private Point center; // The center point of the ball.
     private int radius; // The radius of the ball.
     private Color color; // The color of the blue.
@@ -17,9 +18,9 @@ public class Ball implements Sprite{
 
     /**
      * Constructor to create the ball.
-     * @param p a Point which will be the center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
+     * @param p       a Point which will be the center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(Point p, int r, java.awt.Color color, GameEnvironment gameEnv) {
@@ -31,10 +32,10 @@ public class Ball implements Sprite{
 
     /**
      * Constructor to create the ball.
-     * @param x the x center of the ball.
-     * @param y the y center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
+     * @param x       the x center of the ball.
+     * @param y       the y center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(int x, int y, int r, Color color, GameEnvironment gameEnv) {
@@ -46,10 +47,10 @@ public class Ball implements Sprite{
 
     /**
      * Constructor to create the ball.
-     * @param p a Point which will be the center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
-     * @param v velocity of the ball.
+     * @param p       a Point which will be the center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
+     * @param v       velocity of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(Point p, int r, java.awt.Color color, Velocity v, GameEnvironment gameEnv) {
@@ -62,11 +63,11 @@ public class Ball implements Sprite{
 
     /**
      * Constructor to create the ball.
-     * @param x the x center of the ball.
-     * @param y the y center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
-     * @param v velocity of the ball.
+     * @param x       the x center of the ball.
+     * @param y       the y center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
+     * @param v       velocity of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(int x, int y, int r, Color color, Velocity v, GameEnvironment gameEnv) {
@@ -146,7 +147,8 @@ public class Ball implements Sprite{
     }
 
     /**
-     * moveOneStep Changes the center of the ball according to the balls velocity.
+     * moveOneStep Changes the center of the ball according to the balls
+     * velocity.
      */
     public void moveOneStep() {
         // Get the trajectory.
@@ -154,16 +156,15 @@ public class Ball implements Sprite{
         // Calculate the collision point if such exists.
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
         if (myInfo.collisionPoint() != null) {
-            // Calculate and apply the brake speed so the ball's center point wont go over the border.
-            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() -
-                    (int) Math.signum(v.getDx()), myInfo.collisionPoint().getY() - this.getY()
-                    - (int) Math.signum(v.getDy()));
+            // Calculate and apply the brake speed so the ball's center point
+            // wont go over the border.
+            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() - (int) Math.signum(v.getDx()),
+                    myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
             this.center = tempV.applyToPoint(this.center);
             // Adjust the speed after collision
-            Velocity newV = (myInfo.collisionObject()).hit(myInfo.collisionPoint(),v);
+            Velocity newV = (myInfo.collisionObject()).hit(myInfo.collisionPoint(), v);
             setVelocity(newV);
-        }
-        else {
+        } else {
             this.center = v.applyToPoint(this.center);
         }
     }
@@ -171,15 +172,16 @@ public class Ball implements Sprite{
     /**
      * timePassed calls the moveOneStep method in order to move the ball.
      */
-    public void timePassed(){
+    public void timePassed() {
         moveOneStep();
     }
 
     /**
-     * addToGame is in charge of adding the paddle as a sprite to the game's sprites list.
+     * addToGame is in charge of adding the paddle as a sprite to the game's
+     * sprites list.
      * @param g is the game object we created.
      */
-    public void addToGame (Game g){
+    public void addToGame(Game g) {
         g.addSprite(this);
     }
 }

@@ -1,7 +1,8 @@
 import java.util.List;
 
 /**
- * The Line class has starting a point and and end point and it connects the two points.
+ * The Line class has starting a point and and end point and it connects the two
+ * points.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -75,8 +76,8 @@ public class Line {
     }
 
     /**
-     * intersectionWith method checks whether 2 lines are intersecting
-     * and returns the intersection point.
+     * intersectionWith method checks whether 2 lines are intersecting and
+     * returns the intersection point.
      * @param other is the second line that is checked whether it intersect with the first line.
      * @return the intersection point if the lines intersect and null otherwise.
      */
@@ -111,7 +112,6 @@ public class Line {
         return null;
     }
 
-
     /**
      * parallelTo method checks if this line and another line are parallel.
      * @param other line to check if it is parallel to mine.
@@ -122,7 +122,8 @@ public class Line {
     }
 
     /**
-     * inXSegment method checks if the x and y coordinates are in the line segment.
+     * inXSegment method checks if the x and y coordinates are in the line
+     * segment.
      * @param x the x coordinate to check.
      * @param y the y coordinate to check.
      * @return true if the x and y parameter is in the line segment, false otherwise.
@@ -183,7 +184,8 @@ public class Line {
     }
 
     /**
-     * xCoordinate method calculates the x value in the intersection point of two lines.
+     * xCoordinate method calculates the x value in the intersection point of
+     * two lines.
      * @param const1 is the constant of the first line.
      * @param slope1 is the slope of the first line.
      * @param const2 is the constant of the second line.
@@ -195,7 +197,8 @@ public class Line {
     }
 
     /**
-     * yCoordinate method calculates the x value in the intersection point of two lines.
+     * yCoordinate method calculates the x value in the intersection point of
+     * two lines.
      * @param xCoordinate is the x value in the intersection point of the lines.
      * @return the y value in the intersection point of the lines.
      */
@@ -204,7 +207,8 @@ public class Line {
     }
 
     /**
-     * closestIntersectionToStartOfLine method finds the closest intersection point to the start of the line.
+     * closestIntersectionToStartOfLine method finds the closest intersection
+     * point to the start of the line.
      * @param rect the rectangle to check the intersection point with.
      * @return the closest intersection to the start point.
      */

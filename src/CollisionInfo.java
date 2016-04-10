@@ -1,5 +1,6 @@
 /**
- * The CollisionInfo contains a collidable which is the collision itself and the point of the collision.
+ * The CollisionInfo contains a collidable which is the collision itself and the
+ * point of the collision.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -32,7 +33,6 @@ public class CollisionInfo {
      */
     public Collidable collisionObject() {
         return (Collidable) myCollision;
-
     }
 
 }
