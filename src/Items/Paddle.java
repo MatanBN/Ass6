@@ -121,15 +121,15 @@ public class Paddle implements Sprite, Collidable {
      * @param currentVelocity is the current velocity of the object that will collide with the paddle.
      * @return the new velocity after the hit.
      */
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         if (collisionPoint.getY() > this.rectangle.getY()) {
             Block block = new Block(this.getCollisionRectangle());
-            return block.hit(collisionPoint, currentVelocity);
+            return block.hit(hitter, collisionPoint, currentVelocity);
         }
         double angle = determineHitPoint(collisionPoint);
         if (angle == 3) {
             Block block = new Block(this.getCollisionRectangle());
-            return block.hit(collisionPoint, currentVelocity);
+            return block.hit(hitter, collisionPoint, currentVelocity);
         } else {
             return Velocity.fromAngleAndSpeed(angle,
                     Math.sqrt(Math.pow(currentVelocity.getDx(), 2) + Math.pow(currentVelocity.getDy(), 2)));

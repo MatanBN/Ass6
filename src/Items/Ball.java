@@ -170,7 +170,7 @@ public class Ball implements Sprite {
                     myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
             this.center = tempV.applyToPoint(this.center);
             // Adjust the speed after collision
-            Velocity newV = (myInfo.collisionObject()).hit(myInfo.collisionPoint(), v);
+            Velocity newV = (myInfo.collisionObject()).hit(this, myInfo.collisionPoint(), v);
             setVelocity(newV);
         } else {
             this.center = v.applyToPoint(this.center);
