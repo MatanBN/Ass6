@@ -6,8 +6,8 @@ package Items;
 public class Counter {
     private int counter;
 
-    public Counter {
-        int counter=this.counter;
+    public Counter() {
+        this.counter = 0;
     }
 
     // add number to current count.
