@@ -167,10 +167,10 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
     /**
-     * getHitsNumber returns block's number of hits.
+     * getHitPoints returns block's number of hits.
      * @return the block's number of hits.
      */
-    public int getHitsNumber() {
+    public int getHitPoints() {
         return hitsNumber;
     }
 

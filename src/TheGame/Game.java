@@ -2,6 +2,7 @@ package TheGame;
 
 import Geometry.Rectangle;
 import Items.*;
+import Listeners.PrintingHitListener;
 import Movement.Collidable;
 import biuoop.GUI;
 import biuoop.DrawSurface;
@@ -70,7 +71,7 @@ public class Game {
      */
     public void initialize() {
         // Create the gui with 700 width and 450 height.
-        Rectangle borders = new Rectangle(700, 450);
+        Rectangle borders = new Rectangle(800, 600);
         this.gui = new GUI("TheGame.Game", borders.getWidth(), borders.getHeight());
         KeyboardSensor keyboard = gui.getKeyboardSensor();
 
@@ -107,6 +108,7 @@ public class Game {
                 createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
             }
         }
+
     }
 
     /**
@@ -122,6 +124,7 @@ public class Game {
         Block block = new Block(x, y, width, height, c);
         block.setHitsNumber(hits);
         block.addToGame(this);
+        block.addHitListener(new PrintingHitListener());
     }
 
     /**
