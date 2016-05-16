@@ -34,6 +34,7 @@ public class Game {
         sprites = new SpriteCollection();
         environment = new GameEnvironment();
         counter = new Counter();
+        ballCounter = new Counter();
     }
 
     /**
