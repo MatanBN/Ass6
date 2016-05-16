@@ -40,7 +40,8 @@ public class SpriteCollection {
      * notifyAllTimePassed calls the timePassed method on all sprites.
      */
     public void notifyAllTimePassed() {
-        for (Object s : sprites) {
+        ArrayList spritesCopy = new ArrayList(sprites);
+        for (Object s : spritesCopy) {
             ((Sprite) s).timePassed();
         }
     }
@@ -50,7 +51,8 @@ public class SpriteCollection {
      * @param d is the surface to draw the sprites on.
      */
     public void drawAllOn(DrawSurface d) {
-        for (Object s : sprites) {
+        ArrayList spritesCopy = new ArrayList(sprites);
+        for (Object s : spritesCopy) {
             ((Sprite) s).drawOn(d);
         }
     }

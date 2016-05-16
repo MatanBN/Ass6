@@ -55,7 +55,8 @@ public class GameEnvironment {
         CollisionInfo min = new CollisionInfo((Collidable) collidables.get(0),
                 trajectory.closestIntersectionToStartOfLine(r));
         // Find the closest collision from the given trajectory.
-        for (Object o : collidables) {
+        ArrayList coll = new ArrayList(collidables);
+        for (Object o : coll) {
             r = ((Collidable) o).getCollisionRectangle();
             // Check if the current Movement.Collidable wasn't been hit from the
             // trajectory.
@@ -63,15 +64,15 @@ public class GameEnvironment {
                 min = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
                 continue;
             }
-            CollisionInfo coll = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
-            if (coll.collisionPoint() == null) {
+            CollisionInfo collision = new CollisionInfo((Collidable) o, trajectory.closestIntersectionToStartOfLine(r));
+            if (collision.collisionPoint() == null) {
                 continue;
             }
             // Check if the current Movement.Collidable the currently closest to the
             // trajectory start point.
-            if (coll.collisionPoint().distance(trajectory.start()) < min.collisionPoint()
+            if (collision.collisionPoint().distance(trajectory.start()) < min.collisionPoint()
                     .distance(trajectory.start())) {
-                min = coll;
+                min = collision;
             }
         }
         return min;
