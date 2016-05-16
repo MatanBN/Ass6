@@ -23,6 +23,7 @@ public class BlockRemover implements HitListener {
         if (beingHit.getHitPoints() == 0) {
             beingHit.removeFromGame(game);
             beingHit.removeHitListener(this);
+            remainingBlocks.decrease(1);
         }
     }
 }
