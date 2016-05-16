@@ -2,6 +2,8 @@ package TheGame;
 
 import Geometry.Rectangle;
 import Items.*;
+import Listeners.BallRemover;
+import Listeners.BlockRemover;
 import Listeners.PrintingHitListener;
 import Movement.Collidable;
 import biuoop.GUI;
@@ -23,6 +25,7 @@ public class Game {
     private GameEnvironment environment; // The game environment.
     private GUI gui; // The gui windows of the game.
     private Counter counter;
+    private Counter ballCounter;
 
     /**
      * Constructor to create the TheGame.Game.
@@ -79,10 +82,17 @@ public class Game {
         // Create the ball.
         Ball ball = new Ball(50, 30, 5, Color.BLUE, environment);
         Ball ball2 = new Ball(30, 70, 5, Color.BLUE, environment);
+        Ball ball3 = new Ball(100, 70, 5, Color.BLUE, environment);
+
         ball.setVelocity(9, -9);
         ball2.setVelocity(9, 9);
+        ball3.setVelocity(2, 3);
+
         ball.addToGame(this);
         ball2.addToGame(this);
+        ball3.addToGame(this);
+        ballCounter.increase(3);
+
 
         // Create the paddle.
         Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, 70, 30);
@@ -91,7 +101,9 @@ public class Game {
 
 
         // Create the borders.
-        createBorder(0, 0, 20, borders.getMaxX(), Color.gray, 0);
+        Block deathBorder = new Block(0, 0, 20, borders.getMaxX(), Color.white);
+        deathBorder.addToGame(this);
+        deathBorder.addHitListener(new BallRemover(this, counter));
         createBorder(0, 0, borders.getMaxX(), 20, Color.gray, 0);
         createBorder(0, borders.getMaxY() - 20, borders.getMaxX(), 20,
                 Color.gray, 0);

@@ -3,6 +3,8 @@ package Items;
 import Geometry.Line;
 import Geometry.Point;
 import Geometry.Rectangle;
+import Listeners.HitListener;
+import Listeners.HitNotifier;
 import Movement.Collidable;
 import Movement.Velocity;
 import TheGame.Game;
