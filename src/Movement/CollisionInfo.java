@@ -1,5 +1,9 @@
+package Movement;
+
+import Geometry.Point;
+
 /**
- * The CollisionInfo contains a Collidable which is the collision itself and the
+ * The Movement.CollisionInfo contains a Movement.Collidable which is the collision itself and the
  * point of the collision.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
@@ -9,9 +13,9 @@ public class CollisionInfo {
     private Point collisionPoint;
 
     /**
-     * Constructor to create the CollisionInfo.
-     * @param myCollision which will be the collision itself and will be a Collidable object.
-     * @param collisionPoint a Point which will be collision point.
+     * Constructor to create the Movement.CollisionInfo.
+     * @param myCollision which will be the collision itself and will be a Movement.Collidable object.
+     * @param collisionPoint a Geometry.Point which will be collision point.
      */
     public CollisionInfo(Collidable myCollision, Point collisionPoint) {
         this.myCollision = myCollision;
@@ -28,8 +32,8 @@ public class CollisionInfo {
     }
 
     /**
-     * collisionObject returns the Collidable collision object.
-     * @return the Collidable collision object.
+     * collisionObject returns the Movement.Collidable collision object.
+     * @return the Movement.Collidable collision object.
      */
     public Collidable collisionObject() {
         return (Collidable) myCollision;

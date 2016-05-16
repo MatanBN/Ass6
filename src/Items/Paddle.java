@@ -1,3 +1,11 @@
+package Items;
+
+import Geometry.Line;
+import Geometry.Point;
+import Geometry.Rectangle;
+import Movement.Collidable;
+import Movement.Velocity;
+import TheGame.Game;
 import biuoop.KeyboardSensor;
 import biuoop.DrawSurface;
 
@@ -5,7 +13,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- * The Paddle is a moving block in the lowest row on the surface. It's members
+ * The Items.Paddle is a moving block in the lowest row on the surface. It's members
  * are rectangle, the surface borders and a keyboard sensor.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
@@ -167,7 +175,7 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * addToGame is in charge of adding the paddle as a sprite and as a
-     * Collidable to the game's suitable lists.
+     * Movement.Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
     public void addToGame(Game g) {

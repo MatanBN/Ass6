@@ -1,9 +1,17 @@
+package Items;
+
+import Geometry.Line;
+import Geometry.Point;
+import Movement.CollisionInfo;
+import Movement.Velocity;
+import TheGame.Game;
+import TheGame.GameEnvironment;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
 
 /**
- * The Ball class has a center Point, a radius, a color, and a velocity. The
+ * The Items.Ball class has a center Geometry.Point, a radius, a color, and a velocity. The
  * class has method to draw the ball, and move the ball according to its
  * velocity.
  * @author Matan Ben Noach Nir Ben Shalom
@@ -18,7 +26,7 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param p a Point which will be the center of the ball.
+     * @param p a Geometry.Point which will be the center of the ball.
      * @param r the radius of the ball.
      * @param color the color of the ball.
      * @param gameEnv the game environment of the ball.
@@ -47,7 +55,7 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param p a Point which will be the center of the ball.
+     * @param p a Geometry.Point which will be the center of the ball.
      * @param r the radius of the ball.
      * @param color the color of the ball.
      * @param v velocity of the ball.

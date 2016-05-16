@@ -1,8 +1,10 @@
+package Items;
+
 import java.util.ArrayList;
 import biuoop.DrawSurface;
 
 /**
- * SpriteCollection is a list of the sprites in the game.
+ * Items.SpriteCollection is a list of the sprites in the game.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */

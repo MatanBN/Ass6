@@ -1,3 +1,5 @@
+import TheGame.Game;
+
 /**
  * The Ass3Game initializes and start the game.
  * @author Matan Ben Noach Nir Ben Shalom

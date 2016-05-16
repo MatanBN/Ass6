@@ -1,5 +1,9 @@
+package Movement;
+
+import Geometry.Point;
+
 /**
- * The Velocity specifies the change in position on the `x` and the `y` axes.
+ * The Movement.Velocity specifies the change in position on the `x` and the `y` axes.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -22,7 +26,7 @@ public class Velocity {
      * that are given.
      * @param angle the angle of the ball's movement.
      * @param speed the speed of the ball.
-     * @return the Velocity created.
+     * @return the Movement.Velocity created.
      */
     public static Velocity fromAngleAndSpeed(double angle, double speed) {
         double radainAngle = Math.toRadians(angle);

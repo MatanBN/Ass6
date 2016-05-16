@@ -1,7 +1,9 @@
+package Geometry;
+
 import java.util.List;
 
 /**
- * The Line class has starting a point and and end point and it connects the two
+ * The Geometry.Line class has starting a point and and end point and it connects the two
  * points.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
@@ -11,7 +13,7 @@ public class Line {
     private Point end; // The last point of the line
 
     /**
-     * Line is the constructor and creates the line with 2 given points.
+     * Geometry.Line is the constructor and creates the line with 2 given points.
      * @param start is the first point of the line.
      * @param end is the last point of the line.
      */
@@ -21,7 +23,7 @@ public class Line {
     }
 
     /**
-     * Line is the constructor and creates the line with 2 x and values.
+     * Geometry.Line is the constructor and creates the line with 2 x and values.
      * @param x1 is the first point's x value in the line.
      * @param y1 is the first point's y value in the line.
      * @param x2 is the last point's x value in the line.

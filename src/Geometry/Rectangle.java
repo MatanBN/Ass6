@@ -1,11 +1,13 @@
+package Geometry;
+
 import biuoop.DrawSurface;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Rectangle class has two coordinates, a width, a height and a color. The
- * Rectangle has methods to calculate its area and to draw the rectangle.
+ * The Geometry.Rectangle class has two coordinates, a width, a height and a color. The
+ * Geometry.Rectangle has methods to calculate its area and to draw the rectangle.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -16,7 +18,7 @@ public class Rectangle {
     private Color color; // The color of the rectangle
 
     /**
-     * Rectangle is the constructor and creates the rectangle with upper left
+     * Geometry.Rectangle is the constructor and creates the rectangle with upper left
      * point at (0,0) and initialize the width and height according to the user
      * parameters.
      * @param width the desired width of the rectangle.
@@ -29,7 +31,7 @@ public class Rectangle {
     }
 
     /**
-     * Rectangle is the constructor and creates the rectangle with upper left
+     * Geometry.Rectangle is the constructor and creates the rectangle with upper left
      * point at (0,0) and initialize the width and height according to the user
      * parameters.
      * @param width the desired width of the rectangle.
@@ -44,7 +46,7 @@ public class Rectangle {
     }
 
     /**
-     * Rectangle is the constructor and creates the rectangle according to the
+     * Geometry.Rectangle is the constructor and creates the rectangle according to the
      * user parameters.
      * @param x the x coordinate to start the rectangle from.
      * @param y the y coordinate to start the rectangle from.
@@ -58,7 +60,7 @@ public class Rectangle {
     }
 
     /**
-     * Rectangle is the constructor and creates the rectangle according to the
+     * Geometry.Rectangle is the constructor and creates the rectangle according to the
      * user parameters.
      * @param x the x coordinate to start the rectangle from.
      * @param y the y coordinate to start the rectangle from.
@@ -74,7 +76,7 @@ public class Rectangle {
     }
 
     /**
-     * Rectangle is the constructor and creates the rectangle according to the
+     * Geometry.Rectangle is the constructor and creates the rectangle according to the
      * user parameters.
      * @param upperLeft the x,y coordinates to start the rectangle from.
      * @param width the desired width of the rectangle.

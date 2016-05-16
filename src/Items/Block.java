@@ -1,9 +1,16 @@
+package Items;
 
+import Geometry.Line;
+import Geometry.Point;
+import Geometry.Rectangle;
+import Movement.Collidable;
+import Movement.Velocity;
+import TheGame.Game;
 import biuoop.DrawSurface;
 import java.awt.Color;
 
 /**
- * The Block is a Collidable and a Sprite object that can block moving objects.
+ * The Items.Block is a Movement.Collidable and a Items.Sprite object that can block moving objects.
  * The class has methods to draw the block, and a method hit which will change the velocity of the object that hits
  * the block.
  * @author Matan Ben Noach Nir Ben Shalom
@@ -14,7 +21,7 @@ public class Block implements Collidable, Sprite {
     private int hitsNumber; // The number of hits of the block.
 
     /**
-     * Block creates a new rectangle block by a given rectangle.
+     * Items.Block creates a new rectangle block by a given rectangle.
      * @param r is a given rectangle.
      */
     public Block(Rectangle r) {
@@ -22,7 +29,7 @@ public class Block implements Collidable, Sprite {
     }
 
     /**
-     * Block creates a new rectangle block by it's width and height.
+     * Items.Block creates a new rectangle block by it's width and height.
      * @param width  is the rectangle's width.
      * @param height is the rectangle's height.
      * @param c the color of the block/rectangle.
@@ -32,7 +39,7 @@ public class Block implements Collidable, Sprite {
     }
 
     /**
-     * Block creates a new rectangle block by it's left corner coordinates,
+     * Items.Block creates a new rectangle block by it's left corner coordinates,
      * width and height.
      * @param x is the x coordinate of left corner.
      * @param y is the y coordinate of left corner.
@@ -120,8 +127,8 @@ public class Block implements Collidable, Sprite {
     }
 
     /**
-     * addToGame is in charge of adding the block as a Sprite and as a
-     * Collidable to the game's suitable lists.
+     * addToGame is in charge of adding the block as a Items.Sprite and as a
+     * Movement.Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
     public void addToGame(Game g) {

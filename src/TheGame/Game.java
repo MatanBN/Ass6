@@ -1,3 +1,8 @@
+package TheGame;
+
+import Geometry.Rectangle;
+import Items.*;
+import Movement.Collidable;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
@@ -6,8 +11,8 @@ import biuoop.Sleeper;
 import java.awt.Color;
 
 /**
- * The Game class contains a a SpriteCollection which will be all the sprites in
- * the game, a GameEnvironment which will include all of the Collidable objects,
+ * The TheGame.Game class contains a a Items.SpriteCollection which will be all the sprites in
+ * the game, a TheGame.GameEnvironment which will include all of the Movement.Collidable objects,
  * and a GUI which will be our game windows.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
@@ -19,7 +24,7 @@ public class Game {
     private GUI gui; // The gui windows of the game.
 
     /**
-     * Constructor to create the Game.
+     * Constructor to create the TheGame.Game.
      */
     public Game() {
         sprites = new SpriteCollection();
@@ -27,16 +32,16 @@ public class Game {
     }
 
     /**
-     * addCollidable method adds a Collidable object to the game.
-     * @param c the Collidable object to add.
+     * addCollidable method adds a Movement.Collidable object to the game.
+     * @param c the Movement.Collidable object to add.
      */
     public void addCollidable(Collidable c) {
         environment.addCollidable(c);
     }
 
     /**
-     * addSprite method adds a Sprite object to the game.
-     * @param s the Sprite object to add.
+     * addSprite method adds a Items.Sprite object to the game.
+     * @param s the Items.Sprite object to add.
      */
     public void addSprite(Sprite s) {
         sprites.addSprite(s);
@@ -49,7 +54,7 @@ public class Game {
     public void initialize() {
         // Create the gui with 700 width and 450 height.
         Rectangle borders = new Rectangle(700, 450);
-        this.gui = new GUI("Game", borders.getWidth(), borders.getHeight());
+        this.gui = new GUI("TheGame.Game", borders.getWidth(), borders.getHeight());
         KeyboardSensor keyboard = gui.getKeyboardSensor();
 
         // Create the ball.

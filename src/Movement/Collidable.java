@@ -1,5 +1,11 @@
+package Movement;
+
+import Geometry.Point;
+import Geometry.Rectangle;
+import Movement.Velocity;
+
 /**
- * The Collidable holds 2 statements of any Collidable object.
+ * The Movement.Collidable holds 2 statements of any Movement.Collidable object.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
