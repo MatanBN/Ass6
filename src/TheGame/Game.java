@@ -124,19 +124,20 @@ public class Game {
                 } else {
                     hits = 1;
                 }
-                Block specialBlock = new Block(borders.getWidth() - 60 - (j * 40),
-                        rowYCoordinate, 40, 20, chooseRowColor(i));
-                specialBlock.setHitsNumber(hits);
-                specialBlock.addToGame(this);
-                specialBlock.addHitListener(new BallAdder(this, ballCounter));
-                counter.increase(1);
 
+                if (i + j % 12 == 0) {
+                    Block specialBlock = new Block(borders.getWidth() - 60 - (j * 40),
+                            rowYCoordinate, 40, 20, chooseRowColor(i));
+                    specialBlock.setHitsNumber(hits);
+                    specialBlock.addToGame(this);
+                    specialBlock.addHitListener(new BlockRemover(this, counter));
 
-                /*
+                    specialBlock.addHitListener(new BallAdder(this, ballCounter));
+                    counter.increase(1);
+                }
                 else {
                     createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
                 }
-                */
 
             }
         }
@@ -164,7 +165,6 @@ public class Game {
         Block block = new Block(x, y, width, height, c);
         block.setHitsNumber(hits);
         block.addToGame(this);
-        block.addHitListener(new PrintingHitListener());
         counter.increase(1);
         block.addHitListener(new BlockRemover(this,counter));
     }
