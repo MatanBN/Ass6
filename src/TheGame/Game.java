@@ -8,7 +8,6 @@ import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 import biuoop.Sleeper;
-
 import java.awt.Color;
 
 /**
@@ -23,6 +22,7 @@ public class Game {
     private SpriteCollection sprites; // All of the sprites in the game.
     private GameEnvironment environment; // The game environment.
     private GUI gui; // The gui windows of the game.
+    private Counter counter;
 
     /**
      * Constructor to create the TheGame.Game.
@@ -126,6 +126,8 @@ public class Game {
         block.setHitsNumber(hits);
         block.addToGame(this);
         block.addHitListener(new PrintingHitListener());
+        counter.increase(1);
+        block.addHitListener(new BlockRemover(this,counter));
     }
 
     /**
