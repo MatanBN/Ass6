@@ -2,6 +2,7 @@ package TheGame;
 
 import Geometry.Rectangle;
 import Items.*;
+import Listeners.BallAdder;
 import Listeners.BallRemover;
 import Listeners.BlockRemover;
 import Listeners.PrintingHitListener;
@@ -85,8 +86,8 @@ public class Game {
         Ball ball2 = new Ball(30, 70, 5, Color.BLUE, environment);
         Ball ball3 = new Ball(100, 70, 5, Color.BLUE, environment);
 
-        ball.setVelocity(9, -9);
-        ball2.setVelocity(9, 9);
+        ball.setVelocity(2, -2);
+        ball2.setVelocity(2, 2);
         ball3.setVelocity(2, 3);
 
         ball.addToGame(this);
@@ -123,17 +124,32 @@ public class Game {
                 } else {
                     hits = 1;
                 }
-                createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
+                Block specialBlock = new Block(borders.getWidth() - 60 - (j * 40),
+                        rowYCoordinate, 40, 20, chooseRowColor(i));
+                specialBlock.setHitsNumber(hits);
+                specialBlock.addToGame(this);
+                specialBlock.addHitListener(new BallAdder(this, ballCounter));
+                counter.increase(1);
+
+
+                /*
+                else {
+                    createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
+                }
+                */
+
             }
         }
 
     }
 
-    public void createBorder(int x, int y, int width, int height, Color c, int hits) {
+
+    private void createBorder(int x, int y, int width, int height, Color c, int hits) {
         Block block = new Block(x, y, width, height, c);
         block.setHitsNumber(hits);
         block.addToGame(this);
     }
+
 
     /**
      * createBlock method creates a new block and adds it to the game.
@@ -212,5 +228,9 @@ public class Game {
             }
 
         }
+    }
+
+    public GameEnvironment getEnvironment() {
+        return environment;
     }
 }
