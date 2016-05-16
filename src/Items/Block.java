@@ -7,8 +7,9 @@ import Movement.Collidable;
 import Movement.Velocity;
 import TheGame.Game;
 import biuoop.DrawSurface;
-import java.awt.*;
+import java.util.List;
 import java.util.ArrayList;
+import java.awt.*;
 
 
 /**
@@ -29,7 +30,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      */
     public Block(Rectangle r) {
         this.rectangle = r;
-        this.hitListeners = new List();
+        this.hitListeners = new ArrayList();
     }
 
     /**
@@ -40,7 +41,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      */
     public Block(int width, int height, Color c) {
         this.rectangle = new Rectangle(width, height, c);
-        this.hitListeners = new List();
+        this.hitListeners = new ArrayList();
     }
 
     /**
@@ -54,7 +55,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      */
     public Block(int x, int y, int width, int height, Color c) {
         this.rectangle = new Rectangle(x, y, width, height, c);
-        this.hitListeners = new List();
+        this.hitListeners = new ArrayList();
     }
 
     /**
