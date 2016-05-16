@@ -7,7 +7,9 @@ import Movement.Collidable;
 import Movement.Velocity;
 import TheGame.Game;
 import biuoop.DrawSurface;
-import java.awt.Color;
+import java.awt.*;
+import java.util.ArrayList;
+
 
 /**
  * The Items.Block is a Movement.Collidable and a Items.Sprite object that can block moving objects.
@@ -16,9 +18,10 @@ import java.awt.Color;
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
-public class Block implements Collidable, Sprite {
+public class Block implements Collidable, Sprite, HitNotifier {
     private Rectangle rectangle; // The rectangle shape of the block.
     private int hitsNumber; // The number of hits of the block.
+    private List <HitListener> hitListeners;
 
     /**
      * Items.Block creates a new rectangle block by a given rectangle.
@@ -26,6 +29,7 @@ public class Block implements Collidable, Sprite {
      */
     public Block(Rectangle r) {
         this.rectangle = r;
+        this.hitListeners = new List();
     }
 
     /**
@@ -36,6 +40,7 @@ public class Block implements Collidable, Sprite {
      */
     public Block(int width, int height, Color c) {
         this.rectangle = new Rectangle(width, height, c);
+        this.hitListeners = new List();
     }
 
     /**
@@ -49,6 +54,7 @@ public class Block implements Collidable, Sprite {
      */
     public Block(int x, int y, int width, int height, Color c) {
         this.rectangle = new Rectangle(x, y, width, height, c);
+        this.hitListeners = new List();
     }
 
     /**
@@ -85,7 +91,7 @@ public class Block implements Collidable, Sprite {
      * @param currentVelocity is the current velocity of the object that will collide with the block.
      * @return the new velocity after the hit.
      */
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         if (this.hitsNumber > 0) {
             --this.hitsNumber;
         }
@@ -102,7 +108,25 @@ public class Block implements Collidable, Sprite {
         } else if (checkCollisionSide(collisionPoint, rectangle.getBottomEdge())) {
             newVelocity.setDy(-currentVelocity.getDy());
         }
+        this.notifyHit(hitter);
         return newVelocity;
+    }
+
+    public void addHitListener(HitListener hl){
+        hitListeners.add(hl);
+    }
+
+    public void removeHitListener(HitListener hl){
+        hitListeners.remove(hl);
+    }
+
+    private void notifyHit(Ball hitter) {
+        // Make a copy of the hitListeners before iterating over them.
+        List<HitListener> listeners = new ArrayList<HitListener>(this.hitListeners);
+        // Notify all listeners about a hit event:
+        for (HitListener hl : listeners) {
+            hl.hitEvent(this, hitter);
+        }
     }
 
     /**
