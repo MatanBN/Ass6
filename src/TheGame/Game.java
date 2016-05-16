@@ -79,8 +79,8 @@ public class Game {
         // Create the ball.
         Ball ball = new Ball(50, 30, 5, Color.BLUE, environment);
         Ball ball2 = new Ball(30, 70, 5, Color.BLUE, environment);
-        ball.setVelocity(2, -2);
-        ball2.setVelocity(2, 2);
+        ball.setVelocity(9, -9);
+        ball2.setVelocity(9, 9);
         ball.addToGame(this);
         ball2.addToGame(this);
 
@@ -190,6 +190,9 @@ public class Game {
             long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
             if (milliSecondLeftToSleep > 0) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
+            }
+            if (counter.getValue() == 0) {
+                gui.close();
             }
 
         }
