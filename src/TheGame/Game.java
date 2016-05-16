@@ -88,12 +88,13 @@ public class Game {
         Paddle paddle = new Paddle(keyboard, paddleRec, borders, Color.GREEN);
         paddle.addToGame(this);
 
-        // Create the borders.
-        createBlock(0, 0, 20, 450, Color.gray, 0);
-        createBlock(0, 0, 700, 20, Color.gray, 0);
-        createBlock(0, 430, 700, 20, Color.gray, 0);
-        createBlock(680, 0, 20, 450, Color.gray, 0);
 
+        // Create the borders.
+        createBlock(0, 0, 20, borders.getMaxX(), Color.gray, 0);
+        createBlock(0, 0, borders.getMaxX(), 20, Color.gray, 0);
+        createBlock(0, borders.getMaxY() - 20, borders.getMaxX(), 20,
+                Color.gray, 0);
+        createBlock(borders.getMaxX() - 20, 0, 20, borders.getMaxY(), Color.gray, 0);
         // The double for loop adds 5 rows of blocks.
         for (int i = 0; i <= 5; i++) {
             int numberOfBlockPerRow = 12 - i;
