@@ -30,6 +30,7 @@ public class Game {
     public Game() {
         sprites = new SpriteCollection();
         environment = new GameEnvironment();
+        counter = new Counter();
     }
 
     /**
@@ -90,11 +91,11 @@ public class Game {
 
 
         // Create the borders.
-        createBlock(0, 0, 20, borders.getMaxX(), Color.gray, 0);
-        createBlock(0, 0, borders.getMaxX(), 20, Color.gray, 0);
-        createBlock(0, borders.getMaxY() - 20, borders.getMaxX(), 20,
+        createBorder(0, 0, 20, borders.getMaxX(), Color.gray, 0);
+        createBorder(0, 0, borders.getMaxX(), 20, Color.gray, 0);
+        createBorder(0, borders.getMaxY() - 20, borders.getMaxX(), 20,
                 Color.gray, 0);
-        createBlock(borders.getMaxX() - 20, 0, 20, borders.getMaxY(), Color.gray, 0);
+        createBorder(borders.getMaxX() - 20, 0, 20, borders.getMaxY(), Color.gray, 0);
         // The double for loop adds 5 rows of blocks.
         for (int i = 0; i <= 5; i++) {
             int numberOfBlockPerRow = 12 - i;
@@ -110,6 +111,12 @@ public class Game {
             }
         }
 
+    }
+
+    public void createBorder(int x, int y, int width, int height, Color c, int hits) {
+        Block block = new Block(x, y, width, height, c);
+        block.setHitsNumber(hits);
+        block.addToGame(this);
     }
 
     /**
