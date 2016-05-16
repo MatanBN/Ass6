@@ -2,6 +2,7 @@ package Movement;
 
 import Geometry.Point;
 import Geometry.Rectangle;
+import Items.Ball;
 import Movement.Velocity;
 
 /**
@@ -23,5 +24,5 @@ public interface Collidable {
      * @param currentVelocity is the current velocity of the object that will collide with the block.
      * @return the new velocity after the hit.
      */
-    Velocity hit(Point collisionPoint, Velocity currentVelocity);
+    Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity);
 }
