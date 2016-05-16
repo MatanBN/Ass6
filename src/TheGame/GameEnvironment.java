@@ -34,6 +34,16 @@ public class GameEnvironment {
         collidables.add(c);
     }
 
+
+    /**
+     * removeCollidable method removes the given Collidable from the environment.
+     *
+     * @param c the Collidable object to remove.
+     */
+    public void removeCollidable(Collidable c) {
+        collidables.remove(c);
+    }
+
     /**
      * getClosestCollision method returns the Movement.CollisionInfo of the closest
      * collision from all of the Collidables.

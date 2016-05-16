@@ -48,6 +48,23 @@ public class Game {
     }
 
     /**
+     * remove Collidable method removes a Collidable object from the game.
+     * @param c the Collidable object to remove.
+     */
+    public void removeCollidable(Collidable c) {
+        environment.removeCollidable(c);
+    }
+
+    /**
+     * removeSprite method removes a Sprite object from the game.
+     *
+     * @param s the Sprite object to add.
+     */
+    public void removeSprite(Sprite s) {
+        sprites.removeSprite(s);
+    }
+
+    /**
      * initialize method draws the borders, ball, paddle and blocks on a new
      * gui.
      */
