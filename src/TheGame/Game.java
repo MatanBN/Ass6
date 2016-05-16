@@ -102,13 +102,16 @@ public class Game {
 
 
         // Create the borders.
-        Block deathBorder = new Block(0, 0, 20, borders.getMaxX(), Color.white);
-        deathBorder.addToGame(this);
-        deathBorder.addHitListener(new BallRemover(this, counter));
+        createBorder(0, 0, 20, borders.getMaxX(), Color.gray, 0);
+
         createBorder(0, 0, borders.getMaxX(), 20, Color.gray, 0);
-        createBorder(0, borders.getMaxY() - 20, borders.getMaxX(), 20,
-                Color.gray, 0);
+
         createBorder(borders.getMaxX() - 20, 0, 20, borders.getMaxY(), Color.gray, 0);
+
+        Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
+                Color.WHITE);
+        deathBorder.addToGame(this);
+        deathBorder.addHitListener(new BallRemover(this, ballCounter));
         // The double for loop adds 5 rows of blocks.
         for (int i = 0; i <= 5; i++) {
             int numberOfBlockPerRow = 12 - i;
@@ -204,7 +207,7 @@ public class Game {
             if (milliSecondLeftToSleep > 0) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
-            if (counter.getValue() == 0) {
+            if (counter.getValue() == 0 || ballCounter.getValue() == 0) {
                 gui.close();
             }
 
