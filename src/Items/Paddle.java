@@ -46,6 +46,8 @@ public class Paddle implements Sprite, Collidable {
             startFrom += fifthRec;
             end += fifthRec;
         }
+
+
     }
 
     /**
@@ -56,11 +58,7 @@ public class Paddle implements Sprite, Collidable {
     public void moveLeft() {
         if (rectangle.getX() - 5 >= borders.getX() + 20) {
             rectangle.getUpperLeft().setX(rectangle.getX() - 5);
-            for (Object o : regions) {
-                Line l = (Line) o;
-                l.start().setX((l.start().getX() - 5));
-                l.end().setX(l.end().getX() - 5);
-            }
+            alignRegions();
         } else {
             rectangle.getUpperLeft().setX(borders.getX() + 20);
         }
@@ -74,13 +72,28 @@ public class Paddle implements Sprite, Collidable {
     public void moveRight() {
         if (rectangle.getX() + rectangle.getWidth() + 5 <= borders.getWidth() - 20) {
             rectangle.getUpperLeft().setX(rectangle.getX() + 5);
-            for (Object o : regions) {
-                Line l = (Line) o;
-                l.start().setX((l.start().getX() + 5));
-                l.end().setX(l.end().getX() + 5);
-            }
+            alignRegions();
         } else {
             rectangle.getUpperLeft().setX(borders.getWidth() - rectangle.getWidth() - 20);
+        }
+    }
+
+    public void relocatePaddle(int x) {
+        rectangle.getUpperLeft().setX(x);
+        alignRegions();
+
+    }
+
+    private void alignRegions() {
+        int fifthRec = rectangle.getWidth() / 5;
+        int startFrom = rectangle.getX();
+        int end = rectangle.getX() + fifthRec;
+        for (Object o : regions) {
+            Line l = (Line) o;
+            l.start().setX(startFrom);
+            l.end().setX(end);
+            startFrom += fifthRec;
+            end += fifthRec;
         }
     }
 
@@ -182,4 +195,6 @@ public class Paddle implements Sprite, Collidable {
         g.addSprite(this);
         g.addCollidable(this);
     }
+
+
 }

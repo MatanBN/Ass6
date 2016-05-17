@@ -4,6 +4,7 @@ import Geometry.Rectangle;
 import Items.*;
 import Listeners.*;
 import Movement.Collidable;
+import Movement.Velocity;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
@@ -25,6 +26,8 @@ public class Game {
     private Counter counter;
     private Counter ballCounter;
     private Counter score;
+    private Counter numberOfLives;
+    private Paddle paddle;
 
     /**
      * Constructor to create the TheGame.Game.
@@ -35,6 +38,7 @@ public class Game {
         counter = new Counter();
         ballCounter = new Counter();
         score = new Counter();
+        numberOfLives = new Counter();
     }
 
     /**
@@ -80,28 +84,17 @@ public class Game {
     public void initialize() {
         // Create the gui with 700 width and 450 height.
         Rectangle borders = new Rectangle(800, 600);
-        this.gui = new GUI("TheGame.Game", borders.getWidth(), borders.getHeight());
+        this.gui = new GUI("Game", borders.getWidth(), borders.getHeight());
         KeyboardSensor keyboard = gui.getKeyboardSensor();
 
-        // Create the ball.
-        Ball ball = new Ball(50, 70, 5, Color.BLUE, environment);
-        Ball ball2 = new Ball(30, 90, 5, Color.BLUE, environment);
-        Ball ball3 = new Ball(100, 90, 5, Color.BLUE, environment);
-
-        ball.setVelocity(2, -2);
-        ball2.setVelocity(2, 2);
-        ball3.setVelocity(2, 3);
-
-        ball.addToGame(this);
-        ball2.addToGame(this);
-        ball3.addToGame(this);
-        ballCounter.increase(3);
+        createThreeBalls();
 
 
         // Create the paddle.
         Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, 70, 30);
-        Paddle paddle = new Paddle(keyboard, paddleRec, borders, Color.GREEN);
+        paddle = new Paddle(keyboard, paddleRec, borders, Color.GREEN);
         paddle.addToGame(this);
+        numberOfLives.increase(4);
 
 
 
@@ -166,6 +159,24 @@ public class Game {
 
     }
 
+    public void createBall(int x, int y, int radius, Color color, Velocity v) {
+        Ball ball = new Ball(x, y, radius, Color.BLUE, environment);
+
+        ball.setVelocity(v);
+        ball.addToGame(this);
+        ballCounter.increase(1);
+
+
+    }
+
+    private void createThreeBalls() {
+        // Create the balls.
+        Velocity v = new Velocity(2, -2);
+        for (int i = 1; i < 4; ++i) {
+            createBall(50 * i, 70 * i, 5, Color.blue, v);
+        }
+    }
+
 
     /**
      * createBlock method creates a new block and adds it to the game.
@@ -183,7 +194,6 @@ public class Game {
         counter.increase(1);
         block.addHitListener(new BlockRemover(this, counter));
         block.addHitListener(new ScoreTrackingListener(score));
-
     }
 
     /**
@@ -219,14 +229,24 @@ public class Game {
         return color;
     }
 
+    public void run() {
+        do {
+            playOneTurn();
+            createThreeBalls();
+            paddle.relocatePaddle(300);
+            numberOfLives.decrease(1);
+        } while (numberOfLives.getValue() != 0 && counter.getValue() != 0);
+        gui.close();
+    }
+
     /**
      * run method runs the animation loop.
      */
-    public void run() {
+    public void playOneTurn() {
         Sleeper sleeper = new Sleeper();
         int framesPerSecond = 60;
         int millisecondsPerFrame = 1000 / framesPerSecond;
-        while (true) {
+        while (counter.getValue() != 0 && ballCounter.getValue() != 0) {
             long startTime = System.currentTimeMillis(); // timing
 
             DrawSurface d = gui.getDrawSurface();
@@ -244,14 +264,7 @@ public class Game {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
 
-            if (counter.getValue() == 0 || ballCounter.getValue() == 0) {
-                gui.close();
-            }
-
         }
     }
 
-    public GameEnvironment getEnvironment() {
-        return environment;
-    }
 }

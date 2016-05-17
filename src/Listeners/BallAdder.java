@@ -3,6 +3,7 @@ package Listeners;
 import Items.Ball;
 import Items.Block;
 import Items.Counter;
+import Movement.Velocity;
 import TheGame.Game;
 
 import java.awt.*;
@@ -20,11 +21,8 @@ public class BallAdder implements HitListener {
     }
 
     public void hitEvent(Block beingHit, Ball hitter) {
-        Ball ball = new Ball(50, 30, 5, Color.BLUE, game.getEnvironment());
-        ball.setVelocity(2, -2);
-        ball.addToGame(game);
+        game.createBall(50, 90, 5, Color.BLUE, new Velocity(2, -2));
         beingHit.removeHitListener(this);
-        remainingBalls.increase(1);
 
     }
 }
