@@ -1,7 +1,7 @@
 package Listeners;
 
 import Items.Ball;
-import Items.Block;
+import Items.BaseBlock;
 import Items.Counter;
 import TheGame.Game;
 
@@ -19,7 +19,7 @@ public class BallAdder implements HitListener {
         this.remainingBalls = removedBalls;
     }
 
-    public void hitEvent(Block beingHit, Ball hitter) {
+    public void hitEvent(BaseBlock beingHit, Ball hitter) {
         Ball ball = new Ball(50, 30, 5, Color.BLUE, game.getEnvironment());
         ball.setVelocity(2, -2);
         ball.addToGame(game);

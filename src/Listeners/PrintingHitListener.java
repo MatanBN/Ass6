@@ -1,10 +1,10 @@
 package Listeners;
 
 import Items.Ball;
-import Items.Block;
+import Items.BaseBlock;
 
 public class PrintingHitListener implements HitListener {
-    public void hitEvent(Block beingHit, Ball hitter) {
-        System.out.println("A Block with " + beingHit.getHitPoints() + " points was hit.");
+    public void hitEvent(BaseBlock beingHit, Ball hitter) {
+        System.out.println("A BaseBlock with " + beingHit.getHitPoints() + " points was hit.");
     }
 }

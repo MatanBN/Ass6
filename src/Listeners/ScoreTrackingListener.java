@@ -1,10 +1,8 @@
 package Listeners;
 
 import Items.Ball;
-import Items.Block;
+import Items.BaseBlock;
 import Items.Counter;
-import Geometry.Rectangle;
-import biuoop.DrawSurface;
 
 /**
  * Created by user on 17/05/2016.
@@ -16,7 +14,7 @@ public class ScoreTrackingListener implements HitListener {
         this.currentScore = scoreCounter;
     }
 
-    public void hitEvent(Block beingHit, Ball hitter) {
+    public void hitEvent(BaseBlock beingHit, Ball hitter) {
         if (beingHit.getHitPoints() == 0){
             this.currentScore.increase(10);
         }

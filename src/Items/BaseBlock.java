@@ -3,51 +3,44 @@ package Items;
 import Geometry.Line;
 import Geometry.Point;
 import Geometry.Rectangle;
-import Listeners.HitListener;
-import Listeners.HitNotifier;
 import Movement.Collidable;
 import Movement.Velocity;
 import TheGame.Game;
 import biuoop.DrawSurface;
-import java.util.List;
-import java.util.ArrayList;
 import java.awt.*;
 
 
 /**
- * The Items.Block is a Movement.Collidable and a Items.Sprite object that can block moving objects.
+ * The Items.BaseBlock is a Movement.Collidable and a Items.Sprite object that can block moving objects.
  * The class has methods to draw the block, and a method hit which will change the velocity of the object that hits
  * the block.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
-public class Block implements Collidable, Sprite, HitNotifier {
+public class BaseBlock implements Collidable, Sprite {
     private Rectangle rectangle; // The rectangle shape of the block.
-    private int hitsNumber; // The number of hits of the block.
-    private List <HitListener> hitListeners;
+
 
     /**
-     * Items.Block creates a new rectangle block by a given rectangle.
+     * Items.BaseBlock creates a new rectangle block by a given rectangle.
      * @param r is a given rectangle.
      */
-    public Block(Rectangle r) {
+    public BaseBlock(Rectangle r) {
         this.rectangle = r;
-        this.hitListeners = new ArrayList();
     }
 
     /**
-     * Items.Block creates a new rectangle block by it's width and height.
+     * Items.BaseBlock creates a new rectangle block by it's width and height.
      * @param width  is the rectangle's width.
      * @param height is the rectangle's height.
      * @param c the color of the block/rectangle.
      */
-    public Block(int width, int height, Color c) {
+    public BaseBlock(int width, int height, Color c) {
         this.rectangle = new Rectangle(width, height, c);
-        this.hitListeners = new ArrayList();
     }
 
     /**
-     * Items.Block creates a new rectangle block by it's left corner coordinates,
+     * Items.BaseBlock creates a new rectangle block by it's left corner coordinates,
      * width and height.
      * @param x is the x coordinate of left corner.
      * @param y is the y coordinate of left corner.
@@ -55,9 +48,8 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * @param height is the rectangle's height.
      * @param c the color of the block/rectangle.
      */
-    public Block(int x, int y, int width, int height, Color c) {
+    public BaseBlock(int x, int y, int width, int height, Color c) {
         this.rectangle = new Rectangle(x, y, width, height, c);
-        this.hitListeners = new ArrayList();
     }
 
     /**
@@ -86,9 +78,6 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * @return the new velocity after the hit.
      */
     public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
-        if (this.hitsNumber > 0) {
-            --this.hitsNumber;
-        }
         Velocity newVelocity = new Velocity(currentVelocity.getDx(), currentVelocity.getDy());
         // Checks whether the collision point is on the right or left edges.
         if (checkCollisionSide(collisionPoint, rectangle.getLeftEdge())) {
@@ -102,30 +91,14 @@ public class Block implements Collidable, Sprite, HitNotifier {
         } else if (checkCollisionSide(collisionPoint, rectangle.getBottomEdge())) {
             newVelocity.setDy(-currentVelocity.getDy());
         }
-        this.notifyHit(hitter);
         return newVelocity;
     }
 
-    public void addHitListener(HitListener hl){
-        hitListeners.add(hl);
-    }
 
-    public void removeHitListener(HitListener hl){
-        hitListeners.remove(hl);
-    }
 
     public void removeFromGame(Game game) {
         game.removeCollidable(this);
         game.removeSprite(this);
-    }
-
-    private void notifyHit(Ball hitter) {
-        // Make a copy of the hitListeners before iterating over them.
-        List<HitListener> listeners = new ArrayList<HitListener>(this.hitListeners);
-        // Notify all listeners about a hit event:
-        for (HitListener hl : listeners) {
-            hl.hitEvent(this, hitter);
-        }
     }
 
     /**
@@ -159,20 +132,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
         g.addSprite(this);
     }
 
-    /**
-     * getHitPoints returns block's number of hits.
-     * @return the block's number of hits.
-     */
-    public int getHitPoints() {
-        return hitsNumber;
+    public Rectangle getRectangle() {
+        return rectangle;
     }
-
-    /**
-     * setHitsNumber sets the block's number of hits.
-     * @param hits the adjusted number of hits.
-     */
-    public void setHitsNumber(int hits) {
-        hitsNumber = hits;
-    }
-
 }

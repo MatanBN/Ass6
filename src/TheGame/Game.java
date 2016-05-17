@@ -112,13 +112,13 @@ public class Game {
         createBorder(borders.getMaxX() - 20, 20, 20, borders.getMaxY(), Color.gray, 0);
 
         //Create the death border
-        Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
+        BaseBlock deathBorder = new BaseBlock(0, borders.getMaxY(), borders.getMaxX(), 20,
                 Color.WHITE);
         deathBorder.addToGame(this);
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
 
         //Create the score indicator
-        Block ScoreIndicator = new Block (0,0,borders.getMaxX(),10,Color.white);
+        BaseBlock ScoreIndicator = new BaseBlock(0, 0, borders.getMaxX(), 10, Color.white);
         ScoreIndicator.addToGame(this);
         ScoreIndicator.addHitListener(new ScoreTrackingListener(score));
 
@@ -135,13 +135,13 @@ public class Game {
                 }
 
                 if (i + j % 12 == 0) {
-                    Block specialBlock = new Block(borders.getWidth() - 60 - (j * 40),
+                    BaseBlock specialBaseBlock = new BaseBlock(borders.getWidth() - 60 - (j * 40),
                             rowYCoordinate, 40, 20, chooseRowColor(i));
-                    specialBlock.setHitsNumber(hits);
-                    specialBlock.addToGame(this);
-                    specialBlock.addHitListener(new BlockRemover(this, counter));
+                    specialBaseBlock.setHitsNumber(hits);
+                    specialBaseBlock.addToGame(this);
+                    specialBaseBlock.addHitListener(new BlockRemover(this, counter));
 
-                    specialBlock.addHitListener(new BallAdder(this, ballCounter));
+                    specialBaseBlock.addHitListener(new BallAdder(this, ballCounter));
                     counter.increase(1);
                 }
                 else {
@@ -155,9 +155,9 @@ public class Game {
 
 
     private void createBorder(int x, int y, int width, int height, Color c, int hits) {
-        Block block = new Block(x, y, width, height, c);
-        block.setHitsNumber(hits);
-        block.addToGame(this);
+        BaseBlock baseBlock = new BaseBlock(x, y, width, height, c);
+        baseBlock.setHitsNumber(hits);
+        baseBlock.addToGame(this);
     }
 
 
@@ -171,11 +171,11 @@ public class Game {
      * @param hits the number of hits of the block.
      */
     private void createBlock(int x, int y, int width, int height, Color c, int hits) {
-        Block block = new Block(x, y, width, height, c);
-        block.setHitsNumber(hits);
-        block.addToGame(this);
+        BaseBlock baseBlock = new BaseBlock(x, y, width, height, c);
+        baseBlock.setHitsNumber(hits);
+        baseBlock.addToGame(this);
         counter.increase(1);
-        block.addHitListener(new BlockRemover(this,counter));
+        baseBlock.addHitListener(new BlockRemover(this, counter));
     }
 
     /**
