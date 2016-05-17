@@ -3,13 +3,14 @@ package TheGame;
 import Geometry.Rectangle;
 import Items.*;
 import Listeners.*;
+import Movement.Animation;
 import Movement.Collidable;
 import Movement.Velocity;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
-import biuoop.Sleeper;
 import java.awt.Color;
+import Movement.AnimationRunner;
 
 /**
  * The TheGame.Game class contains a a Items.SpriteCollection which will be all the sprites in
@@ -19,7 +20,7 @@ import java.awt.Color;
  * @version 1.0 9 April 2016
  */
 
-public class Game {
+public class Game implements Animation {
     private SpriteCollection sprites; // All of the sprites in the game.
     private GameEnvironment environment; // The game environment.
     private GUI gui; // The gui windows of the game.
@@ -28,6 +29,9 @@ public class Game {
     private Counter score;
     private Counter numberOfLives;
     private Paddle paddle;
+    private AnimationRunner runner;
+    private boolean running;
+    private KeyboardSensor keyboard;
 
     /**
      * Constructor to create the TheGame.Game.
@@ -85,7 +89,8 @@ public class Game {
         // Create the gui with 700 width and 450 height.
         Rectangle borders = new Rectangle(800, 600);
         this.gui = new GUI("Game", borders.getWidth(), borders.getHeight());
-        KeyboardSensor keyboard = gui.getKeyboardSensor();
+        this.runner = new AnimationRunner(gui);
+        this.keyboard = gui.getKeyboardSensor();
 
         createThreeBalls();
 
@@ -232,7 +237,6 @@ public class Game {
     public void run() {
         do {
             playOneTurn();
-            createThreeBalls();
             paddle.relocatePaddle(300);
             numberOfLives.decrease(1);
         } while (numberOfLives.getValue() != 0 && counter.getValue() != 0);
@@ -243,28 +247,27 @@ public class Game {
      * run method runs the animation loop.
      */
     public void playOneTurn() {
-        Sleeper sleeper = new Sleeper();
-        int framesPerSecond = 60;
-        int millisecondsPerFrame = 1000 / framesPerSecond;
-        while (counter.getValue() != 0 && ballCounter.getValue() != 0) {
-            long startTime = System.currentTimeMillis(); // timing
+        this.createThreeBalls(); // create the balls
+        this.running = true;
+        // use our runner to run the current animation -- which is one turn of
+        // the game.
+        this.runner.run(this);
+    }
 
-            DrawSurface d = gui.getDrawSurface();
-            this.sprites.drawAllOn(d);
-            d.setColor(Color.black);
-            d.drawText(300, 10, "Score: " + score.getValue(), 10);
+    public boolean shouldStop() { return !this.running; }
 
-            gui.show(d);
-            this.sprites.notifyAllTimePassed();
-
-            // timing
-            long usedTime = System.currentTimeMillis() - startTime;
-            long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
-            if (milliSecondLeftToSleep > 0) {
-                sleeper.sleepFor(milliSecondLeftToSleep);
-            }
-
+    public void doOneFrame(DrawSurface d) {
+        // the logic from the previous playOneTurn method goes here.
+        // the `return` or `break` statements should be replaced with
+        // this.running = false;
+        this.sprites.drawAllOn(d);
+        d.setColor(Color.black);
+        d.drawText(300, 10, "Score: " + score.getValue(), 10);
+        this.sprites.notifyAllTimePassed();
+        if (this.keyboard.isPressed("p")) {
+            this.runner.run(new PauseScreen(this.keyboard));
         }
     }
+
 
 }

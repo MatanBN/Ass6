@@ -15,11 +15,9 @@ public class ScoreTrackingListener implements HitListener {
     }
 
     public void hitEvent(Block beingHit, Ball hitter) {
+        this.currentScore.increase(5);
         if (beingHit.getHitPoints() == 0){
             this.currentScore.increase(10);
-        }
-        else {
-            this.currentScore.increase(5);
         }
     }
 }
