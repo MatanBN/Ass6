@@ -68,15 +68,6 @@ public class Block implements Collidable, Sprite, HitNotifier {
     public void drawOn(DrawSurface d) {
         // Draw the rectangle shape of the block.
         rectangle.drawOn(d);
-        // Draw the numbers of hits of the block.
-        String s;
-        if (this.hitsNumber > 0) {
-            s = Integer.toString(this.hitsNumber);
-        } else {
-            s = "X";
-        }
-        d.drawText(this.rectangle.getX() + this.rectangle.getWidth() / 2,
-                this.rectangle.getY() + this.rectangle.getHeight() / 2, s, 10);
     }
 
     /**

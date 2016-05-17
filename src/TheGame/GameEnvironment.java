@@ -87,4 +87,11 @@ public class GameEnvironment {
             ((Block) o).drawOn(d);
         }
     }
+
+    public boolean empty (){
+        if (collidables.isEmpty()){
+            return true;
+        }
+        return false;
+    }
 }

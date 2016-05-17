@@ -2,10 +2,7 @@ package TheGame;
 
 import Geometry.Rectangle;
 import Items.*;
-import Listeners.BallAdder;
-import Listeners.BallRemover;
-import Listeners.BlockRemover;
-import Listeners.PrintingHitListener;
+import Listeners.*;
 import Movement.Collidable;
 import biuoop.GUI;
 import biuoop.DrawSurface;
@@ -27,6 +24,7 @@ public class Game {
     private GUI gui; // The gui windows of the game.
     private Counter counter;
     private Counter ballCounter;
+    private Counter score;
 
     /**
      * Constructor to create the TheGame.Game.
@@ -36,6 +34,7 @@ public class Game {
         environment = new GameEnvironment();
         counter = new Counter();
         ballCounter = new Counter();
+        score = new Counter();
     }
 
     /**
@@ -60,6 +59,9 @@ public class Game {
      */
     public void removeCollidable(Collidable c) {
         environment.removeCollidable(c);
+        if (environment.empty()){
+            score.increase(100);
+        }
     }
 
     /**
@@ -107,12 +109,19 @@ public class Game {
 
         createBorder(0, 0, borders.getMaxX(), 20, Color.gray, 0);
 
-        createBorder(borders.getMaxX() - 20, 0, 20, borders.getMaxY(), Color.gray, 0);
+        createBorder(borders.getMaxX() - 20, 20, 20, borders.getMaxY(), Color.gray, 0);
 
+        //Create the death border
         Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
                 Color.WHITE);
         deathBorder.addToGame(this);
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
+
+        //Create the score indicator
+        Block ScoreIndicator = new Block (0,0,borders.getMaxX(),10,Color.white);
+        ScoreIndicator.addToGame(this);
+        ScoreIndicator.addHitListener(new ScoreTrackingListener(score));
+
         // The double for loop adds 5 rows of blocks.
         for (int i = 0; i <= 5; i++) {
             int numberOfBlockPerRow = 12 - i;
