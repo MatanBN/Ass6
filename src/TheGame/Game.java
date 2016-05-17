@@ -84,9 +84,9 @@ public class Game {
         KeyboardSensor keyboard = gui.getKeyboardSensor();
 
         // Create the ball.
-        Ball ball = new Ball(50, 30, 5, Color.BLUE, environment);
-        Ball ball2 = new Ball(30, 70, 5, Color.BLUE, environment);
-        Ball ball3 = new Ball(100, 70, 5, Color.BLUE, environment);
+        Ball ball = new Ball(50, 70, 5, Color.BLUE, environment);
+        Ball ball2 = new Ball(30, 90, 5, Color.BLUE, environment);
+        Ball ball3 = new Ball(100, 90, 5, Color.BLUE, environment);
 
         ball.setVelocity(2, -2);
         ball2.setVelocity(2, 2);
@@ -104,12 +104,7 @@ public class Game {
         paddle.addToGame(this);
 
 
-        // Create the borders.
-        createBorder(0, 0, 20, borders.getMaxX(), Color.gray, 0);
 
-        createBorder(0, 0, borders.getMaxX(), 20, Color.gray, 0);
-
-        createBorder(borders.getMaxX() - 20, 20, 20, borders.getMaxY(), Color.gray, 0);
 
         //Create the death border
         Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
@@ -118,14 +113,22 @@ public class Game {
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
 
         //Create the score indicator
-        Block ScoreIndicator = new Block(0, 0, borders.getMaxX(), 10, Color.white);
-        ScoreIndicator.addToGame(this);
-        ScoreIndicator.addHitListener(new ScoreTrackingListener(score));
+        Block scoreIndicator = new Block(0, 0, borders.getMaxX(), 20, Color.white);
+        scoreIndicator.addToGame(this);
+
+        // Create the top border.
+        createBorder(0, scoreIndicator.getRectangle().getMaxY(), borders.getMaxX(), 20, Color.gray, 0);
+
+        // Create the left border.
+        createBorder(0, scoreIndicator.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
+
+        // Create the right border.
+        createBorder(borders.getMaxX() - 20, scoreIndicator.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
 
         // The double for loop adds 5 rows of blocks.
         for (int i = 0; i <= 5; i++) {
             int numberOfBlockPerRow = 12 - i;
-            int rowYCoordinate = 50 + i * 20;
+            int rowYCoordinate = 80 + i * 20;
             for (int j = 0; j <= numberOfBlockPerRow; j++) {
                 int hits;
                 if (i == 0) {
@@ -140,12 +143,14 @@ public class Game {
                     specialBlock.setHitsNumber(hits);
                     specialBlock.addToGame(this);
                     specialBlock.addHitListener(new BlockRemover(this, counter));
+                    specialBlock.addHitListener(new ScoreTrackingListener(score));
 
                     specialBlock.addHitListener(new BallAdder(this, ballCounter));
                     counter.increase(1);
                 }
                 else {
                     createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
+
                 }
 
             }
@@ -158,6 +163,7 @@ public class Game {
         Block block = new Block(x, y, width, height, c);
         block.setHitsNumber(hits);
         block.addToGame(this);
+
     }
 
 
@@ -176,6 +182,8 @@ public class Game {
         block.addToGame(this);
         counter.increase(1);
         block.addHitListener(new BlockRemover(this, counter));
+        block.addHitListener(new ScoreTrackingListener(score));
+
     }
 
     /**
@@ -223,6 +231,9 @@ public class Game {
 
             DrawSurface d = gui.getDrawSurface();
             this.sprites.drawAllOn(d);
+            d.setColor(Color.black);
+            d.drawText(300, 10, "Score: " + score.getValue(), 10);
+
             gui.show(d);
             this.sprites.notifyAllTimePassed();
 
@@ -232,6 +243,7 @@ public class Game {
             if (milliSecondLeftToSleep > 0) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
+
             if (counter.getValue() == 0 || ballCounter.getValue() == 0) {
                 gui.close();
             }
