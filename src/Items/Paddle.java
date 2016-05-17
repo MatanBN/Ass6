@@ -123,13 +123,13 @@ public class Paddle implements Sprite, Collidable {
      */
     public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         if (collisionPoint.getY() > this.rectangle.getY()) {
-            BaseBlock baseBlock = new BaseBlock(this.getCollisionRectangle());
-            return baseBlock.hit(hitter, collisionPoint, currentVelocity);
+            Block block = new Block(this.getCollisionRectangle());
+            return block.hit(hitter, collisionPoint, currentVelocity);
         }
         double angle = determineHitPoint(collisionPoint);
         if (angle == 3) {
-            BaseBlock baseBlock = new BaseBlock(this.getCollisionRectangle());
-            return baseBlock.hit(hitter, collisionPoint, currentVelocity);
+            Block block = new Block(this.getCollisionRectangle());
+            return block.hit(hitter, collisionPoint, currentVelocity);
         } else {
             return Velocity.fromAngleAndSpeed(angle,
                     Math.sqrt(Math.pow(currentVelocity.getDx(), 2) + Math.pow(currentVelocity.getDy(), 2)));

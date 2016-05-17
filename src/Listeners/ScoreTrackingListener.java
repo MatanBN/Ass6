@@ -1,7 +1,7 @@
 package Listeners;
 
 import Items.Ball;
-import Items.BaseBlock;
+import Items.Block;
 import Items.Counter;
 
 /**
@@ -14,7 +14,7 @@ public class ScoreTrackingListener implements HitListener {
         this.currentScore = scoreCounter;
     }
 
-    public void hitEvent(BaseBlock beingHit, Ball hitter) {
+    public void hitEvent(Block beingHit, Ball hitter) {
         if (beingHit.getHitPoints() == 0){
             this.currentScore.increase(10);
         }

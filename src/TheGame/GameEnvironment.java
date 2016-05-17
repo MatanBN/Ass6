@@ -2,7 +2,7 @@ package TheGame;
 
 import Geometry.Line;
 import Geometry.Rectangle;
-import Items.BaseBlock;
+import Items.Block;
 import Movement.Collidable;
 import Movement.CollisionInfo;
 import biuoop.DrawSurface;
@@ -84,7 +84,7 @@ public class GameEnvironment {
      */
     public void drawOn(DrawSurface d) {
         for (Object o : collidables) {
-            ((BaseBlock) o).drawOn(d);
+            ((Block) o).drawOn(d);
         }
     }
 

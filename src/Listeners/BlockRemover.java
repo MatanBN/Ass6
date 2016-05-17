@@ -1,7 +1,7 @@
 package Listeners;
 
 import Items.Ball;
-import Items.BaseBlock;
+import Items.Block;
 import Items.Counter;
 import TheGame.Game;
 
@@ -22,7 +22,7 @@ public class BlockRemover implements HitListener {
     // Blocks that are hit and reach 0 hit-points should be removed
     // from the game. Remember to remove this listener from the block
     // that is being removed from the game.
-    public void hitEvent(BaseBlock beingHit, Ball hitter) {
+    public void hitEvent(Block beingHit, Ball hitter) {
         if (beingHit.getHitPoints() == 0) {
             beingHit.removeFromGame(game);
             beingHit.removeHitListener(this);
