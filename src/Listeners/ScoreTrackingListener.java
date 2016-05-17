@@ -11,7 +11,6 @@ import biuoop.DrawSurface;
  */
 public class ScoreTrackingListener implements HitListener {
     private Counter currentScore;
-    private Rectangle rectangle;
 
     public ScoreTrackingListener(Counter scoreCounter) {
         this.currentScore = scoreCounter;
@@ -24,9 +23,5 @@ public class ScoreTrackingListener implements HitListener {
         else {
             this.currentScore.increase(5);
         }
-    }
-
-    public void drawOn(DrawSurface d){
-        rectangle.drawOn(d);
     }
 }
