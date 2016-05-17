@@ -12,23 +12,23 @@ import java.util.List;
 /**
  * Created by Matan on 5/17/2016.
  */
-public class GameBaseBlock extends BaseBlock implements HitNotifier {
+public class GameBlock extends BaseBlock implements HitNotifier {
     private int hitsNumber; // The number of hits of the block.
     private java.util.List<HitListener> hitListeners;
 
-    public GameBaseBlock(Rectangle r) {
+    public GameBlock(Rectangle r) {
         super(r);
         this.hitListeners = new ArrayList();
 
     }
 
-    public GameBaseBlock(int width, int height, Color c) {
+    public GameBlock(int width, int height, Color c) {
         super(width, height, c);
         this.hitListeners = new ArrayList();
 
     }
 
-    public GameBaseBlock(int x, int y, int width, int height, Color c) {
+    public GameBlock(int x, int y, int width, int height, Color c) {
         super(x, y, width, height, c);
         this.hitListeners = new ArrayList();
 
