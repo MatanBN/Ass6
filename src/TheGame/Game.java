@@ -89,7 +89,6 @@ public class Game implements Animation {
         this.runner = new AnimationRunner(gui);
         this.keyboard = gui.getKeyboardSensor();
 
-        createBalls();
 
 
         // Create the paddle.
@@ -134,7 +133,7 @@ public class Game implements Animation {
                     hits = 1;
                 }
 
-                if (i + j % 12 == 0) {
+                if ((i + j) % 15 == 0) {
                     Block specialBlock = new Block(borders.getWidth() - 60 - (j * 40),
                             rowYCoordinate, 40, 20, chooseRowColor(i));
                     specialBlock.setHitsNumber(hits);
