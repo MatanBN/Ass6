@@ -21,14 +21,14 @@ public class Game implements Animation {
     private SpriteCollection sprites; // All of the sprites in the game.
     private GameEnvironment environment; // The game environment.
     private GUI gui; // The gui windows of the game.
-    private Counter counter;
+    private Counter blockCounter;
     private Counter ballCounter;
     private Counter score;
-    private Counter numberOfLives;
     private Paddle paddle;
     private AnimationRunner runner;
     private boolean running;
     private KeyboardSensor keyboard;
+    private Counter liveIndicator;
 
     /**
      * Constructor to create the TheGame.Game.
@@ -36,10 +36,10 @@ public class Game implements Animation {
     public Game() {
         sprites = new SpriteCollection();
         environment = new GameEnvironment();
-        counter = new Counter();
+        blockCounter = new Counter();
         ballCounter = new Counter();
         score = new Counter();
-        numberOfLives = new Counter();
+        liveIndicator = new Counter();
     }
 
     /**
@@ -96,7 +96,6 @@ public class Game implements Animation {
         Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, 70, 30);
         paddle = new Paddle(keyboard, paddleRec, borders, Color.GREEN);
         paddle.addToGame(this);
-        numberOfLives.increase(4);
 
 
 
@@ -108,17 +107,20 @@ public class Game implements Animation {
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
 
         //Create the score indicator
-        Block scoreIndicator = new Block(0, 0, borders.getMaxX(), 20, Color.white);
-        scoreIndicator.addToGame(this);
+        Block playInfo = new Block(0, 0, borders.getMaxX(), 20, Color.white);
+        playInfo.addToGame(this);
+
+        //Create the live indicator
+        liveIndicator.increase(4);
 
         // Create the top border.
-        createBorder(0, scoreIndicator.getRectangle().getMaxY(), borders.getMaxX(), 20, Color.gray, 0);
+        createBorder(0, playInfo.getRectangle().getMaxY(), borders.getMaxX(), 20, Color.gray, 0);
 
         // Create the left border.
-        createBorder(0, scoreIndicator.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
+        createBorder(0, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
 
         // Create the right border.
-        createBorder(borders.getMaxX() - 20, scoreIndicator.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
+        createBorder(borders.getMaxX() - 20, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
 
         // The double for loop adds 5 rows of blocks.
         for (int i = 0; i <= 5; i++) {
@@ -137,11 +139,11 @@ public class Game implements Animation {
                             rowYCoordinate, 40, 20, chooseRowColor(i));
                     specialBlock.setHitsNumber(hits);
                     specialBlock.addToGame(this);
-                    specialBlock.addHitListener(new BlockRemover(this, counter));
+                    specialBlock.addHitListener(new BlockRemover(this, blockCounter));
                     specialBlock.addHitListener(new ScoreTrackingListener(score));
 
                     specialBlock.addHitListener(new BallAdder(this, ballCounter));
-                    counter.increase(1);
+                    blockCounter.increase(1);
                 }
                 else {
                     createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
@@ -193,8 +195,8 @@ public class Game implements Animation {
         Block block = new Block(x, y, width, height, c);
         block.setHitsNumber(hits);
         block.addToGame(this);
-        counter.increase(1);
-        block.addHitListener(new BlockRemover(this, counter));
+        blockCounter.increase(1);
+        block.addHitListener(new BlockRemover(this, blockCounter));
         block.addHitListener(new ScoreTrackingListener(score));
     }
 
@@ -235,8 +237,8 @@ public class Game implements Animation {
         do {
             playOneTurn();
             paddle.relocatePaddle(300);
-            numberOfLives.decrease(1);
-        } while (numberOfLives.getValue() != 0 && counter.getValue() != 0);
+            liveIndicator.decrease(1);
+        } while (liveIndicator.getValue() != 0 && blockCounter.getValue() != 0);
         gui.close();
     }
 
@@ -260,10 +262,14 @@ public class Game implements Animation {
         // this.running = false;
         this.sprites.drawAllOn(d);
         d.setColor(Color.black);
-        d.drawText(300, 10, "Score: " + score.getValue(), 10);
+        d.drawText(350, 10, "Score: " + score.getValue(), 10);
+        d.drawText(100, 10, "Lives: " + liveIndicator.getValue(), 10);
         this.sprites.notifyAllTimePassed();
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboard));
+        }
+        if (blockCounter.getValue()==0 || ballCounter.getValue()==0){
+            this.running=false;
         }
     }
 

@@ -29,11 +29,9 @@ public class CountdownAnimation implements Animation {
         running = false;
     }
     public void doOneFrame(DrawSurface d) {
-
-
         String s;
+        Sleeper sleeper = new Sleeper();
         screen.drawAllOn(d);
-
         if (counter == 0) {
             s = "GO";
             running = true;
@@ -42,9 +40,8 @@ public class CountdownAnimation implements Animation {
         }
         d.drawText(d.getWidth() / 2, 30, s, 32);
         --counter;
-        Sleeper sleeper = new Sleeper();
-        sleeper.sleepFor((long) (3000));
 
+        sleeper.sleepFor((long) ((1000)*this.numOfSeconds)/(countFrom+1));
 
     }
     public boolean shouldStop() {
