@@ -38,13 +38,14 @@ public class GameLevel implements Animation {
     /**
      * Constructor to create the TheGame.GameLevel.
      */
-    public GameLevel() {
+    public GameLevel(LevelInformation level) {
         sprites = new SpriteCollection();
         environment = new GameEnvironment();
         blockCounter = new Counter();
         ballCounter = new Counter();
         score = new Counter();
         liveIndicator = new Counter();
+        myLevel = level;
     }
 
     /**
@@ -91,7 +92,7 @@ public class GameLevel implements Animation {
      * gui.
      */
     public void initialize() {
-        // Create the gui with 700 width and 450 height.
+        // Create the gui with 800 width and 600 height.
         Rectangle borders = new Rectangle(800, 600);
         this.gui = new GUI("GameLevel", borders.getWidth(), borders.getHeight());
         this.runner = new AnimationRunner(gui);
@@ -99,10 +100,10 @@ public class GameLevel implements Animation {
 
 
         // Create the paddle.
-        Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, 70, 30);
-        paddle = new Paddle(keyboard, paddleRec, borders, Color.GREEN);
+        Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, myLevel.paddleWidth(), 30);
+        paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.GREEN);
         paddle.addToGame(this);
-
+        addSprite(myLevel.getBackground());
 
         //Create the death border
         Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
@@ -126,36 +127,13 @@ public class GameLevel implements Animation {
         // Create the right border.
         createBorder(borders.getMaxX() - 20, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
 
-        // The double for loop adds 5 rows of blocks.
-        for (int i = 0; i <= 5; i++) {
-            int numberOfBlockPerRow = 12 - i;
-            int rowYCoordinate = 80 + i * 20;
-            for (int j = 0; j <= numberOfBlockPerRow; j++) {
-                int hits;
-                if (i == 0) {
-                    hits = 2;
-                } else {
-                    hits = 1;
-                }
-
-                if ((i + j) % 15 == 0) {
-                    Block specialBlock = new Block(borders.getWidth() - 60 - (j * 40),
-                            rowYCoordinate, 40, 20, chooseRowColor(i));
-                    specialBlock.setHitsNumber(hits);
-                    specialBlock.addToGame(this);
-                    specialBlock.addHitListener(new BlockRemover(this, blockCounter));
-                    specialBlock.addHitListener(new ScoreTrackingListener(score));
-
-                    specialBlock.addHitListener(new BallAdder(this, ballCounter));
-                    blockCounter.increase(1);
-                } else {
-                    createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
-
-                }
-
-            }
+        List<Block> myBlocks = myLevel.blocks();
+        for (Block b : myBlocks) {
+            b.addHitListener(new BlockRemover(this, blockCounter));
+            b.addHitListener(new ScoreTrackingListener(score));
+            b.addToGame(this);
+            blockCounter.increase(1);
         }
-
     }
 
 
@@ -170,38 +148,17 @@ public class GameLevel implements Animation {
         Ball ball = new Ball(p, radius, Color.BLUE, v, environment);
         ball.addToGame(this);
         ballCounter.increase(1);
-
-
     }
 
     private void createBalls() {
         // Create the balls.
         List<Velocity> myVelocities = myLevel.initialBallVelocities();
-        int howMany = myLevel.numberOfBalls();
+        int howMany = myLevel.numberOfBalls() + 1;
         for (int i = 1; i < howMany; ++i) {
             createBall(new Point(70, 90), 3, myVelocities.get(i - 1));
         }
     }
 
-
-    /**
-     * createBlock method creates a new block and adds it to the game.
-     *
-     * @param x      the x coordinate of the block.
-     * @param y      the y coordinate of the block.
-     * @param width  the width of the block.
-     * @param height the height of the block.
-     * @param c      the color of the block.
-     * @param hits   the number of hits of the block.
-     */
-    private void createBlock(int x, int y, int width, int height, Color c, int hits) {
-        Block block = new Block(x, y, width, height, c);
-        block.setHitsNumber(hits);
-        block.addToGame(this);
-        blockCounter.increase(1);
-        block.addHitListener(new BlockRemover(this, blockCounter));
-        block.addHitListener(new ScoreTrackingListener(score));
-    }
 
     /**
      * chooseRowColor method gets the number of row and returns that row color.
