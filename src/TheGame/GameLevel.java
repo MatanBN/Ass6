@@ -1,5 +1,6 @@
 package TheGame;
 
+import Geometry.Point;
 import Geometry.Rectangle;
 import Items.*;
 import Listeners.*;
@@ -7,17 +8,20 @@ import Movement.*;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
+
 import java.awt.Color;
+import java.util.List;
 
 /**
- * The TheGame.Game class contains a a Items.SpriteCollection which will be all the sprites in
+ * The TheGame.GameLevel class contains a a Items.SpriteCollection which will be all the sprites in
  * the game, a TheGame.GameEnvironment which will include all of the Movement.Collidable objects,
  * and a GUI which will be our game windows.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
 
-public class Game implements Animation {
+public class GameLevel implements Animation {
     private SpriteCollection sprites; // All of the sprites in the game.
     private GameEnvironment environment; // The game environment.
     private GUI gui; // The gui windows of the game.
@@ -29,11 +33,12 @@ public class Game implements Animation {
     private boolean running;
     private KeyboardSensor keyboard;
     private Counter liveIndicator;
+    private LevelInformation myLevel;
 
     /**
-     * Constructor to create the TheGame.Game.
+     * Constructor to create the TheGame.GameLevel.
      */
-    public Game() {
+    public GameLevel() {
         sprites = new SpriteCollection();
         environment = new GameEnvironment();
         blockCounter = new Counter();
@@ -44,6 +49,7 @@ public class Game implements Animation {
 
     /**
      * addCollidable method adds a Movement.Collidable object to the game.
+     *
      * @param c the Movement.Collidable object to add.
      */
     public void addCollidable(Collidable c) {
@@ -52,6 +58,7 @@ public class Game implements Animation {
 
     /**
      * addSprite method adds a Items.Sprite object to the game.
+     *
      * @param s the Items.Sprite object to add.
      */
     public void addSprite(Sprite s) {
@@ -60,11 +67,12 @@ public class Game implements Animation {
 
     /**
      * remove Collidable method removes a Collidable object from the game.
+     *
      * @param c the Collidable object to remove.
      */
     public void removeCollidable(Collidable c) {
         environment.removeCollidable(c);
-        if (environment.empty()){
+        if (environment.empty()) {
             score.increase(100);
         }
     }
@@ -85,18 +93,15 @@ public class Game implements Animation {
     public void initialize() {
         // Create the gui with 700 width and 450 height.
         Rectangle borders = new Rectangle(800, 600);
-        this.gui = new GUI("Game", borders.getWidth(), borders.getHeight());
+        this.gui = new GUI("GameLevel", borders.getWidth(), borders.getHeight());
         this.runner = new AnimationRunner(gui);
         this.keyboard = gui.getKeyboardSensor();
-
 
 
         // Create the paddle.
         Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, 70, 30);
         paddle = new Paddle(keyboard, paddleRec, borders, Color.GREEN);
         paddle.addToGame(this);
-
-
 
 
         //Create the death border
@@ -143,8 +148,7 @@ public class Game implements Animation {
 
                     specialBlock.addHitListener(new BallAdder(this, ballCounter));
                     blockCounter.increase(1);
-                }
-                else {
+                } else {
                     createBlock(borders.getWidth() - 60 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i), hits);
 
                 }
@@ -162,10 +166,8 @@ public class Game implements Animation {
 
     }
 
-    public void createBall(int x, int y, int radius, Color color, Velocity v) {
-        Ball ball = new Ball(x, y, radius, Color.BLUE, environment);
-
-        ball.setVelocity(v);
+    public void createBall(Point p, int radius, Velocity v) {
+        Ball ball = new Ball(p, radius, Color.BLUE, v, environment);
         ball.addToGame(this);
         ballCounter.increase(1);
 
@@ -174,21 +176,23 @@ public class Game implements Animation {
 
     private void createBalls() {
         // Create the balls.
-        Velocity v = new Velocity(2, -2);
-        for (int i = 1; i < 3; ++i) {
-            createBall(50 * i, 70 * i, 5, Color.blue, v);
+        List<Velocity> myVelocities = myLevel.initialBallVelocities();
+        int howMany = myLevel.numberOfBalls();
+        for (int i = 1; i < howMany; ++i) {
+            createBall(new Point(70, 90), 3, myVelocities.get(i - 1));
         }
     }
 
 
     /**
      * createBlock method creates a new block and adds it to the game.
-     * @param x the x coordinate of the block.
-     * @param y the y coordinate of the block.
-     * @param width the width of the block.
+     *
+     * @param x      the x coordinate of the block.
+     * @param y      the y coordinate of the block.
+     * @param width  the width of the block.
      * @param height the height of the block.
-     * @param c the color of the block.
-     * @param hits the number of hits of the block.
+     * @param c      the color of the block.
+     * @param hits   the number of hits of the block.
      */
     private void createBlock(int x, int y, int width, int height, Color c, int hits) {
         Block block = new Block(x, y, width, height, c);
@@ -201,6 +205,7 @@ public class Game implements Animation {
 
     /**
      * chooseRowColor method gets the number of row and returns that row color.
+     *
      * @param row the row to choose the color to.
      * @return the color for that row.
      */
@@ -246,14 +251,16 @@ public class Game implements Animation {
      */
     public void playOneTurn() {
         this.createBalls(); // create the balls
-        this.runner.run(new CountdownAnimation(2,3,sprites)); // countdown before turn starts.
+        this.runner.run(new CountdownAnimation(2, 3, sprites)); // countdown before turn starts.
         this.running = true;
         // use our runner to run the current animation -- which is one turn of
         // the game.
         this.runner.run(this);
     }
 
-    public boolean shouldStop() { return !this.running; }
+    public boolean shouldStop() {
+        return !this.running;
+    }
 
     public void doOneFrame(DrawSurface d) {
         // the logic from the previous playOneTurn method goes here.
@@ -267,8 +274,8 @@ public class Game implements Animation {
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboard));
         }
-        if (blockCounter.getValue()==0 || ballCounter.getValue()==0){
-            this.running=false;
+        if (blockCounter.getValue() == 0 || ballCounter.getValue() == 0) {
+            this.running = false;
         }
     }
 

@@ -4,7 +4,7 @@ import Geometry.Line;
 import Geometry.Point;
 import Movement.CollisionInfo;
 import Movement.Velocity;
-import TheGame.Game;
+import TheGame.GameLevel;
 import TheGame.GameEnvironment;
 import biuoop.DrawSurface;
 
@@ -189,12 +189,12 @@ public class Ball implements Sprite {
      * sprites list.
      * @param g is the game object we created.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
 
     }
 
-    public void removeFromGame(Game game) {
-        game.removeSprite(this);
+    public void removeFromGame(GameLevel gameLevel) {
+        gameLevel.removeSprite(this);
     }
 }

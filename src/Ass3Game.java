@@ -1,4 +1,4 @@
-import TheGame.Game;
+import TheGame.GameLevel;
 
 /**
  * The Ass3Game initializes and start the game.
@@ -12,8 +12,8 @@ public class Ass3Game {
      * @param args the input from command line.
      */
     public static void main(String[] args) {
-        Game game = new Game();
-        game.initialize();
-        game.run();
+        GameLevel gameLevel = new GameLevel();
+        gameLevel.initialize();
+        gameLevel.run();
     }
 }

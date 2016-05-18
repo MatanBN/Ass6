@@ -7,7 +7,7 @@ import Listeners.HitListener;
 import Listeners.HitNotifier;
 import Movement.Collidable;
 import Movement.Velocity;
-import TheGame.Game;
+import TheGame.GameLevel;
 import biuoop.DrawSurface;
 
 import java.util.List;
@@ -112,10 +112,9 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
 
-
-    public void removeFromGame(Game game) {
-        game.removeCollidable(this);
-        game.removeSprite(this);
+    public void removeFromGame(GameLevel gameLevel) {
+        gameLevel.removeCollidable(this);
+        gameLevel.removeSprite(this);
     }
 
     /**
@@ -144,7 +143,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * Movement.Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addCollidable(this);
         g.addSprite(this);
     }

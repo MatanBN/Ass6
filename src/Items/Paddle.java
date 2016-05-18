@@ -5,7 +5,7 @@ import Geometry.Point;
 import Geometry.Rectangle;
 import Movement.Collidable;
 import Movement.Velocity;
-import TheGame.Game;
+import TheGame.GameLevel;
 import biuoop.KeyboardSensor;
 import biuoop.DrawSurface;
 
@@ -191,7 +191,7 @@ public class Paddle implements Sprite, Collidable {
      * Movement.Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
         g.addCollidable(this);
     }
