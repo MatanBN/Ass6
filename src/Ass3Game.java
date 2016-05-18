@@ -1,5 +1,6 @@
 import TheGame.DirectHit;
 import TheGame.GameLevel;
+import TheGame.WideEasy;
 
 /**
  * The Ass3Game initializes and start the game.
@@ -13,7 +14,7 @@ public class Ass3Game {
      * @param args the input from command line.
      */
     public static void main(String[] args) {
-        GameLevel gameLevel = new GameLevel(new DirectHit());
+        GameLevel gameLevel = new GameLevel(new WideEasy());
         gameLevel.initialize();
         gameLevel.run();
     }
