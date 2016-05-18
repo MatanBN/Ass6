@@ -98,14 +98,14 @@ public class GameLevel implements Animation {
         this.runner = new AnimationRunner(gui);
         this.keyboard = gui.getKeyboardSensor();
 
-
-        // Create the paddle.
-        Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, myLevel.paddleWidth(), 30);
-        paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.GREEN);
-        paddle.addToGame(this);
         addSprite(myLevel.getBackground());
 
-        //Create the death border
+        // Create the paddle.
+        Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, myLevel.paddleWidth(), 20);
+        paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.GREEN);
+        paddle.addToGame(this);
+
+        // Create the death border.
         Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
                 Color.WHITE);
         deathBorder.addToGame(this);
@@ -155,7 +155,7 @@ public class GameLevel implements Animation {
         List<Velocity> myVelocities = myLevel.initialBallVelocities();
         int howMany = myLevel.numberOfBalls() + 1;
         for (int i = 1; i < howMany; ++i) {
-            createBall(new Point(70, 90), 3, myVelocities.get(i - 1));
+            createBall(new Point(300, 50), 3, myVelocities.get(i - 1));
         }
     }
 
@@ -227,6 +227,8 @@ public class GameLevel implements Animation {
         d.setColor(Color.black);
         d.drawText(350, 10, "Score: " + score.getValue(), 10);
         d.drawText(100, 10, "Lives: " + liveIndicator.getValue(), 10);
+        d.drawText(600, 10, "Level Name: " + myLevel.levelName(), 10);
+
         this.sprites.notifyAllTimePassed();
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboard));

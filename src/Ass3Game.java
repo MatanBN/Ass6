@@ -1,3 +1,4 @@
+import TheGame.DirectHit;
 import TheGame.GameLevel;
 
 /**
@@ -12,7 +13,7 @@ public class Ass3Game {
      * @param args the input from command line.
      */
     public static void main(String[] args) {
-        GameLevel gameLevel = new GameLevel();
+        GameLevel gameLevel = new GameLevel(new DirectHit());
         gameLevel.initialize();
         gameLevel.run();
     }
