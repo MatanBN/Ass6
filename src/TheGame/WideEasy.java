@@ -45,7 +45,7 @@ public class WideEasy implements LevelInformation {
     public List<Block> blocks() {
         List <Block> blocks = new ArrayList();
         for (int i=0; i<19; i++) {
-            Block newBlock = new Block ((i*40)+20, 350, 40, 20, Color.orange);
+            Block newBlock = new Block ((i*40)+20, 250, 40, 20, chooseColor(i));
             blocks.add(newBlock);
         }
         return blocks;
@@ -53,5 +53,29 @@ public class WideEasy implements LevelInformation {
 
     public int numberOfBlocksToRemove() {
         return 19;
+    }
+
+    private Color chooseColor(int num) {
+        Color color = Color.black;
+        if (num<3){
+            color = Color.blue;
+        }
+        else if (num<6){
+            color = Color.yellow;
+        }
+        else if (num<9){
+            color = Color.red;
+        }
+        else if (num<13){
+            color = Color.green;
+        }
+        else if (num<16){
+            color = Color.cyan;
+        }
+        else if (num<19)
+        {
+            color = Color.orange;
+        }
+        return color;
     }
 }
