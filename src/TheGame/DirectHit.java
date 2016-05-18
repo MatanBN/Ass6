@@ -15,6 +15,7 @@ import java.util.List;
  * Created by Matan on 5/18/2016.
  */
 public class DirectHit implements LevelInformation {
+
     public int numberOfBalls() {
         return 1;
     }
@@ -22,7 +23,7 @@ public class DirectHit implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> myVels = new ArrayList<Velocity>();
-        myVels.add(new Velocity(0, 2));
+        myVels.add(new Velocity(0, -2));
         return myVels;
     }
 
@@ -49,7 +50,7 @@ public class DirectHit implements LevelInformation {
 
     @Override
     public List<Block> blocks() {
-        Block block = new Block(300, 150, 10, 10, Color.red);
+        Block block = new Block(375, 195, 10, 10, Color.red);
         List<Block> myBlocks = new ArrayList<Block>();
         myBlocks.add(block);
         return myBlocks;

@@ -145,7 +145,7 @@ public class GameLevel implements Animation {
     }
 
     public void createBall(Point p, int radius, Velocity v) {
-        Ball ball = new Ball(p, radius, Color.BLUE, v, environment);
+        Ball ball = new Ball(p, radius, Color.WHITE, v, environment);
         ball.addToGame(this);
         ballCounter.increase(1);
     }
@@ -155,7 +155,7 @@ public class GameLevel implements Animation {
         List<Velocity> myVelocities = myLevel.initialBallVelocities();
         int howMany = myLevel.numberOfBalls() + 1;
         for (int i = 1; i < howMany; ++i) {
-            createBall(new Point(300, 50), 3, myVelocities.get(i - 1));
+            createBall(new Point(375, 300), 3, myVelocities.get(i - 1));
         }
     }
 
