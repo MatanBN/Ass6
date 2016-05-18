@@ -23,6 +23,7 @@ public class Paddle implements Sprite, Collidable {
     private Rectangle rectangle; // The shape of the paddle
     private Rectangle borders; // A rectangle with the borders of the surface
     private ArrayList regions; // 5 different regions of the paddle.
+    private int speed;
 
     /**
      * The constructor creates the paddle.
@@ -31,8 +32,9 @@ public class Paddle implements Sprite, Collidable {
      * @param border is surface border.
      * @param color is the color of the paddle.
      */
-    public Paddle(biuoop.KeyboardSensor key, Rectangle rec, Rectangle border, Color color) {
+    public Paddle(biuoop.KeyboardSensor key, Rectangle rec, Rectangle border, int speed, Color color) {
         this.keyboard = key;
+        this.speed = speed;
         this.rectangle = new Rectangle(rec.getUpperLeft(), rec.getWidth(), rec.getHeight(), color);
         this.borders = border;
         this.regions = new ArrayList();
@@ -56,8 +58,8 @@ public class Paddle implements Sprite, Collidable {
      * should.
      */
     public void moveLeft() {
-        if (rectangle.getX() - 5 >= borders.getX() + 20) {
-            rectangle.getUpperLeft().setX(rectangle.getX() - 5);
+        if (rectangle.getX() - this.speed >= borders.getX() + 20) {
+            rectangle.getUpperLeft().setX(rectangle.getX() - this.speed);
             alignRegions();
         } else {
             rectangle.getUpperLeft().setX(borders.getX() + 20);
@@ -70,8 +72,8 @@ public class Paddle implements Sprite, Collidable {
      * should.
      */
     public void moveRight() {
-        if (rectangle.getX() + rectangle.getWidth() + 5 <= borders.getWidth() - 20) {
-            rectangle.getUpperLeft().setX(rectangle.getX() + 5);
+        if (rectangle.getX() + rectangle.getWidth() + this.speed <= borders.getWidth() - 20) {
+            rectangle.getUpperLeft().setX(rectangle.getX() + this.speed);
             alignRegions();
         } else {
             rectangle.getUpperLeft().setX(borders.getWidth() - rectangle.getWidth() - 20);
