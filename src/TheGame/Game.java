@@ -89,7 +89,7 @@ public class Game implements Animation {
         this.runner = new AnimationRunner(gui);
         this.keyboard = gui.getKeyboardSensor();
 
-        createThreeBalls();
+        createBalls();
 
 
         // Create the paddle.
@@ -171,10 +171,10 @@ public class Game implements Animation {
 
     }
 
-    private void createThreeBalls() {
+    private void createBalls() {
         // Create the balls.
         Velocity v = new Velocity(2, -2);
-        for (int i = 1; i < 4; ++i) {
+        for (int i = 1; i < 3; ++i) {
             createBall(50 * i, 70 * i, 5, Color.blue, v);
         }
     }
@@ -244,7 +244,7 @@ public class Game implements Animation {
      * run method runs the animation loop.
      */
     public void playOneTurn() {
-        this.createThreeBalls(); // create the balls
+        this.createBalls(); // create the balls
         this.runner.run(new CountdownAnimation(2,3,sprites)); // countdown before turn starts.
         this.running = true;
         // use our runner to run the current animation -- which is one turn of
