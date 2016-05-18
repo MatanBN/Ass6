@@ -3,14 +3,11 @@ package TheGame;
 import Geometry.Rectangle;
 import Items.*;
 import Listeners.*;
-import Movement.Animation;
-import Movement.Collidable;
-import Movement.Velocity;
+import Movement.*;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 import java.awt.Color;
-import Movement.AnimationRunner;
 
 /**
  * The TheGame.Game class contains a a Items.SpriteCollection which will be all the sprites in
@@ -248,6 +245,7 @@ public class Game implements Animation {
      */
     public void playOneTurn() {
         this.createThreeBalls(); // create the balls
+        this.runner.run(new CountdownAnimation(2,3,sprites)); // countdown before turn starts.
         this.running = true;
         // use our runner to run the current animation -- which is one turn of
         // the game.
