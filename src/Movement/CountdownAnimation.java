@@ -34,9 +34,11 @@ public class CountdownAnimation implements Animation {
         screen.drawAllOn(d);
         if (counter == 0) {
             s = "GO";
-            running = true;
         } else {
             s = Integer.toString(counter);
+        }
+        if (counter==-1){
+            running = true;
         }
         d.drawText(d.getWidth() / 2, 30, s, 32);
         --counter;
