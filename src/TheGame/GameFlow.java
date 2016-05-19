@@ -21,7 +21,7 @@ public class GameFlow {
     public GameFlow(AnimationRunner ar, KeyboardSensor ks) {
         this.ar = ar;
         this.ks = ks;
-        liveIndicator = new LiveIndicator(4);
+        liveIndicator = new LiveIndicator(7);
         score = new ScoreIndicator();
     }
 
