@@ -34,7 +34,7 @@ public class GameFlow {
             if (level.getBlockCounter().getValue() == 0) {
                 score.increase(100);
             } else {
-                liveIndicator.decrease();
+                liveIndicator.decrease(1);
             }
 
             if (liveIndicator.getValue() == 0) {
