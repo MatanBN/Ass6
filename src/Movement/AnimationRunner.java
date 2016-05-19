@@ -12,11 +12,10 @@ import biuoop.Sleeper;
 public class AnimationRunner {
     private GUI gui;
     private int framesPerSecond;
-    private KeyboardSensor keyboard;
 
-    public AnimationRunner (GUI gui){
+    public AnimationRunner() {
         framesPerSecond = 60;
-        this.gui = gui;
+        this.gui = new GUI("Arknoid", 800, 600);
     }
 
     public void run(Animation animation) {
@@ -36,5 +35,9 @@ public class AnimationRunner {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
         }
+    }
+
+    public GUI getGui() {
+        return this.gui;
     }
 }

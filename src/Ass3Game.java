@@ -1,7 +1,9 @@
+import Movement.AnimationRunner;
 import TheGame.DirectHit;
 import TheGame.FinalFour;
 import TheGame.GameLevel;
 import TheGame.WideEasy;
+import biuoop.GUI;
 
 /**
  * The Ass3Game initializes and start the game.
@@ -15,7 +17,9 @@ public class Ass3Game {
      * @param args the input from command line.
      */
     public static void main(String[] args) {
-        GameLevel gameLevel = new GameLevel(new FinalFour());
+        AnimationRunner myAnimationRunner = new AnimationRunner();
+        GameLevel gameLevel = new GameLevel(new DirectHit(), myAnimationRunner.getGui().getKeyboardSensor(),
+                myAnimationRunner);
         gameLevel.initialize();
         gameLevel.run();
     }
