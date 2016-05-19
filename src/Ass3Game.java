@@ -24,7 +24,21 @@ public class Ass3Game {
         myLevels.add(new WideEasy());
         myLevels.add(new Green3());
         myLevels.add(new FinalFour());
+        if (args.length == 0) {
+            gameFlow.runLevels(myLevels);
+        } else {
+            List<LevelInformation> levelsChoise = new ArrayList<LevelInformation>();
+            for (int i = 0; i < args.length; ++i) {
+                try {
+                    int levelNum = Integer.parseInt(args[i]);
+                    if (levelNum >= 1 && levelNum <= 4) {
+                        levelsChoise.add(myLevels.get(levelNum - 1));
+                    }
+                } catch (Exception e) {
+                }
+            }
 
-        gameFlow.runLevels(myLevels);
+            gameFlow.runLevels(levelsChoise);
+        }
     }
 }
