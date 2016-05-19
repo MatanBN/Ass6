@@ -51,10 +51,10 @@ public class FinalFour implements LevelInformation {
     public List<Block> blocks() {
         List<Block> myBlocks = new ArrayList<Block>();
         int numberOfBlockPerRow = 760 / 40;
-        int hits = 1;
+        int hits = 2;
         for (int i = 0; i < 7; ++i) {
-            if (i == 6) {
-                hits = 2;
+            if (i != 0) {
+                hits = 1;
             }
             int rowYCoordinate = 80 + i * 20;
             for (int j = 0; j < numberOfBlockPerRow; ++j) {

@@ -15,7 +15,7 @@ public class AnimationRunner {
 
     public AnimationRunner() {
         framesPerSecond = 60;
-        this.gui = new GUI("Arknoid", 800, 600);
+        this.gui = new GUI("Arkanoid", 800, 600);
     }
 
     public void run(Animation animation) {

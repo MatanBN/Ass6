@@ -12,31 +12,30 @@ public class RainyBackground implements Sprite {
     public void drawOn(DrawSurface d) {
         int height = d.getHeight();
         int width = d.getWidth();
-        Color c = new Color(0, 100, 255);
-        d.setColor(c);
-        c = Color.lightGray;
-        d.fillRectangle(0, 0, width - 20, height - 20);
-        d.setColor(c);
-        d.fillCircle(590, 450, 30);
-        d.setColor(c.brighter());
-        d.fillCircle(580, 450, 30);
-        d.setColor(c.brighter());
 
-        d.fillCircle(570, 455, 25);
-        d.setColor(c.brighter());
+        d.setColor(new Color(0, 100, 255));
+        d.fillRectangle(0, 0, width - 20, height);
 
-        d.fillCircle(560, 460, 25);
-        d.setColor(c.brighter());
+        d.setColor(Color.white);
+        for (int i=0; i<12; i++){
+            d.drawLine(600-(i*6), 450, 590-(i*6), 600);
+        }
+        d.setColor(Color.lightGray);
+        d.fillCircle(590, 450, 18);
+        d.fillCircle(550, 442, 20);
+        d.fillCircle(575, 435, 18);
+        d.fillCircle(565, 458, 15);
 
-        d.fillCircle(550, 440, 20);
-        d.setColor(c.brighter());
-        d.fillCircle(540, 450, 15);
+        d.setColor(Color.white);
+        for (int i=0; i<12; i++){
+            d.drawLine(200-(i*6), 300, 140-(i*6), 600);
+        }
 
-        d.setColor(c.brighter());
-
-        d.fillCircle(535, 450, 20);
-
-        d.fillCircle(540, 450, 20);
+        d.setColor(Color.lightGray);
+        d.fillCircle(190, 300, 18);
+        d.fillCircle(150, 292, 20);
+        d.fillCircle(175, 285, 18);
+        d.fillCircle(165, 308, 15);
 
     }
 
