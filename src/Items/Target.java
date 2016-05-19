@@ -22,9 +22,6 @@ public class Target implements Sprite {
         d.drawLine(width / 2, 200, width - 180, 200);
         d.drawLine(width / 2 - 20, 20, width / 2 - 20, 180);
         d.drawLine(width / 2 - 20, 220, width / 2 - 20, 380);
-        d.setColor(Color.black);
-        d.drawText(600,10, "Level Name: Direct Hit", 10);
-
     }
 
     @Override
