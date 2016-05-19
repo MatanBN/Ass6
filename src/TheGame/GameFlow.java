@@ -2,6 +2,7 @@ package TheGame;
 
 import Items.Counter;
 import Movement.AnimationRunner;
+import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 
 import java.util.List;
@@ -40,5 +41,20 @@ public class GameFlow {
                 break;
             }
         }
+        EndScreen();
+    }
+
+    public void EndScreen (){
+        DrawSurface d = ar.getGui().getDrawSurface();
+        if (this.ks.isPressed(KeyboardSensor.SPACE_KEY)) {
+            ar.getGui().close();
+        }else{
+            if (liveIndicator.getValue() == 0) {
+                d.drawText(d.getWidth() / 4, d.getHeight() / 2, "Game Over. Your score is " + score, 32);
+            } else {
+                d.drawText(d.getWidth() / 4, d.getHeight() / 2, "You Win! Your score is " + score, 32);
+            }
+        }
+
     }
 }
