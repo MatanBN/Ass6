@@ -4,7 +4,6 @@ import Items.SpriteCollection;
 import biuoop.DrawSurface;
 import biuoop.Sleeper;
 
-import java.awt.*;
 
 /**
  * Created by user on 18/05/2016.
@@ -39,12 +38,12 @@ public class CountdownAnimation implements Animation {
         }
         if (counter==-1){
             running = true;
+        } else {
+            d.drawText(d.getWidth() / 2, 30, s, 32);
+            --counter;
+
         }
-        d.drawText(d.getWidth() / 2, 30, s, 32);
-        --counter;
-
         sleeper.sleepFor((long) ((1000)*this.numOfSeconds)/(countFrom+1));
-
     }
     public boolean shouldStop() {
         return running;

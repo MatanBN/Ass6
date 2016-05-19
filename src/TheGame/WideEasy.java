@@ -45,8 +45,7 @@ public class WideEasy implements LevelInformation {
     public List<Block> blocks() {
         List <Block> blocks = new ArrayList();
         for (int i=0; i<19; i++) {
-            Block newBlock = new Block ((i*40)+20, 250, 40, 20, chooseColor(i));
-            blocks.add(newBlock);
+            blocks.add(new Block ((i*40)+20, 250, 40, 20, chooseColor(i)));
         }
         return blocks;
     }
