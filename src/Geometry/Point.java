@@ -64,4 +64,12 @@ public class Point {
     public void setX(double newX) {
         this.x = newX;
     }
+
+    /**
+     * setY method sets a new value for the point's y coordinate.
+     * @param newY is the new y value for the point.
+     */
+    public void setY(double newY) {
+        this.y = newY;
+    }
 }

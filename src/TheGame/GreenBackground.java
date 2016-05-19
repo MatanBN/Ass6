@@ -31,6 +31,9 @@ public class GreenBackground implements Sprite{
         d.fillCircle(99,200,7);
         d.setColor(new Color(255,255,51));
         d.fillCircle(99,200,3);
+
+        d.setColor(Color.black);
+        d.drawText(600,10, "Level Name: Green 3", 10);
     }
 
     public void timePassed() {

@@ -25,6 +25,9 @@ public class WideBackground implements Sprite {
         d.setColor(Color.YELLOW);
         d.drawCircle(150, 150, 30);
         d.fillCircle(150, 150, 30);
+
+        d.setColor(Color.black);
+        d.drawText(600,10, "Level Name: Wide Easy", 10);
     }
 
     public void timePassed() {
