@@ -40,4 +40,5 @@ public class AnimationRunner {
     public GUI getGui() {
         return this.gui;
     }
+
 }

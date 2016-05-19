@@ -1,9 +1,9 @@
 import Movement.AnimationRunner;
-import TheGame.DirectHit;
-import TheGame.FinalFour;
-import TheGame.GameLevel;
-import TheGame.WideEasy;
+import TheGame.*;
 import biuoop.GUI;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Ass3Game initializes and start the game.
@@ -18,9 +18,12 @@ public class Ass3Game {
      */
     public static void main(String[] args) {
         AnimationRunner myAnimationRunner = new AnimationRunner();
-        GameLevel gameLevel = new GameLevel(new DirectHit(), myAnimationRunner.getGui().getKeyboardSensor(),
-                myAnimationRunner);
-        gameLevel.initialize();
-        gameLevel.run();
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, myAnimationRunner.getGui().getKeyboardSensor());
+        List<LevelInformation> myLevels = new ArrayList<LevelInformation>();
+        myLevels.add(new DirectHit());
+        myLevels.add(new WideEasy());
+        myLevels.add(new Green3());
+        myLevels.add(new FinalFour());
+        gameFlow.runLevels(myLevels);
     }
 }

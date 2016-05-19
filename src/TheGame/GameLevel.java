@@ -26,12 +26,10 @@ public class GameLevel implements Animation {
     private GameEnvironment environment; // The game environment.
     private Counter blockCounter;
     private Counter ballCounter;
-    private Counter score;
     private Paddle paddle;
     private AnimationRunner runner;
     private boolean running;
     private KeyboardSensor keyboard;
-    private Counter liveIndicator;
     private LevelInformation myLevel;
 
     /**
@@ -42,8 +40,6 @@ public class GameLevel implements Animation {
         environment = new GameEnvironment();
         blockCounter = new Counter();
         ballCounter = new Counter();
-        score = new Counter();
-        liveIndicator = new Counter();
         myLevel = level;
         this.keyboard = key;
         this.runner = runner;
@@ -74,9 +70,6 @@ public class GameLevel implements Animation {
      */
     public void removeCollidable(Collidable c) {
         environment.removeCollidable(c);
-        if (environment.empty()) {
-            score.increase(100);
-        }
     }
 
     /**
@@ -92,13 +85,13 @@ public class GameLevel implements Animation {
      * initialize method draws the borders, ball, paddle and blocks on a new
      * gui.
      */
-    public void initialize() {
+    public void initialize(Counter score) {
         Rectangle borders = new Rectangle(800, 600);
 
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
-        Rectangle paddleRec = new Rectangle(198, borders.getHeight() - 51, myLevel.paddleWidth(), 20);
+        Rectangle paddleRec = new Rectangle(360, borders.getHeight() - 51, myLevel.paddleWidth(), 10);
         paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.GREEN);
         paddle.addToGame(this);
 
@@ -111,9 +104,6 @@ public class GameLevel implements Animation {
         //Create the score indicator
         Block playInfo = new Block(0, 0, borders.getMaxX(), 20, Color.white);
         playInfo.addToGame(this);
-
-        //Create the live indicator
-        liveIndicator.increase(4);
 
         // Create the top border.
         createBorder(0, playInfo.getRectangle().getMaxY(), borders.getMaxX(), 20, Color.gray, 0);
@@ -167,14 +157,6 @@ public class GameLevel implements Animation {
         }
     }
 
-    public void run() {
-        do {
-            playOneTurn();
-            paddle.relocatePaddle(300);
-            liveIndicator.decrease(1);
-        } while (liveIndicator.getValue() != 0 && blockCounter.getValue() != 0);
-    }
-
     /**
      * run method runs the animation loop.
      */
@@ -197,9 +179,6 @@ public class GameLevel implements Animation {
         // this.running = false;
         this.sprites.drawAllOn(d);
         d.setColor(Color.black);
-        d.drawText(350, 10, "Score: " + score.getValue(), 10);
-        d.drawText(100, 10, "Lives: " + liveIndicator.getValue(), 10);
-        d.drawText(600, 10, "Level Name: " + myLevel.levelName(), 10);
 
         this.sprites.notifyAllTimePassed();
         if (this.keyboard.isPressed("p")) {
@@ -210,5 +189,15 @@ public class GameLevel implements Animation {
         }
     }
 
+    public Counter getBlockCounter() {
+        return blockCounter;
+    }
+
+    /*
+    public void run() {
+        playOneTurn();
+        paddle.relocatePaddle(360);
+    }
+    */
 
 }
