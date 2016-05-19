@@ -26,11 +26,11 @@ public class GameLevel implements Animation {
     private GameEnvironment environment; // The game environment.
     private Counter blockCounter;
     private Counter ballCounter;
-    private Paddle paddle;
     private AnimationRunner runner;
     private boolean running;
     private KeyboardSensor keyboard;
     private LevelInformation myLevel;
+    private Paddle paddle;
 
     /**
      * Constructor to create the TheGame.GameLevel.
@@ -85,9 +85,10 @@ public class GameLevel implements Animation {
      * initialize method draws the borders, ball, paddle and blocks on a new
      * gui.
      */
-    public void initialize(Counter score) {
+    public void initialize(LiveIndicator lives, ScoreIndicator myScore) {
         Rectangle borders = new Rectangle(800, 600);
-
+        addSprite(lives);
+        addSprite(myScore);
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
@@ -117,7 +118,7 @@ public class GameLevel implements Animation {
         List<Block> myBlocks = myLevel.blocks();
         for (Block b : myBlocks) {
             b.addHitListener(new BlockRemover(this, blockCounter));
-            b.addHitListener(new ScoreTrackingListener(score));
+            b.addHitListener(new ScoreTrackingListener(myScore.getScore()));
             b.addToGame(this);
             blockCounter.increase(1);
         }
@@ -192,12 +193,4 @@ public class GameLevel implements Animation {
     public Counter getBlockCounter() {
         return blockCounter;
     }
-
-    /*
-    public void run() {
-        playOneTurn();
-        paddle.relocatePaddle(360);
-    }
-    */
-
 }

@@ -34,7 +34,7 @@ public class Green3 implements LevelInformation {
     }
 
     public int paddleWidth() {
-        return 50;
+        return 100;
     }
 
     public String levelName() {
