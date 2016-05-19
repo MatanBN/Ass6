@@ -24,7 +24,6 @@ import java.util.List;
 public class GameLevel implements Animation {
     private SpriteCollection sprites; // All of the sprites in the game.
     private GameEnvironment environment; // The game environment.
-    private GUI gui; // The gui windows of the game.
     private Counter blockCounter;
     private Counter ballCounter;
     private Counter score;
@@ -38,7 +37,7 @@ public class GameLevel implements Animation {
     /**
      * Constructor to create the TheGame.GameLevel.
      */
-    public GameLevel(LevelInformation level) {
+    public GameLevel(LevelInformation level, KeyboardSensor key, AnimationRunner runner) {
         sprites = new SpriteCollection();
         environment = new GameEnvironment();
         blockCounter = new Counter();
@@ -46,6 +45,8 @@ public class GameLevel implements Animation {
         score = new Counter();
         liveIndicator = new Counter();
         myLevel = level;
+        this.keyboard = key;
+        this.runner = runner;
     }
 
     /**
@@ -92,15 +93,7 @@ public class GameLevel implements Animation {
      * gui.
      */
     public void initialize() {
-        // Create the gui with 800 width and 600 height.
         Rectangle borders = new Rectangle(800, 600);
-        this.gui = new GUI("GameLevel", borders.getWidth(), borders.getHeight());
-        this.runner = new AnimationRunner(gui);
-        this.keyboard = gui.getKeyboardSensor();
-
-        this.gui = new GUI("GameLevel", borders.getWidth(), borders.getHeight());
-        this.runner = new AnimationRunner(gui);
-        this.keyboard = gui.getKeyboardSensor();
 
         addSprite(myLevel.getBackground());
 
@@ -180,7 +173,6 @@ public class GameLevel implements Animation {
             paddle.relocatePaddle(300);
             liveIndicator.decrease(1);
         } while (liveIndicator.getValue() != 0 && blockCounter.getValue() != 0);
-        gui.close();
     }
 
     /**
