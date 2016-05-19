@@ -23,7 +23,7 @@ public class GreenBackground implements Sprite{
         }
         d.setColor(new Color(64, 64, 64));
         d.fillRectangle(84, 400, 30, 50);
-        d.setColor(new Color(96,96,96));
+        d.setColor(new Color(96,96,90));
         d.fillRectangle(94, 200, 10,200);
         d.setColor(new Color(255,178,102));
         d.fillCircle(99,200,10);
