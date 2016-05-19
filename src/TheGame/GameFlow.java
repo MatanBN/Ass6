@@ -3,8 +3,10 @@ package TheGame;
 import Items.Counter;
 import Movement.AnimationRunner;
 import biuoop.DrawSurface;
+import biuoop.GUI;
 import biuoop.KeyboardSensor;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -33,8 +35,6 @@ public class GameFlow {
 
             if (level.getBlockCounter().getValue() == 0) {
                 score.increase(100);
-            } else {
-                liveIndicator.decrease(1);
             }
 
             if (liveIndicator.getValue() == 0) {
@@ -46,13 +46,21 @@ public class GameFlow {
 
     public void EndScreen (){
         DrawSurface d = ar.getGui().getDrawSurface();
-        if (this.ks.isPressed(KeyboardSensor.SPACE_KEY)) {
-            ar.getGui().close();
-        }else{
-            if (liveIndicator.getValue() == 0) {
-                d.drawText(d.getWidth() / 4, d.getHeight() / 2, "Game Over. Your score is " + score, 32);
-            } else {
-                d.drawText(d.getWidth() / 4, d.getHeight() / 2, "You Win! Your score is " + score, 32);
+        d.setColor(Color.cyan);
+        d.fillRectangle(0, 0, 800, 600);
+        d.setColor(Color.black);
+        if (liveIndicator.getValue() == 0) {
+            d.drawText(d.getWidth() / 4, d.getHeight() / 2, "Game Over. Your score is " +
+                    score.getScore().getValue(), 32);
+        } else {
+            d.drawText(d.getWidth() / 4, d.getHeight() / 2, "You Win! Your score is " +
+                    score.getScore().getValue(), 32);
+        }
+        ar.getGui().show(d);
+        while (true) {
+            if (this.ks.isPressed(KeyboardSensor.SPACE_KEY)) {
+                ar.getGui().close();
+
             }
         }
 

@@ -31,6 +31,7 @@ public class GameLevel implements Animation {
     private KeyboardSensor keyboard;
     private LevelInformation myLevel;
     private Paddle paddle;
+    private LiveIndicator liveIndicator;
 
     /**
      * Constructor to create the TheGame.GameLevel.
@@ -87,6 +88,7 @@ public class GameLevel implements Animation {
      */
     public void initialize(LiveIndicator lives, ScoreIndicator myScore) {
         Rectangle borders = new Rectangle(800, 600);
+        liveIndicator = lives;
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
@@ -165,7 +167,9 @@ public class GameLevel implements Animation {
      */
     public void playOneTurn() {
         this.createBalls(); // create the balls
+        paddle.relocatePaddle(360);
         this.runner.run(new CountdownAnimation(2, 3, sprites)); // countdown before turn starts.
+
         this.running = true;
         // use our runner to run the current animation -- which is one turn of
         // the game.
@@ -188,7 +192,9 @@ public class GameLevel implements Animation {
             this.runner.run(new PauseScreen(this.keyboard));
         }
         if (blockCounter.getValue() == 0 || ballCounter.getValue() == 0) {
+            liveIndicator.decrease();
             this.running = false;
+
         }
     }
 

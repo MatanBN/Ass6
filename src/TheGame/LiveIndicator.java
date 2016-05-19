@@ -15,8 +15,8 @@ public class LiveIndicator implements Sprite {
         this.lives = lives;
     }
 
-    public void decrease(int num) {
-        lives-=num;
+    public void decrease() {
+        --lives;
     }
 
     public int getValue() {
