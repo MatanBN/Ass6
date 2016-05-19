@@ -87,8 +87,6 @@ public class GameLevel implements Animation {
      */
     public void initialize(LiveIndicator lives, ScoreIndicator myScore) {
         Rectangle borders = new Rectangle(800, 600);
-        addSprite(lives);
-        addSprite(myScore);
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
@@ -122,6 +120,10 @@ public class GameLevel implements Animation {
             b.addToGame(this);
             blockCounter.increase(1);
         }
+
+        addSprite(lives);
+        addSprite(myScore);
+        addSprite(new LevelIndicator(myLevel.levelName()));
     }
 
 

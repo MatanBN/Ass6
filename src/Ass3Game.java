@@ -20,10 +20,11 @@ public class Ass3Game {
         AnimationRunner myAnimationRunner = new AnimationRunner();
         GameFlow gameFlow = new GameFlow(myAnimationRunner, myAnimationRunner.getGui().getKeyboardSensor());
         List<LevelInformation> myLevels = new ArrayList<LevelInformation>();
-        myLevels.add(new FinalFour());
         myLevels.add(new DirectHit());
         myLevels.add(new WideEasy());
         myLevels.add(new Green3());
+        myLevels.add(new FinalFour());
+
         gameFlow.runLevels(myLevels);
     }
 }

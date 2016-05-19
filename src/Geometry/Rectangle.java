@@ -240,4 +240,8 @@ public class Rectangle {
         return upperLeft;
     }
 
+
+    public Color getColor() {
+        return color;
+    }
 }

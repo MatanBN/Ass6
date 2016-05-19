@@ -118,6 +118,7 @@ public class Paddle implements Sprite, Collidable {
      * @param d is the surface to draw the paddle on
      */
     public void drawOn(DrawSurface d) {
+        d.setColor(this.rectangle.getColor());
         rectangle.drawOn(d);
     }
 
