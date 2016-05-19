@@ -1,4 +1,5 @@
 import TheGame.DirectHit;
+import TheGame.FinalFour;
 import TheGame.GameLevel;
 import TheGame.WideEasy;
 
@@ -14,7 +15,7 @@ public class Ass3Game {
      * @param args the input from command line.
      */
     public static void main(String[] args) {
-        GameLevel gameLevel = new GameLevel(new WideEasy());
+        GameLevel gameLevel = new GameLevel(new FinalFour());
         gameLevel.initialize();
         gameLevel.run();
     }

@@ -170,41 +170,6 @@ public class GameLevel implements Animation {
         }
     }
 
-
-    /**
-     * chooseRowColor method gets the number of row and returns that row color.
-     *
-     * @param row the row to choose the color to.
-     * @return the color for that row.
-     */
-    private Color chooseRowColor(int row) {
-        Color color;
-        switch (row) {
-            case 0:
-                color = Color.blue;
-                break;
-            case 1:
-                color = Color.black;
-                break;
-            case 2:
-                color = Color.red;
-                break;
-            case 3:
-                color = Color.green;
-                break;
-            case 4:
-                color = Color.cyan;
-                break;
-            case 5:
-                color = Color.orange;
-                break;
-            default:
-                color = null;
-                break;
-        }
-        return color;
-    }
-
     public void run() {
         do {
             playOneTurn();
