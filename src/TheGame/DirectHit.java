@@ -1,6 +1,7 @@
 package TheGame;
 
 import Items.Block;
+import Items.RainyBackground;
 import Items.Sprite;
 import Items.Target;
 import Listeners.BlockRemover;

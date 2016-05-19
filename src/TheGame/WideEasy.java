@@ -15,12 +15,12 @@ import java.util.List;
 public class WideEasy implements LevelInformation {
 
     public int numberOfBalls() {
-        return 10;
+        return 11;
     }
 
     public List<Velocity> initialBallVelocities() {
         List <Velocity> v = new ArrayList() ;
-        for (int i=0; i<this.numberOfBalls(); i++){
+        for (int i = 0; i < this.numberOfBalls(); i++) {
             v.add(new Velocity (0,3));
         }
         return v;

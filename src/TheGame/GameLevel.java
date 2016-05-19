@@ -98,6 +98,10 @@ public class GameLevel implements Animation {
         this.runner = new AnimationRunner(gui);
         this.keyboard = gui.getKeyboardSensor();
 
+        this.gui = new GUI("GameLevel", borders.getWidth(), borders.getHeight());
+        this.runner = new AnimationRunner(gui);
+        this.keyboard = gui.getKeyboardSensor();
+
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
@@ -153,45 +157,21 @@ public class GameLevel implements Animation {
     private void createBalls() {
         // Create the balls.
         List<Velocity> myVelocities = myLevel.initialBallVelocities();
-        int howMany = myLevel.numberOfBalls() + 1;
-        for (int i = 1; i < howMany; ++i) {
-            createBall(new Point(375, 300), 3, myVelocities.get(i - 1));
-        }
-    }
+        int howMany = myLevel.numberOfBalls();
+        int xDistance = 10;
+        int yDistance = 10;
+        for (int i = 0; i < howMany; ++i) {
+            if (i == 0) {
+                createBall(new Point(375, 400), 3, myVelocities.get(i));
+            } else if (i % 2 == 0) {
+                createBall(new Point(375 + xDistance, 400 + yDistance), 3, myVelocities.get(i));
+                yDistance += 20;
+                xDistance += xDistance;
+            } else {
+                createBall(new Point(375 - xDistance, 400 + yDistance), 3, myVelocities.get(i));
 
-
-    /**
-     * chooseRowColor method gets the number of row and returns that row color.
-     *
-     * @param row the row to choose the color to.
-     * @return the color for that row.
-     */
-    private Color chooseRowColor(int row) {
-        Color color;
-        switch (row) {
-            case 0:
-                color = Color.blue;
-                break;
-            case 1:
-                color = Color.black;
-                break;
-            case 2:
-                color = Color.red;
-                break;
-            case 3:
-                color = Color.green;
-                break;
-            case 4:
-                color = Color.cyan;
-                break;
-            case 5:
-                color = Color.orange;
-                break;
-            default:
-                color = null;
-                break;
+            }
         }
-        return color;
     }
 
     public void run() {
