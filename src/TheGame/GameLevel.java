@@ -98,6 +98,10 @@ public class GameLevel implements Animation {
         this.runner = new AnimationRunner(gui);
         this.keyboard = gui.getKeyboardSensor();
 
+        this.gui = new GUI("GameLevel", borders.getWidth(), borders.getHeight());
+        this.runner = new AnimationRunner(gui);
+        this.keyboard = gui.getKeyboardSensor();
+
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
