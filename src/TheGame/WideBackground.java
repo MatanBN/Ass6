@@ -3,13 +3,19 @@ package TheGame;
 import Items.Sprite;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
- * Created by user on 18/05/2016.
+ * The WideBackground class is a class for the background of second level.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 22 May 2016
  */
 public class WideBackground implements Sprite {
-
+    /**
+     * drawOn method draws the background for the second level.
+     *
+     * @param d the DrawSurface to draw the background on.
+     */
     public void drawOn (DrawSurface d){
         d.setColor(new Color (255, 206, 156));
         for (int i=0; i<47; i++)
@@ -28,6 +34,9 @@ public class WideBackground implements Sprite {
 
     }
 
+    /**
+     * Currently dosen't do anything.
+     */
     public void timePassed() {
 
     }

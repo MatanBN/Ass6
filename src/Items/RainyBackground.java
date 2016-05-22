@@ -1,17 +1,22 @@
 package Items;
 
-import Geometry.*;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
 
 
 /**
- * Created by Matan on 5/18/2016.
+ * The GreenBackground class is a class for the background of the fourth level.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 22 May 2016
  */
 public class RainyBackground implements Sprite {
 
-
+    /**
+     * drawOn method draws the background for the fourth level.
+     *
+     * @param d the DrawSurface to draw the background on.
+     */
     @Override
     public void drawOn(DrawSurface d) {
         int height = d.getHeight();
@@ -46,6 +51,9 @@ public class RainyBackground implements Sprite {
 
     }
 
+    /**
+     * Currently dosen't do anything.
+     */
     @Override
     public void timePassed() {
 

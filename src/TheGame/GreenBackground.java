@@ -2,13 +2,21 @@ package TheGame;
 
 import Items.Sprite;
 import biuoop.DrawSurface;
-import java.awt.*;
+
+import java.awt.Color;
 
 /**
- * Created by user on 19/05/2016.
+ * The GreenBackground class is a class for the background of third level.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 22 May 2016
  */
 public class GreenBackground implements Sprite{
 
+    /**
+     * drawOn method draws the this background to the screen.
+     *
+     * @param d the DrawSurface to draw the background on.
+     */
     public void drawOn(DrawSurface d) {
         d.setColor(new Color(0,153,0));
         d.fillRectangle(20, 20, 780, 580);
@@ -31,9 +39,11 @@ public class GreenBackground implements Sprite{
         d.fillCircle(99,200,7);
         d.setColor(new Color(255,255,51));
         d.fillCircle(99,200,3);
-
     }
 
+    /**
+     * Currently doesn't do anything.
+     */
     public void timePassed() {
 
     }
