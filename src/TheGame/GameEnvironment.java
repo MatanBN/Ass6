@@ -10,7 +10,7 @@ import biuoop.DrawSurface;
 import java.util.ArrayList;
 
 /**
- * The TheGame.GameEnvironment class contains an ArrayList of Collidables, and has
+ * The GameEnvironment class contains an ArrayList of Collidables, and has
  * methods to add a Movement.Collidable object, get the closest collision from the list
  * of Collidables, and draw all of the Collidables.
  * @author Matan Ben Noach Nir Ben Shalom
@@ -45,10 +45,10 @@ public class GameEnvironment {
     }
 
     /**
-     * getClosestCollision method returns the Movement.CollisionInfo of the closest
+     * getClosestCollision method returns the CollisionInfo of the closest
      * collision from all of the Collidables.
      * @param trajectory of the object that will hit one of the Collidables.
-     * @return the Movement.CollisionInfo of the collision.
+     * @return the CollisionInfo of the collision.
      */
     public CollisionInfo getClosestCollision(Line trajectory) {
         Rectangle r = ((Collidable) collidables.get(0)).getCollisionRectangle();
@@ -88,10 +88,4 @@ public class GameEnvironment {
         }
     }
 
-    public boolean empty (){
-        if (collidables.isEmpty()){
-            return true;
-        }
-        return false;
-    }
 }

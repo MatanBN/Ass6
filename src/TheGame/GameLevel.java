@@ -5,7 +5,6 @@ import Geometry.Rectangle;
 import Items.*;
 import Listeners.*;
 import Movement.*;
-import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 
@@ -24,17 +23,20 @@ import java.util.List;
 public class GameLevel implements Animation {
     private SpriteCollection sprites; // All of the sprites in the game.
     private GameEnvironment environment; // The game environment.
-    private Counter blockCounter;
-    private Counter ballCounter;
-    private AnimationRunner runner;
-    private boolean running;
-    private KeyboardSensor keyboard;
-    private LevelInformation myLevel;
-    private Paddle paddle;
-    private LiveIndicator liveIndicator;
+    private Counter blockCounter; // The block counter of the game.
+    private Counter ballCounter; // The ball counter of the game.
+    private AnimationRunner runner; // The animation runner of the game/
+    private boolean running; // A boolean variable if the game runs or not.
+    private KeyboardSensor keyboard; // The keyboard sensor of the game.
+    private LevelInformation myLevel; // The level information of the game.
+    private Paddle paddle; // The paddle of the game.
+    private LiveIndicator liveIndicator; // The live indicator of the game.
 
     /**
-     * Constructor to create the TheGame.GameLevel.
+     * Constructor to create the GameLevel.
+     * @param level the LevelInformation.
+     * @param key the keyboard sensor of the game.
+     * @param runner the animation runner of the game.
      */
     public GameLevel(LevelInformation level, KeyboardSensor key, AnimationRunner runner) {
         sprites = new SpriteCollection();
@@ -47,18 +49,18 @@ public class GameLevel implements Animation {
     }
 
     /**
-     * addCollidable method adds a Movement.Collidable object to the game.
+     * addCollidable method adds a Collidable object to the game.
      *
-     * @param c the Movement.Collidable object to add.
+     * @param c the Collidable object to add.
      */
     public void addCollidable(Collidable c) {
         environment.addCollidable(c);
     }
 
     /**
-     * addSprite method adds a Items.Sprite object to the game.
+     * addSprite method adds a Sprite object to the game.
      *
-     * @param s the Items.Sprite object to add.
+     * @param s the Sprite object to add.
      */
     public void addSprite(Sprite s) {
         sprites.addSprite(s);
@@ -107,13 +109,13 @@ public class GameLevel implements Animation {
         playInfo.addToGame(this);
 
         // Create the top border.
-        createBorder(0, playInfo.getRectangle().getMaxY(), borders.getMaxX(), 20, Color.gray, 0);
+        createBorder(0, playInfo.getRectangle().getMaxY(), borders.getMaxX(), 20, Color.gray);
 
         // Create the left border.
-        createBorder(0, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
+        createBorder(0, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray);
 
         // Create the right border.
-        createBorder(borders.getMaxX() - 20, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray, 0);
+        createBorder(borders.getMaxX() - 20, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray);
 
         List<Block> myBlocks = myLevel.blocks();
         for (Block b : myBlocks) {
@@ -128,20 +130,37 @@ public class GameLevel implements Animation {
         addSprite(new LevelIndicator(myLevel.levelName()));
     }
 
-
-    private void createBorder(int x, int y, int width, int height, Color c, int hits) {
+    /**
+     * createBorder method creates a border for the game.
+     *
+     * @param x      the start x coordinate.
+     * @param y      the start y coordinate.
+     * @param width  the width of the border.
+     * @param height the height of the border.
+     * @param c      the color of the border.
+     */
+    private void createBorder(int x, int y, int width, int height, Color c) {
         Block block = new Block(x, y, width, height, c);
-        block.setHitsNumber(hits);
+        block.setHitsNumber(0);
         block.addToGame(this);
 
     }
 
+    /**
+     * createBall method creates a new ball to the game.
+     * @param p the center point of the ball.
+     * @param radius the radius of the ball.
+     * @param v the velocity of the ball.
+     */
     public void createBall(Point p, int radius, Velocity v) {
         Ball ball = new Ball(p, radius, Color.WHITE, v, environment);
         ball.addToGame(this);
         ballCounter.increase(1);
     }
 
+    /**
+     * createBalls method creates balls according to the level's number of balls.
+     */
     private void createBalls() {
         // Create the balls.
         List<Velocity> myVelocities = myLevel.initialBallVelocities();
@@ -157,13 +176,12 @@ public class GameLevel implements Animation {
                 xDistance += xDistance;
             } else {
                 createBall(new Point(375 - xDistance, 400 + yDistance), 3, myVelocities.get(i));
-
             }
         }
     }
 
     /**
-     * run method runs the animation loop.
+     * playOneTurn method resets the game to the start position.
      */
     public void playOneTurn() {
         this.createBalls(); // create the balls
@@ -176,10 +194,18 @@ public class GameLevel implements Animation {
         this.runner.run(this);
     }
 
+    /**
+     * shouldStop method returns the not value of running.
+     * @return the not value of the running variable.
+     */
     public boolean shouldStop() {
         return !this.running;
     }
 
+    /**
+     * doOneFrame method draws the game to the screen.
+     * @param d the drawSurface to draw on.
+     */
     public void doOneFrame(DrawSurface d) {
         // the logic from the previous playOneTurn method goes here.
         // the `return` or `break` statements should be replaced with
@@ -198,6 +224,10 @@ public class GameLevel implements Animation {
         }
     }
 
+    /**
+     * getBlockCounter returns the current number of blocks.
+     * @return the current number of blocks.
+     */
     public Counter getBlockCounter() {
         return blockCounter;
     }

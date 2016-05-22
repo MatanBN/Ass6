@@ -1,6 +1,5 @@
 import Movement.AnimationRunner;
 import TheGame.*;
-import biuoop.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class Ass5Game {
      */
     public static void main(String[] args) {
         AnimationRunner myAnimationRunner = new AnimationRunner();
-        GameFlow gameFlow = new GameFlow(myAnimationRunner, myAnimationRunner.getGui().getKeyboardSensor());
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, myAnimationRunner.getGui().getKeyboardSensor(), 7);
         List<LevelInformation> myLevels = new ArrayList<LevelInformation>();
         myLevels.add(new DirectHit());
         myLevels.add(new WideEasy());

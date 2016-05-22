@@ -1,16 +1,16 @@
 package TheGame;
 
-import Items.Counter;
 import Movement.AnimationRunner;
 import biuoop.DrawSurface;
-import biuoop.GUI;
 import biuoop.KeyboardSensor;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 
 /**
- * Created by Matan on 5/19/2016.
+ * The GameFlow class controls the different levels of the game.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 22 May 2016
  */
 public class GameFlow {
     private AnimationRunner ar;
@@ -18,13 +18,23 @@ public class GameFlow {
     private LiveIndicator liveIndicator;
     private ScoreIndicator score;
 
-    public GameFlow(AnimationRunner ar, KeyboardSensor ks) {
+    /**
+     * Constructor for the GameFlow class.
+     *
+     * @param ar The Animation Runner of the game.
+     * @param ks The KeyboardSensor of the game.
+     */
+    public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives) {
         this.ar = ar;
         this.ks = ks;
-        liveIndicator = new LiveIndicator(7);
+        liveIndicator = new LiveIndicator(lives);
         score = new ScoreIndicator();
     }
 
+    /**
+     * runLevels method runs a given list of levels.
+     * @param levels a list of levels.
+     */
     public void runLevels(List<LevelInformation> levels) {
         for (LevelInformation levelInfo : levels) {
             GameLevel level = new GameLevel(levelInfo, this.ks, this.ar);
@@ -41,10 +51,13 @@ public class GameFlow {
                 break;
             }
         }
-        EndScreen();
+        endScreen();
     }
 
-    public void EndScreen (){
+    /**
+     * endScreen method runs the end screen of the game.\.
+     */
+    public void endScreen (){
         DrawSurface d = ar.getGui().getDrawSurface();
         d.setColor(Color.cyan);
         d.fillRectangle(0, 0, 800, 600);
@@ -63,6 +76,5 @@ public class GameFlow {
 
             }
         }
-
     }
 }
