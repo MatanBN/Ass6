@@ -94,15 +94,17 @@ public class GameLevel implements Animation {
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
-        Rectangle paddleRec = new Rectangle(360, borders.getHeight() - 51, myLevel.paddleWidth(), 10);
+        Rectangle paddleRec = new Rectangle(360 - myLevel.paddleWidth() / 2, borders.getHeight() - 51,
+                myLevel.paddleWidth(), 10);
         paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.GREEN);
         paddle.addToGame(this);
 
         // Create the death border.
         Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
                 Color.WHITE);
-        deathBorder.addToGame(this);
+
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
+        addCollidable(deathBorder);
 
         //Create the score indicator
         Block playInfo = new Block(0, 0, borders.getMaxX(), 20, Color.white);
@@ -185,7 +187,7 @@ public class GameLevel implements Animation {
      */
     public void playOneTurn() {
         this.createBalls(); // create the balls
-        paddle.relocatePaddle(360);
+        paddle.relocatePaddle(360 - myLevel.paddleWidth() / 2);
         this.runner.run(new CountdownAnimation(2, 3, sprites)); // countdown before turn starts.
 
         this.running = true;
