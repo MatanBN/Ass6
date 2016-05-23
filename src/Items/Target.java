@@ -13,7 +13,7 @@ public class Target implements Sprite {
         int height = d.getHeight();
         int width = d.getWidth();
         d.setColor(Color.black);
-        d.fillRectangle(0, 0, width - 20, height - 20);
+        d.fillRectangle(0, 0, width - 20, height);
         d.setColor(Color.blue);
         d.drawCircle(width / 2 - 20, 200, 200);
         d.drawCircle(width / 2 - 20, 200, 100);

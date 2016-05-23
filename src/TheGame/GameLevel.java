@@ -102,7 +102,6 @@ public class GameLevel implements Animation {
         // Create the death border.
         Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
                 Color.WHITE);
-
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
         addCollidable(deathBorder);
 
