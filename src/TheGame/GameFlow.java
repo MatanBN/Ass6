@@ -59,17 +59,19 @@ public class GameFlow {
      */
     public void endScreen (){
         DrawSurface d = ar.getGui().getDrawSurface();
-        d.setColor(Color.cyan);
-        d.fillRectangle(0, 0, 800, 600);
-        d.setColor(Color.black);
         if (liveIndicator.getValue() == 0) {
+            d.setColor(Color.black);
             d.fillRectangle(0, 0, 800, 600);
-            d.setColor(Color.WHITE);
-            d.drawText(d.getWidth() / 4, d.getHeight() / 2-50, "Game Over :(", 32);
-            d.drawText(d.getWidth() / 4, d.getHeight() / 2+50, "Your score is " +
+            d.setColor(Color.white);
+            d.drawText(d.getWidth() / 4+110, d.getHeight() / 2-50, "Game Over :(", 32);
+            d.drawText(d.getWidth() / 4+100, d.getHeight() / 2+50, "Your score is " +
                     score.getScore().getValue(), 32);
         } else {
-            d.drawText(d.getWidth() / 4, d.getHeight() / 2, "Congragulations You Win! Your score is " +
+            d.setColor(Color.blue);
+            d.fillRectangle(0, 0, 800, 600);
+            d.setColor(Color.yellow);
+            d.drawText(d.getWidth() / 4+40, d.getHeight() / 2-50, "Congratulations You Win!", 32);
+            d.drawText(d.getWidth() / 4+80, d.getHeight() / 2+50, "Your score is " +
                     score.getScore().getValue(), 32);
         }
         ar.getGui().show(d);
