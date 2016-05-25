@@ -56,6 +56,11 @@ public class SpriteCollection {
         }
     }
 
+    /**
+     * getSprite returns a specific sprite from the list.
+     * @param index is the index of a given sprite.
+     * @return the required sprite from the list.
+     */
     public Sprite getSprite(int index) {
         return (Sprite) sprites.get(index);
     }

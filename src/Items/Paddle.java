@@ -80,12 +80,19 @@ public class Paddle implements Sprite, Collidable {
         }
     }
 
+    /**
+     * relocatePaddle changes the paddle's location (only it's X value) on the screen
+     * @param x is the new upperleft's x value.
+     */
     public void relocatePaddle(int x) {
         rectangle.getUpperLeft().setX(x);
         alignRegions();
 
     }
 
+    /**
+     * alignRegions changes the location of the paddle to the center of the screen.
+     */
     private void alignRegions() {
         int fifthRec = rectangle.getWidth() / 5;
         int startFrom = rectangle.getX();

@@ -4,11 +4,17 @@ import Items.Ball;
 import Items.Block;
 
 /**
- * Created by user on 16/05/2016.
+ * Listeners.HitListener Objects are notified of hit events.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 9 April 2016
  */
 
 public interface HitListener {
-    // This method is called whenever the beingHit object is hit.
-    // The hitter parameter is the Ball that's doing the hitting.
+
+    /**
+     * hitEvent is called whenever the beingHit object is hit
+     * @param beingHit is the block tat is being hit.
+     * @param hitter is the Ball that's doing the hitting.
+     */
     void hitEvent(Block beingHit, Ball hitter);
 }

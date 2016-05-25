@@ -240,7 +240,10 @@ public class Rectangle {
         return upperLeft;
     }
 
-
+    /**
+     * getColor method returns the color of the rectangle.
+     * @return the color of the rectangle.
+     */
     public Color getColor() {
         return color;
     }

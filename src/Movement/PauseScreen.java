@@ -27,7 +27,4 @@ public class PauseScreen implements Animation {
     }
     public boolean shouldStop() { return this.stop; }
 
-
-      /*      d.drawText(d.getWidth()/4, d.getHeight() / 2, "paused -- press space to continue", 12);*/
-
 }

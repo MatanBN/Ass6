@@ -63,10 +63,13 @@ public class GameFlow {
         d.fillRectangle(0, 0, 800, 600);
         d.setColor(Color.black);
         if (liveIndicator.getValue() == 0) {
-            d.drawText(d.getWidth() / 4, d.getHeight() / 2, "Game Over. Your score is " +
+            d.fillRectangle(0, 0, 800, 600);
+            d.setColor(Color.WHITE);
+            d.drawText(d.getWidth() / 4, d.getHeight() / 2-50, "Game Over :(", 32);
+            d.drawText(d.getWidth() / 4, d.getHeight() / 2+50, "Your score is " +
                     score.getScore().getValue(), 32);
         } else {
-            d.drawText(d.getWidth() / 4, d.getHeight() / 2, "You Win! Your score is " +
+            d.drawText(d.getWidth() / 4, d.getHeight() / 2, "Congragulations You Win! Your score is " +
                     score.getScore().getValue(), 32);
         }
         ar.getGui().show(d);

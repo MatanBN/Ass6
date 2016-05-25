@@ -194,6 +194,12 @@ public class Ball implements Sprite {
 
     }
 
+    /**
+     * removeFromGame calls the removeSprite method in order to remove
+     * the ball from the sprites collection.
+     * @param gameLevel is the current level of the game which holds the
+     * ball as a member.
+     */
     public void removeFromGame(GameLevel gameLevel) {
         gameLevel.removeSprite(this);
     }

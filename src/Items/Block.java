@@ -85,6 +85,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * hit return the new velocity after the hit based on force the object
      * inflicted on us.
+     * @param hitter is the specific ball that is about to hit the block
      * @param collisionPoint is the collision point of an object with the block.
      * @param currentVelocity is the current velocity of the object that will collide with the block.
      * @return the new velocity after the hit.
