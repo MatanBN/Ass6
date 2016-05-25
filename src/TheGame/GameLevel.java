@@ -204,7 +204,7 @@ public class GameLevel implements Animation {
     }
 
     /**
-     * doOneFrame method draws the game to the screen.
+     * doOneFrame method draws the game on the screen.
      * @param d the drawSurface to draw on.
      */
     public void doOneFrame(DrawSurface d) {

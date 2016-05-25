@@ -20,6 +20,7 @@ public interface Collidable {
     /**
      * Notify the object that we collided with it at collisionPoint with a given
      * velocity.
+     * @param hitter is the specific ball that is about to hit the block.
      * @param collisionPoint is the collision point of an object with the block.
      * @param currentVelocity is the current velocity of the object that will collide with the block.
      * @return the new velocity after the hit.

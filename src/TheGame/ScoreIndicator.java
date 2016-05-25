@@ -8,7 +8,7 @@ import java.awt.Color;
 
 
 /**
- * The ScoreIndicator class contains the current score and has methods to draw the scroe.
+ * The ScoreIndicator class contains the current score and has methods to draw the score.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -50,7 +50,7 @@ public class ScoreIndicator implements Sprite {
     }
 
     /**
-     * Currently dosen't do anything.
+     * Currently doesn't do anything.
      */
     @Override
     public void timePassed() {

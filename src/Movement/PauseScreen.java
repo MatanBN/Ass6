@@ -5,17 +5,30 @@ import biuoop.*;
 import java.awt.*;
 
 /**
- * Created by user on 17/05/2016.
+ * PauseScreen is an Movement.Animation that displays a pause screen when it
+ * is been called.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 9 April 2016
  */
 
 public class PauseScreen implements Animation {
-    private KeyboardSensor keyboard;
-    private boolean stop;
+    private KeyboardSensor keyboard; // The keyboard sensor of the game.
+    private boolean stop; // A boolean member that tells if the game is on pause or not.
 
+    /**
+     * The constructor gets the P from the keyboard sensor and initializes thw
+     * stop member to false.
+     * @param k is keyboard sensor
+     */
     public PauseScreen(KeyboardSensor k) {
         this.keyboard = k;
         this.stop = false;
     }
+
+    /**
+     * doOneFrame method draws the pause screen.
+     * @param d the drawSurface to draw on.
+     */
     public void doOneFrame(DrawSurface d) {
         d.setColor(Color.YELLOW);
         d.fillRectangle(0,0,d.getWidth(),d.getHeight());
@@ -25,6 +38,11 @@ public class PauseScreen implements Animation {
         d.drawText(d.getWidth()/4-150, d.getHeight() / 2, "If you would like to continue pleas press space :)", 32);
         if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) { this.stop = true; }
     }
+
+    /**
+     * shouldStop method returns the value of stop.
+     * @return the value of the stop variable.
+     */
     public boolean shouldStop() { return this.stop; }
 
 }

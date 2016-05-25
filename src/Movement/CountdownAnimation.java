@@ -6,7 +6,10 @@ import biuoop.Sleeper;
 
 
 /**
- * Created by user on 18/05/2016.
+ * CountDownAnimation will display the given gameScreen, for numOfSeconds seconds,
+ * and on top of them it will show a countdown from countFrom back to 1.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 9 April 2016
  */
 // The CountdownAnimation will display the given gameScreen,
 // for numOfSeconds seconds, and on top of them it will show
@@ -14,12 +17,18 @@ import biuoop.Sleeper;
 // appear on the screen for (numOfSeconds / countFrom) secods, before
 // it is replaced with the next one.
 public class CountdownAnimation implements Animation {
-    private double numOfSeconds;
-    private int counter;
-    private int countFrom;
-    private SpriteCollection screen;
-    private boolean running;
+    private double numOfSeconds; // The number of seconds of the numbers to appear on screen
+    private int counter; // The counter that counts backwards
+    private int countFrom; // The number to from backwards
+    private SpriteCollection screen; // The list of the sprites of the game
+    private boolean running; // The member that says whether the game runs or not
 
+    /**
+     * The constructor initializes the members by the given parameters from the TheGame.gameLevel
+     * @param numOfSeconds is the number of seconds of the numbers to appear on screen
+     * @param countFrom is the number to from backwards
+     * @param gameScreen is the list of the sprites of the game
+     */
     public CountdownAnimation(double numOfSeconds, int countFrom, SpriteCollection gameScreen) {
         this.numOfSeconds=numOfSeconds;
         counter=countFrom;
@@ -27,6 +36,11 @@ public class CountdownAnimation implements Animation {
         screen=gameScreen;
         running = false;
     }
+
+    /**
+     * doOneFrame method draws the numbers from contFrom to 1 on the screen.
+     * @param d the drawSurface to draw on.
+     */
     public void doOneFrame(DrawSurface d) {
         String s;
         Sleeper sleeper = new Sleeper();
@@ -45,6 +59,11 @@ public class CountdownAnimation implements Animation {
         }
         sleeper.sleepFor((long) ((1000)*this.numOfSeconds)/(countFrom+1));
     }
+
+    /**
+     * shouldStop method returns the value of running.
+     * @return the value of the running variable.
+     */
     public boolean shouldStop() {
         return running;
     }
