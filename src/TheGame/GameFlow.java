@@ -60,7 +60,7 @@ public class GameFlow {
     public void endScreen (){
         DrawSurface d = ar.getGui().getDrawSurface();
         if (liveIndicator.getValue() == 0) {
-            d.setColor(Color.black);
+            d.setColor(Color.blue);
             d.fillRectangle(0, 0, 800, 600);
             d.setColor(Color.white);
             d.drawText(d.getWidth() / 4+110, d.getHeight() / 2-50, "Game Over :(", 32);
