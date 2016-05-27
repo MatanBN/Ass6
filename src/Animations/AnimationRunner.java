@@ -17,10 +17,11 @@ public class AnimationRunner {
     /**
      * The constructor initializes the frame rate to 60 frames per second
      * and creates the gui window of the game.
+     *
      */
-    public AnimationRunner() {
-        framesPerSecond = 60;
-        this.gui = new GUI("Arkanoid", 800, 600);
+    public AnimationRunner(int framesPerSecond, GUI gui) {
+        this.framesPerSecond = framesPerSecond;
+        this.gui = gui;
     }
 
     /**
