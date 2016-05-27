@@ -1,7 +1,7 @@
 package Listeners;
 
-import Items.Ball;
-import Items.Block;
+import Sprites.Ball;
+import Sprites.Block;
 
 /**
  * PrintingHitListener print t

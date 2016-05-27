@@ -1,8 +1,8 @@
 package Listeners;
 
-import Items.Ball;
-import Items.Block;
-import Items.Counter;
+import Sprites.Ball;
+import Sprites.Block;
+import GameAttributes.Counter;
 
 /**
  * ScoreTrackingListener updates the counter when blocks are being hit and removed from the game.

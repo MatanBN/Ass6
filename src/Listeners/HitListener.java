@@ -1,10 +1,10 @@
 package Listeners;
 
-import Items.Ball;
-import Items.Block;
+import Sprites.Ball;
+import Sprites.Block;
 
 /**
- * Listeners.HitListener Objects are notified of hit events.
+ * HitListener Objects are notified of hit events.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */

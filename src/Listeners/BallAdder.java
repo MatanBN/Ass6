@@ -1,15 +1,15 @@
 package Listeners;
 
 import Geometry.Point;
-import Items.Ball;
-import Items.Block;
-import Items.Counter;
-import Movement.Velocity;
-import TheGame.GameLevel;
+import Sprites.Ball;
+import Sprites.Block;
+import GameAttributes.Counter;
+import GameAttributes.Velocity;
+import Animations.GameLevel;
 
 
 /**
- * Listeners.BallAdder is a class that implements a HitListener  in order to create new balls and when
+ * BallAdder is a class that implements a HitListener  in order to create new balls and when
  * there is a hit with a block of this type.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016

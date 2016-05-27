@@ -1,7 +1,7 @@
 package Listeners;
 
 /**
- * Listeners.HitNotifier indicates that objects that implement it send notifications when they are being hit.
+ * HitNotifier indicates that objects that implement it send notifications when they are being hit.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */

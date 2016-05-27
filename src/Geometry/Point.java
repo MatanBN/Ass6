@@ -1,7 +1,7 @@
 package Geometry;
 
 /**
- * The Geometry.Point class has two coordinates, x and and y and has methods to calculate
+ * The Point class has two coordinates, x and and y and has methods to calculate
  * the distance between to points and check whether two points are equal.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
@@ -11,7 +11,7 @@ public class Point {
     private double y; // The y value of the point.
 
     /**
-     * Geometry.Point creates a point with given x and y values.
+     * Point creates a point with given x and y values.
      * @param x the x value of the point.
      * @param y the y value of the point.
      */

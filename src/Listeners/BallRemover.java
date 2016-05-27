@@ -1,12 +1,12 @@
 package Listeners;
 
-import Items.Ball;
-import Items.Block;
-import Items.Counter;
-import TheGame.GameLevel;
+import Sprites.Ball;
+import Sprites.Block;
+import GameAttributes.Counter;
+import Animations.GameLevel;
 
 /**
- * Listeners.BallRemover is in charge of removing balls from the gameLevel, as well as keeping count
+ * BallRemover is in charge of removing balls from the gameLevel, as well as keeping count
  * of the number of balls that remain.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
