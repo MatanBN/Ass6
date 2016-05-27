@@ -16,16 +16,13 @@ import Animations.GameLevel;
  */
 public class BallAdder implements HitListener {
     private GameLevel gameLevel; //The current gamelevel
-    private Counter remainingBalls; //A counter of the remaining balls
 
     /**
      * The constructor gets the gamelevel and a counter of the removed balls.
      * @param gameLevel is the current gamelevel of the game.
-     * @param removedBalls a counter that holds the removed balls number.
      */
-    public BallAdder(GameLevel gameLevel, Counter removedBalls) {
+    public BallAdder(GameLevel gameLevel) {
         this.gameLevel = gameLevel;
-        this.remainingBalls = removedBalls;
     }
 
     /**
@@ -35,8 +32,7 @@ public class BallAdder implements HitListener {
      * @param hitter is the ball that hit the block.
      */
     public void hitEvent(Block beingHit, Ball hitter) {
-        gameLevel.createBall(new Point(50, 90), 5, new Velocity(2, -2));
+        gameLevel.createBall(new Point(50, 90), 2, new Velocity(4, -3));
         beingHit.removeHitListener(this);
-
     }
 }

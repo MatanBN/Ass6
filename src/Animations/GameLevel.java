@@ -5,6 +5,7 @@ import Game.Counter;
 import Game.Velocity;
 import Geometry.Point;
 import Geometry.Rectangle;
+import Listeners.BallAdder;
 import Listeners.BallRemover;
 import Listeners.BlockRemover;
 import Listeners.ScoreTrackingListener;
@@ -137,6 +138,10 @@ public class GameLevel implements Animation {
             b.addHitListener(new ScoreTrackingListener(myScore.getScore()));
             b.addToGame(this);
             blockCounter.increase(1);
+            // Add ball adder to a magic block.
+            if (blockCounter.getValue() % 7 == 0) {
+                b.addHitListener(new BallAdder(this));
+            }
         }
 
         addSprite(lives);
