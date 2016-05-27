@@ -6,7 +6,7 @@ import Geometry.Rectangle;
 import Listeners.HitListener;
 import Listeners.HitNotifier;
 import Environment.Collidable;
-import GameAttributes.Velocity;
+import Game.Velocity;
 import Animations.GameLevel;
 import biuoop.DrawSurface;
 

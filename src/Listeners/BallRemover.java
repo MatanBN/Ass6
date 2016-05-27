@@ -2,7 +2,7 @@ package Listeners;
 
 import Sprites.Ball;
 import Sprites.Block;
-import GameAttributes.Counter;
+import Game.Counter;
 import Animations.GameLevel;
 
 /**

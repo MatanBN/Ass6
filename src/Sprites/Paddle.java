@@ -4,7 +4,7 @@ import Geometry.Line;
 import Geometry.Point;
 import Geometry.Rectangle;
 import Environment.Collidable;
-import GameAttributes.Velocity;
+import Game.Velocity;
 import Animations.GameLevel;
 import biuoop.KeyboardSensor;
 import biuoop.DrawSurface;

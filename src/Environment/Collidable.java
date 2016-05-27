@@ -2,7 +2,7 @@ package Environment;
 
 import Geometry.Point;
 import Geometry.Rectangle;
-import GameAttributes.Velocity;
+import Game.Velocity;
 import Sprites.Ball;
 
 /**

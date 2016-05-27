@@ -2,7 +2,7 @@ package GameLevels;
 
 import Sprites.Block;
 import Sprites.Sprite;
-import GameAttributes.Velocity;
+import Game.Velocity;
 
 
 import java.util.List;

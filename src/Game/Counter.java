@@ -1,7 +1,7 @@
-package GameAttributes;
+package Game;
 
 /**
- * The GameAttributes.Counter is an object that has a counter of integers in order to be used in different classes
+ * The Counter is an object that has a counter of integers in order to be used in different classes
  * while keeping its value and changing it in different classes.
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016

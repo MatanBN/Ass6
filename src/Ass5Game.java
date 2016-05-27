@@ -1,5 +1,4 @@
-package Game;
-
+import Game.GameFlow;
 import GameLevels.*;
 import Animations.AnimationRunner;
 

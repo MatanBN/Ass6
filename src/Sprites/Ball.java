@@ -3,7 +3,7 @@ package Sprites;
 import Geometry.Line;
 import Geometry.Point;
 import Environment.CollisionInfo;
-import GameAttributes.Velocity;
+import Game.Velocity;
 import Animations.GameLevel;
 import Environment.GameEnvironment;
 import biuoop.DrawSurface;

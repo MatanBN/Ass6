@@ -3,7 +3,7 @@ package GameLevels;
 import Sprites.Block;
 import Sprites.RainyBackground;
 import Sprites.Sprite;
-import GameAttributes.Velocity;
+import Game.Velocity;
 
 import java.awt.Color;
 import java.util.ArrayList;

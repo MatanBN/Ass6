@@ -3,8 +3,8 @@ package Listeners;
 import Geometry.Point;
 import Sprites.Ball;
 import Sprites.Block;
-import GameAttributes.Counter;
-import GameAttributes.Velocity;
+import Game.Counter;
+import Game.Velocity;
 import Animations.GameLevel;
 
 

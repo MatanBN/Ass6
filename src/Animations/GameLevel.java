@@ -1,8 +1,8 @@
 package Animations;
 
 import Environment.Collidable;
-import GameAttributes.Counter;
-import GameAttributes.Velocity;
+import Game.Counter;
+import Game.Velocity;
 import Geometry.Point;
 import Geometry.Rectangle;
 import Listeners.BallRemover;
@@ -157,7 +157,6 @@ public class GameLevel implements Animation {
         Block block = new Block(x, y, width, height, c);
         block.setHitsNumber(0);
         block.addToGame(this);
-
     }
 
     /**
@@ -231,7 +230,9 @@ public class GameLevel implements Animation {
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboard));
         }
-        if (blockCounter.getValue() == 0 || ballCounter.getValue() == 0) {
+        if (blockCounter.getValue() == 0) {
+            this.running = false;
+        } else if (ballCounter.getValue() == 0) {
             liveIndicator.decrease();
             this.running = false;
 
