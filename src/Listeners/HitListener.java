@@ -1,7 +1,7 @@
-package Listeners;
+package listeners;
 
-import Sprites.Ball;
-import Sprites.Block;
+import sprites.Ball;
+import sprites.Block;
 
 /**
  * HitListener Objects are notified of hit events.

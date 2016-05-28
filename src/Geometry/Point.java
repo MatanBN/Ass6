@@ -1,4 +1,4 @@
-package Geometry;
+package geometry;
 
 /**
  * The Point class has two coordinates, x and and y and has methods to calculate

@@ -1,4 +1,4 @@
-package Sprites;
+package sprites;
 
 import biuoop.DrawSurface;
 
@@ -13,7 +13,7 @@ public class LiveIndicator implements Sprite {
     private int lives; // The lives status
 
     /**
-     * The constructor gets the number of lives from the Game.gameLevel
+     * The constructor gets the number of lives from the game.gameLevel
      * @param lives is the lives status variable
      */
     public LiveIndicator(int lives) {

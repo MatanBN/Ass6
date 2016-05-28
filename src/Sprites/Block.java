@@ -1,13 +1,13 @@
-package Sprites;
+package sprites;
 
-import Geometry.Line;
-import Geometry.Point;
-import Geometry.Rectangle;
-import Listeners.HitListener;
-import Listeners.HitNotifier;
-import Environment.Collidable;
-import Game.Velocity;
-import Animations.GameLevel;
+import geometry.Line;
+import geometry.Point;
+import geometry.Rectangle;
+import listeners.HitListener;
+import listeners.HitNotifier;
+import environment.Collidable;
+import game.Velocity;
+import animations.GameLevel;
 import biuoop.DrawSurface;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     private java.util.List<HitListener> hitListeners;
 
     /**
-     * Sprites.Block creates a new rectangle block by a given rectangle.
+     * sprites.Block creates a new rectangle block by a given rectangle.
      * @param r is a given rectangle.
      */
     public Block(Rectangle r) {
@@ -38,7 +38,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
     /**
-     * Sprites.Block creates a new rectangle block by it's width and height.
+     * sprites.Block creates a new rectangle block by it's width and height.
      * @param width  is the rectangle's width.
      * @param height is the rectangle's height.
      * @param c the color of the block/rectangle.
@@ -50,7 +50,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
     /**
-     * Sprites.Block creates a new rectangle block by it's left corner coordinates,
+     * sprites.Block creates a new rectangle block by it's left corner coordinates,
      * width and height.
      * @param x is the x coordinate of left corner.
      * @param y is the y coordinate of left corner.
@@ -140,8 +140,8 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
     /**
-     * addToGame is in charge of adding the block as a Sprites.Sprite and as a
-     * Environment.Collidable to the game's suitable lists.
+     * addToGame is in charge of adding the block as a sprites.Sprite and as a
+     * environment.Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
     public void addToGame(GameLevel g) {

@@ -1,6 +1,6 @@
-package Animations;
+package animations;
 
-import Sprites.SpriteCollection;
+import sprites.SpriteCollection;
 import biuoop.DrawSurface;
 import biuoop.Sleeper;
 

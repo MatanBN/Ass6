@@ -1,11 +1,11 @@
-package Sprites;
+package sprites;
 
-import Geometry.Line;
-import Geometry.Point;
-import Geometry.Rectangle;
-import Environment.Collidable;
-import Game.Velocity;
-import Animations.GameLevel;
+import geometry.Line;
+import geometry.Point;
+import geometry.Rectangle;
+import environment.Collidable;
+import game.Velocity;
+import animations.GameLevel;
 import biuoop.KeyboardSensor;
 import biuoop.DrawSurface;
 
@@ -198,7 +198,7 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * addToGame is in charge of adding the paddle as a sprite and as a
-     * Environment.Collidable to the game's suitable lists.
+     * environment.Collidable to the game's suitable lists.
      * @param g is the game object we created.
      */
     public void addToGame(GameLevel g) {
