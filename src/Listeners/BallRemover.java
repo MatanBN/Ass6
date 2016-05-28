@@ -1,13 +1,14 @@
-package Listeners;
+package listeners;
 
-import Sprites.Ball;
-import Sprites.Block;
-import Game.Counter;
-import Animations.GameLevel;
+import sprites.Ball;
+import sprites.Block;
+import game.Counter;
+import animations.GameLevel;
 
 /**
  * BallRemover is in charge of removing balls from the gameLevel, as well as keeping count
  * of the number of balls that remain.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -19,7 +20,8 @@ public class BallRemover implements HitListener {
 
     /**
      * The constructor gets the gamelevel and a counter of the removed balls.
-     * @param gameLevel is the current gamelevel of the game.
+     *
+     * @param gameLevel    is the current gamelevel of the game.
      * @param removedBalls a counter that holds the removed balls number.
      */
     public BallRemover(GameLevel gameLevel, Counter removedBalls) {
@@ -33,8 +35,9 @@ public class BallRemover implements HitListener {
 
     /**
      * hitEvent notifies that there is a hit with a "BallRemover" block and removes the ball.
+     *
      * @param deathRegion is the block on the bottom of the screen and in charge of removing the balls.
-     * @param beingHit is the ball that hit the block.
+     * @param beingHit    is the ball that hit the block.
      */
     public void hitEvent(Block deathRegion, Ball beingHit) {
         beingHit.removeFromGame(gameLevel);

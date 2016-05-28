@@ -1,6 +1,6 @@
-package Sprites;
+package sprites;
 
-import Game.Counter;
+import game.Counter;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
@@ -8,6 +8,7 @@ import java.awt.Color;
 
 /**
  * The ScoreIndicator class contains the current score and has methods to draw the score.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -32,6 +33,7 @@ public class ScoreIndicator implements Sprite {
 
     /**
      * getScore returns the score counter.
+     *
      * @return the score counter.
      */
     public Counter getScore() {
@@ -40,6 +42,7 @@ public class ScoreIndicator implements Sprite {
 
     /**
      * drawOn method draws the score to the surface.
+     *
      * @param d the DrawSurface to draw the sprite on.
      */
     @Override

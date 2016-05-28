@@ -1,9 +1,9 @@
-package GameLevels;
+package gamelevels;
 
-import Sprites.Block;
-import Sprites.Sprite;
-import Sprites.Target;
-import Game.Velocity;
+import sprites.Block;
+import sprites.Sprite;
+import sprites.Target;
+import game.Velocity;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * The DirectHit class is a level information class that contains information on the first level DirectHit level.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -26,6 +27,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * initialBallVelocities method returns all of the balls velocities of this level.
+     *
      * @return a list of ball velocities..
      */
     @Override
@@ -37,6 +39,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * paddleSpeed method returns the speed of the paddle in this level.
+     *
      * @return the speed of the paddle.
      */
     @Override
@@ -46,6 +49,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * paddleWidth method returns the width of the paddle in this level.
+     *
      * @return the width of the paddle.
      */
     @Override
@@ -55,6 +59,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * levelName method returns the name of this level.
+     *
      * @return the name this level.
      */
     @Override
@@ -64,6 +69,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * getBackground method returns a Sprite of the background of this level.
+     *
      * @return a Sprite of this background's level.
      */
     @Override
@@ -74,6 +80,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * blocks method returns a list of blocks of this level.
+     *
      * @return a list of blocks of this level.
      */
     @Override
@@ -86,6 +93,7 @@ public class DirectHit implements LevelInformation {
 
     /**
      * numberOfBlocksToRemove method returns the number of blocks in this level.
+     *
      * @return the number of blocks in this level.
      */
     @Override

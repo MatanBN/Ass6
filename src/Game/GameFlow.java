@@ -1,17 +1,18 @@
-package Game;
+package game;
 
-import Animations.EndScreen;
-import Animations.GameLevel;
-import GameLevels.LevelInformation;
-import Animations.AnimationRunner;
-import Sprites.LiveIndicator;
-import Sprites.ScoreIndicator;
+import animations.EndScreen;
+import animations.GameLevel;
+import gamelevels.LevelInformation;
+import animations.AnimationRunner;
+import sprites.LiveIndicator;
+import sprites.ScoreIndicator;
 import biuoop.KeyboardSensor;
 
 import java.util.List;
 
 /**
  * The GameFlow class controls the different levels of the game.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -26,6 +27,7 @@ public class GameFlow {
      *
      * @param ar The Animation Runner of the game.
      * @param ks The KeyboardSensor of the game.
+     * @param lives is the number of live.
      */
     public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives) {
         this.ar = ar;
@@ -36,6 +38,7 @@ public class GameFlow {
 
     /**
      * runLevels method runs a given list of levels.
+     *
      * @param levels a list of levels.
      */
     public void runLevels(List<LevelInformation> levels) {

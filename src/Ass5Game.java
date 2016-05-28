@@ -1,6 +1,10 @@
-import Game.GameFlow;
-import GameLevels.*;
-import Animations.AnimationRunner;
+import game.GameFlow;
+import gamelevels.DirectHit;
+import gamelevels.FinalFour;
+import gamelevels.Green3;
+import gamelevels.WideEasy;
+import gamelevels.LevelInformation;
+import animations.AnimationRunner;
 import biuoop.GUI;
 
 import java.util.ArrayList;
@@ -8,6 +12,7 @@ import java.util.List;
 
 /**
  * The Ass5Game initializes and start the game.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -15,6 +20,7 @@ import java.util.List;
 public class Ass5Game {
     /**
      * The main creates the game object, initializes it and runs it.
+     *
      * @param args the input from command line.
      */
     public static void main(String[] args) {
@@ -27,7 +33,8 @@ public class Ass5Game {
     /**
      * The getListOfLevels method creates a list of levels according to the user's choise.
      *
-     * @param args the user's choise.
+     * @param args the user's choice.
+     * @return the current level.
      */
     private static List<LevelInformation> getListOfLevels(String[] args) {
         List<LevelInformation> myLevels = new ArrayList<LevelInformation>();
@@ -38,17 +45,18 @@ public class Ass5Game {
         if (args.length == 0) {
             return myLevels;
         } else {
-            List<LevelInformation> levelsChoise = new ArrayList<LevelInformation>();
+            List<LevelInformation> levelsChoice = new ArrayList<LevelInformation>();
             for (int i = 0; i < args.length; ++i) {
                 try {
                     int levelNum = Integer.parseInt(args[i]);
                     if (levelNum >= 1 && levelNum <= 4) {
-                        levelsChoise.add(myLevels.get(levelNum - 1));
+                        levelsChoice.add(myLevels.get(levelNum - 1));
                     }
                 } catch (Exception e) {
+                    System.out.println("Invalid level");
                 }
             }
-            return levelsChoise;
+            return levelsChoice;
         }
     }
 }

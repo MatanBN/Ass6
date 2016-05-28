@@ -1,3 +1,3 @@
 
-Matan - Document Game, RainyBackground, Target
+Matan - Document game, RainyBackground, Target
 Nir - Others.

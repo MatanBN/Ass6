@@ -1,4 +1,4 @@
-package Sprites;
+package sprites;
 
 import biuoop.DrawSurface;
 
@@ -7,6 +7,7 @@ import java.awt.Color;
 
 /**
  * The GreenBackground class is a class for the background of the fourth level.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -23,13 +24,12 @@ public class RainyBackground implements Sprite {
         int width = d.getWidth();
 
 
-
         d.setColor(new Color(0, 100, 255));
         d.fillRectangle(0, 0, width - 20, height);
 
         d.setColor(Color.white);
-        for (int i=0; i<12; i++){
-            d.drawLine(600-(i*6), 450, 590-(i*6), 600);
+        for (int i = 0; i < 12; i++) {
+            d.drawLine(600 - (i * 6), 450, 590 - (i * 6), 600);
         }
         d.setColor(Color.lightGray);
         d.fillCircle(590, 450, 18);
@@ -38,8 +38,8 @@ public class RainyBackground implements Sprite {
         d.fillCircle(565, 458, 15);
 
         d.setColor(Color.white);
-        for (int i=0; i<12; i++){
-            d.drawLine(200-(i*6), 300, 140-(i*6), 600);
+        for (int i = 0; i < 12; i++) {
+            d.drawLine(200 - (i * 6), 300, 140 - (i * 6), 600);
         }
 
         d.setColor(Color.lightGray);

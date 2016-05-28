@@ -1,4 +1,4 @@
-package Sprites;
+package sprites;
 
 import biuoop.DrawSurface;
 

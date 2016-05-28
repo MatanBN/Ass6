@@ -1,9 +1,9 @@
-package GameLevels;
+package gamelevels;
 
-import Sprites.Block;
-import Sprites.GreenBackground;
-import Sprites.Sprite;
-import Game.Velocity;
+import sprites.Block;
+import sprites.GreenBackground;
+import sprites.Sprite;
+import game.Velocity;
 
 
 import java.awt.Color;
@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The Green3 class is the third level of the game.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -32,15 +33,16 @@ public class Green3 implements LevelInformation {
      * @return a list of ball velocities..
      */
     public List<Velocity> initialBallVelocities() {
-        List <Velocity> v = new ArrayList() ;
-        for (int i=0; i<this.numberOfBalls(); i++){
-            v.add(new Velocity (0,3));
+        List<Velocity> v = new ArrayList();
+        for (int i = 0; i < this.numberOfBalls(); i++) {
+            v.add(new Velocity(0, 3));
         }
         return v;
     }
 
     /**
      * paddleSpeed method returns the speed of the paddle in this level.
+     *
      * @return the speed of the paddle.
      */
     public int paddleSpeed() {
@@ -49,6 +51,7 @@ public class Green3 implements LevelInformation {
 
     /**
      * paddleWidth method returns the width of the paddle in this level.
+     *
      * @return the width of the paddle.
      */
     public int paddleWidth() {
@@ -57,6 +60,7 @@ public class Green3 implements LevelInformation {
 
     /**
      * levelName method returns the name of this level.
+     *
      * @return the name this level.
      */
     public String levelName() {
@@ -65,6 +69,7 @@ public class Green3 implements LevelInformation {
 
     /**
      * getBackground method returns a Sprite of the background of this level.
+     *
      * @return a Sprite of this background's level.
      */
     public Sprite getBackground() {
@@ -73,15 +78,16 @@ public class Green3 implements LevelInformation {
 
     /**
      * blocks method returns a list of blocks of this level.
+     *
      * @return a list of blocks of this level.
      */
     public List<Block> blocks() {
-        List <Block> blocks = new ArrayList();
+        List<Block> blocks = new ArrayList();
         for (int i = 0; i <= 5; i++) {
             int numberOfBlockPerRow = 12 - i;
             int rowYCoordinate = 80 + i * 20;
             for (int j = 0; j <= numberOfBlockPerRow; j++) {
-               blocks.add(new Block (740 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i)));
+                blocks.add(new Block(740 - (j * 40), rowYCoordinate, 40, 20, chooseRowColor(i)));
             }
         }
 
@@ -90,6 +96,7 @@ public class Green3 implements LevelInformation {
 
     /**
      * numberOfBlocksToRemove method returns the number of blocks in this level.
+     *
      * @return the number of blocks in this level.
      */
     public int numberOfBlocksToRemove() {

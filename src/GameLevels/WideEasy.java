@@ -1,9 +1,9 @@
-package GameLevels;
+package gamelevels;
 
-import Sprites.Block;
-import Sprites.Sprite;
-import Game.Velocity;
-import Sprites.WideBackground;
+import sprites.Block;
+import sprites.Sprite;
+import game.Velocity;
+import sprites.WideBackground;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The WideEasy class is the second level of the game.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -32,15 +33,16 @@ public class WideEasy implements LevelInformation {
      * @return a list of ball velocities..
      */
     public List<Velocity> initialBallVelocities() {
-        List <Velocity> v = new ArrayList() ;
+        List<Velocity> v = new ArrayList();
         for (int i = 0; i < this.numberOfBalls(); i++) {
-            v.add(new Velocity (0,3));
+            v.add(new Velocity(0, 3));
         }
         return v;
     }
 
     /**
      * paddleSpeed method returns the speed of the paddle in this level.
+     *
      * @return the speed of the paddle.
      */
     public int paddleSpeed() {
@@ -49,6 +51,7 @@ public class WideEasy implements LevelInformation {
 
     /**
      * paddleWidth method returns the width of the paddle in this level.
+     *
      * @return the width of the paddle.
      */
     public int paddleWidth() {
@@ -57,6 +60,7 @@ public class WideEasy implements LevelInformation {
 
     /**
      * levelName method returns the name of this level.
+     *
      * @return the name this level.
      */
     public String levelName() {
@@ -65,6 +69,7 @@ public class WideEasy implements LevelInformation {
 
     /**
      * getBackground method returns a Sprite of the background of this level.
+     *
      * @return a Sprite of this background's level.
      */
     public Sprite getBackground() {
@@ -73,18 +78,20 @@ public class WideEasy implements LevelInformation {
 
     /**
      * blocks method returns a list of blocks of this level.
+     *
      * @return a list of blocks of this level.
      */
     public List<Block> blocks() {
-        List <Block> blocks = new ArrayList();
-        for (int i=0; i<19; i++) {
-            blocks.add(new Block ((i*40)+20, 250, 40, 20, chooseColor(i)));
+        List<Block> blocks = new ArrayList();
+        for (int i = 0; i < 19; i++) {
+            blocks.add(new Block((i * 40) + 20, 250, 40, 20, chooseColor(i)));
         }
         return blocks;
     }
 
     /**
      * numberOfBlocksToRemove method returns the number of blocks in this level.
+     *
      * @return the number of blocks in this level.
      */
     public int numberOfBlocksToRemove() {
@@ -99,23 +106,17 @@ public class WideEasy implements LevelInformation {
      */
     private Color chooseColor(int num) {
         Color color = Color.black;
-        if (num<3){
+        if (num < 3) {
             color = Color.blue;
-        }
-        else if (num<6){
+        } else if (num < 6) {
             color = Color.yellow;
-        }
-        else if (num<9){
+        } else if (num < 9) {
             color = Color.red;
-        }
-        else if (num<13){
+        } else if (num < 13) {
             color = Color.green;
-        }
-        else if (num<16){
+        } else if (num < 16) {
             color = Color.cyan;
-        }
-        else if (num<19)
-        {
+        } else if (num < 19) {
             color = Color.orange;
         }
         return color;

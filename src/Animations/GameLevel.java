@@ -1,24 +1,24 @@
-package Animations;
+package animations;
 
-import Environment.Collidable;
-import Game.Counter;
-import Game.Velocity;
-import Geometry.Point;
-import Geometry.Rectangle;
-import Listeners.BallAdder;
-import Listeners.BallRemover;
-import Listeners.BlockRemover;
-import Listeners.ScoreTrackingListener;
-import Sprites.SpriteCollection;
-import Sprites.Paddle;
-import Sprites.Block;
-import Sprites.LiveIndicator;
-import Sprites.ScoreIndicator;
-import Sprites.LevelIndicator;
-import Sprites.Ball;
-import Sprites.Sprite;
-import Environment.GameEnvironment;
-import GameLevels.LevelInformation;
+import environment.Collidable;
+import game.Counter;
+import game.Velocity;
+import geometry.Point;
+import geometry.Rectangle;
+import listeners.BallAdder;
+import listeners.BallRemover;
+import listeners.BlockRemover;
+import listeners.ScoreTrackingListener;
+import sprites.SpriteCollection;
+import sprites.Paddle;
+import sprites.Block;
+import sprites.LiveIndicator;
+import sprites.ScoreIndicator;
+import sprites.LevelIndicator;
+import sprites.Ball;
+import sprites.Sprite;
+import environment.GameEnvironment;
+import gamelevels.LevelInformation;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 
@@ -48,8 +48,9 @@ public class GameLevel implements Animation {
 
     /**
      * Constructor to create the GameLevel.
-     * @param level the LevelInformation.
-     * @param key the keyboard sensor of the game.
+     *
+     * @param level  the LevelInformation.
+     * @param key    the keyboard sensor of the game.
      * @param runner the animation runner of the game.
      */
     public GameLevel(LevelInformation level, KeyboardSensor key, AnimationRunner runner) {
@@ -101,6 +102,8 @@ public class GameLevel implements Animation {
     /**
      * initialize method draws the borders, ball, paddle and blocks on a new
      * gui.
+     * @param lives is the number of live
+     * @param myScore is number of the score.
      */
     public void initialize(LiveIndicator lives, ScoreIndicator myScore) {
         Rectangle borders = new Rectangle(800, 600);
@@ -166,9 +169,10 @@ public class GameLevel implements Animation {
 
     /**
      * createBall method creates a new ball to the game.
-     * @param p the center point of the ball.
+     *
+     * @param p      the center point of the ball.
      * @param radius the radius of the ball.
-     * @param v the velocity of the ball.
+     * @param v      the velocity of the ball.
      */
     public void createBall(Point p, int radius, Velocity v) {
         Ball ball = new Ball(p, radius, Color.WHITE, v, environment);
@@ -214,6 +218,7 @@ public class GameLevel implements Animation {
 
     /**
      * shouldStop method returns the not value of running.
+     *
      * @return the not value of the running variable.
      */
     public boolean shouldStop() {
@@ -222,6 +227,7 @@ public class GameLevel implements Animation {
 
     /**
      * doOneFrame method draws the game on the screen.
+     *
      * @param d the drawSurface to draw on.
      */
     public void doOneFrame(DrawSurface d) {
@@ -246,6 +252,7 @@ public class GameLevel implements Animation {
 
     /**
      * getBlockCounter returns the current number of blocks.
+     *
      * @return the current number of blocks.
      */
     public Counter getBlockCounter() {

@@ -1,11 +1,11 @@
-package Sprites;
+package sprites;
 
-import Geometry.Line;
-import Geometry.Point;
-import Environment.CollisionInfo;
-import Game.Velocity;
-import Animations.GameLevel;
-import Environment.GameEnvironment;
+import geometry.Line;
+import geometry.Point;
+import environment.CollisionInfo;
+import game.Velocity;
+import animations.GameLevel;
+import environment.GameEnvironment;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
@@ -14,6 +14,7 @@ import java.awt.Color;
  * The Ball class has a center Point, a radius, a color, and a velocity. The
  * class has method to draw the ball, and move the ball according to its
  * velocity.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -26,9 +27,10 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param p a Point which will be the center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
+     *
+     * @param p       a Point which will be the center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(Point p, int r, java.awt.Color color, GameEnvironment gameEnv) {
@@ -40,10 +42,11 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param x the x center of the ball.
-     * @param y the y center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
+     *
+     * @param x       the x center of the ball.
+     * @param y       the y center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(int x, int y, int r, Color color, GameEnvironment gameEnv) {
@@ -55,10 +58,11 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param p a Point which will be the center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
-     * @param v velocity of the ball.
+     *
+     * @param p       a Point which will be the center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
+     * @param v       velocity of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(Point p, int r, java.awt.Color color, Velocity v, GameEnvironment gameEnv) {
@@ -71,11 +75,12 @@ public class Ball implements Sprite {
 
     /**
      * Constructor to create the ball.
-     * @param x the x center of the ball.
-     * @param y the y center of the ball.
-     * @param r the radius of the ball.
-     * @param color the color of the ball.
-     * @param v velocity of the ball.
+     *
+     * @param x       the x center of the ball.
+     * @param y       the y center of the ball.
+     * @param r       the radius of the ball.
+     * @param color   the color of the ball.
+     * @param v       velocity of the ball.
      * @param gameEnv the game environment of the ball.
      */
     public Ball(int x, int y, int r, Color color, Velocity v, GameEnvironment gameEnv) {
@@ -88,6 +93,7 @@ public class Ball implements Sprite {
 
     /**
      * getX method returns the x coordinate of the center of the ball.
+     *
      * @return the x coordinate of the center of the ball.
      */
     public int getX() {
@@ -96,6 +102,7 @@ public class Ball implements Sprite {
 
     /**
      * getY method returns the y coordinate of the center of the ball.
+     *
      * @return the y coordinate of the center of the ball.
      */
     public int getY() {
@@ -104,6 +111,7 @@ public class Ball implements Sprite {
 
     /**
      * getSize method returns the radius of the ball.
+     *
      * @return the radius of the ball.
      */
     public int getSize() {
@@ -112,6 +120,7 @@ public class Ball implements Sprite {
 
     /**
      * getColor method returns the color of the ball.
+     *
      * @return the color of the ball.
      */
     public java.awt.Color getColor() {
@@ -120,6 +129,7 @@ public class Ball implements Sprite {
 
     /**
      * drawOn method draws the ball on a given surface.
+     *
      * @param surface the surface to draw the balls on.
      */
     public void drawOn(DrawSurface surface) {
@@ -131,6 +141,7 @@ public class Ball implements Sprite {
 
     /**
      * setVelocity sets the balls velocity.
+     *
      * @param newV the velocity to set.
      */
     public void setVelocity(Velocity newV) {
@@ -139,6 +150,7 @@ public class Ball implements Sprite {
 
     /**
      * setVelocity sets the balls velocity.
+     *
      * @param dx the velocity of the x plane.
      * @param dy the velocity of the y plane.
      */
@@ -148,6 +160,7 @@ public class Ball implements Sprite {
 
     /**
      * getVelocity gets the balls velocity.
+     *
      * @return the balls velocity.
      */
     public Velocity getVelocity() {
@@ -187,6 +200,7 @@ public class Ball implements Sprite {
     /**
      * addToGame is in charge of adding the paddle as a sprite to the game's
      * sprites list.
+     *
      * @param g is the game object we created.
      */
     public void addToGame(GameLevel g) {
@@ -197,8 +211,9 @@ public class Ball implements Sprite {
     /**
      * removeFromGame calls the removeSprite method in order to remove
      * the ball from the sprites collection.
+     *
      * @param gameLevel is the current level of the game which holds the
-     * ball as a member.
+     *                  ball as a member.
      */
     public void removeFromGame(GameLevel gameLevel) {
         gameLevel.removeSprite(this);

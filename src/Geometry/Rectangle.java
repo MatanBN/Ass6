@@ -1,6 +1,7 @@
-package Geometry;
+package geometry;
 
 import biuoop.DrawSurface;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * The Rectangle class has two coordinates, a width, a height and a color. The
  * Rectangle has methods to calculate its area and to draw the rectangle.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -21,7 +23,8 @@ public class Rectangle {
      * Rectangle is the constructor and creates the rectangle with upper left
      * point at (0,0) and initialize the width and height according to the user
      * parameters.
-     * @param width the desired width of the rectangle.
+     *
+     * @param width  the desired width of the rectangle.
      * @param height the desired height of the rectangle.
      */
     public Rectangle(int width, int height) {
@@ -34,9 +37,10 @@ public class Rectangle {
      * Rectangle is the constructor and creates the rectangle with upper left
      * point at (0,0) and initialize the width and height according to the user
      * parameters.
-     * @param width the desired width of the rectangle.
+     *
+     * @param width  the desired width of the rectangle.
      * @param height the desired height of the rectangle.
-     * @param c the desired color of the rectangle.
+     * @param c      the desired color of the rectangle.
      */
     public Rectangle(int width, int height, Color c) {
         this.upperLeft = new Point(0, 0);
@@ -48,9 +52,10 @@ public class Rectangle {
     /**
      * Rectangle is the constructor and creates the rectangle according to the
      * user parameters.
-     * @param x the x coordinate to start the rectangle from.
-     * @param y the y coordinate to start the rectangle from.
-     * @param width the desired width of the rectangle.
+     *
+     * @param x      the x coordinate to start the rectangle from.
+     * @param y      the y coordinate to start the rectangle from.
+     * @param width  the desired width of the rectangle.
      * @param height the desired height of the rectangle.
      */
     public Rectangle(int x, int y, int width, int height) {
@@ -62,11 +67,12 @@ public class Rectangle {
     /**
      * Rectangle is the constructor and creates the rectangle according to the
      * user parameters.
-     * @param x the x coordinate to start the rectangle from.
-     * @param y the y coordinate to start the rectangle from.
-     * @param width the desired width of the rectangle.
+     *
+     * @param x      the x coordinate to start the rectangle from.
+     * @param y      the y coordinate to start the rectangle from.
+     * @param width  the desired width of the rectangle.
      * @param height the desired height of the rectangle.
-     * @param c the desired color of the rectangle.
+     * @param c      the desired color of the rectangle.
      */
     public Rectangle(int x, int y, int width, int height, Color c) {
         this.upperLeft = new Point(x, y);
@@ -78,10 +84,11 @@ public class Rectangle {
     /**
      * Rectangle is the constructor and creates the rectangle according to the
      * user parameters.
+     *
      * @param upperLeft the x,y coordinates to start the rectangle from.
-     * @param width the desired width of the rectangle.
-     * @param height the desired height of the rectangle.
-     * @param c the desired color of the rectangle.
+     * @param width     the desired width of the rectangle.
+     * @param height    the desired height of the rectangle.
+     * @param c         the desired color of the rectangle.
      */
     public Rectangle(Point upperLeft, int width, int height, Color c) {
         this.upperLeft = upperLeft;
@@ -92,6 +99,7 @@ public class Rectangle {
 
     /**
      * getWidth method returns the width of the rectangle.
+     *
      * @return the width of the rectangle.
      */
     public int getWidth() {
@@ -100,6 +108,7 @@ public class Rectangle {
 
     /**
      * getHeight method returns the height of the rectangle.
+     *
      * @return the height of the rectangle.
      */
     public int getHeight() {
@@ -108,6 +117,7 @@ public class Rectangle {
 
     /**
      * getX method returns the left x of the rectangle.
+     *
      * @return the left x of the rectangle.
      */
     public int getX() {
@@ -116,6 +126,7 @@ public class Rectangle {
 
     /**
      * getY method returns the upper y of the rectangle.
+     *
      * @return the upper y of the rectangle.
      */
     public int getY() {
@@ -125,6 +136,7 @@ public class Rectangle {
     /**
      * getMaxX method returns the maximum x coordinate that the rectangle
      * reaches.
+     *
      * @return the maximum x coordinate that the rectangle reaches.
      */
     public int getMaxX() {
@@ -134,6 +146,7 @@ public class Rectangle {
     /**
      * getMaxY method returns the maximum y coordinate that the rectangle
      * reaches.
+     *
      * @return the maximum y coordinate that the rectangle reaches.
      */
     public int getMaxY() {
@@ -142,6 +155,7 @@ public class Rectangle {
 
     /**
      * getArea method returns the area of the rectangle.
+     *
      * @return the area of the rectangle.
      */
     public int getArea() {
@@ -150,6 +164,7 @@ public class Rectangle {
 
     /**
      * setColor method sets the color of the rectangle.
+     *
      * @param c the desired color for the rectangle.
      */
     public void setColor(Color c) {
@@ -158,6 +173,7 @@ public class Rectangle {
 
     /**
      * drawOn method draws the rectangle.
+     *
      * @param d the DrawSurface to draw the rectangle on.
      * @throws NullPointerException if the color hasn't been initialized.
      */
@@ -179,6 +195,7 @@ public class Rectangle {
     /**
      * intersectionPoints method finds all of the intersection points of the
      * rectangle with a line.
+     *
      * @param line which will be the line to check the intersection with.
      * @return A list of all of the intersection points.
      */
@@ -202,6 +219,7 @@ public class Rectangle {
 
     /**
      * getLeftEdge method returns the left edge of the rectangle.
+     *
      * @return The left edge of the rectangle.
      */
     public Line getLeftEdge() {
@@ -210,6 +228,7 @@ public class Rectangle {
 
     /**
      * getRightEdge method returns the right edge of the rectangle.
+     *
      * @return The right edge of the rectangle.
      */
     public Line getRightEdge() {
@@ -218,6 +237,7 @@ public class Rectangle {
 
     /**
      * getTopEdge method returns the top edge of the rectangle.
+     *
      * @return The top edge of the rectangle.
      */
     public Line getTopEdge() {
@@ -226,6 +246,7 @@ public class Rectangle {
 
     /**
      * getBottomEdge method returns the bottom edge of the rectangle.
+     *
      * @return The bottom edge of the rectangle.
      */
     public Line getBottomEdge() {
@@ -234,6 +255,7 @@ public class Rectangle {
 
     /**
      * getUpperLeft method returns the upper left corner of the rectangle.
+     *
      * @return the upper left corner of the rectangle..
      */
     public Point getUpperLeft() {
@@ -242,6 +264,7 @@ public class Rectangle {
 
     /**
      * getColor method returns the color of the rectangle.
+     *
      * @return the color of the rectangle.
      */
     public Color getColor() {

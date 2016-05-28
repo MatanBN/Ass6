@@ -1,10 +1,12 @@
-package Sprites;
+package sprites;
 
 import java.util.ArrayList;
 
 import biuoop.DrawSurface;
+
 /**
  * SpriteCollection is a list of the sprites in the game.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -21,6 +23,7 @@ public class SpriteCollection {
 
     /**
      * addSprite adds a given sprite to the list.
+     *
      * @param s is a new sprite
      */
     public void addSprite(Sprite s) {
@@ -48,6 +51,7 @@ public class SpriteCollection {
 
     /**
      * drawAllOn calls drawOn on all sprites.
+     *
      * @param d is the surface to draw the sprites on.
      */
     public void drawAllOn(DrawSurface d) {
@@ -59,6 +63,7 @@ public class SpriteCollection {
 
     /**
      * getSprite returns a specific sprite from the list.
+     *
      * @param index is the index of a given sprite.
      * @return the required sprite from the list.
      */
