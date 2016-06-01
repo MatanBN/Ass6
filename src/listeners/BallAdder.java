@@ -34,7 +34,7 @@ public class BallAdder implements HitListener {
      * @param hitter   is the ball that hit the block.
      */
     public void hitEvent(Block beingHit, Ball hitter) {
-        gameLevel.createBall(new Point(50, 90), 2, new Velocity(4, -3));
+        gameLevel.createBall(new Point(50, 90), 2, new Velocity(240, -180));
         beingHit.removeHitListener(this);
     }
 }

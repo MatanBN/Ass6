@@ -1,8 +1,10 @@
 import animations.AnimationRunner;
 import biuoop.GUI;
 import game.GameFlow;
+import game.HighScoresTable;
 import gamelevels.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,9 @@ public class Ass5Game {
     public static void main(String[] args) {
         GUI gui = new GUI("Arkanoid", 800, 600);
         AnimationRunner myAnimationRunner = new AnimationRunner(60, gui);
-        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7);
+        HighScoresTable myScores = new HighScoresTable(10);
+        myScores.loadFromFile(new File("highscores"));
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores);
         gameFlow.runLevels(getListOfLevels(args));
     }
 

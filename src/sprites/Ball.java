@@ -171,22 +171,24 @@ public class Ball implements Sprite {
      * moveOneStep Changes the center of the ball according to the balls
      * velocity.
      */
-    public void moveOneStep() {
+    public void moveOneStep(double dt) {
+        Velocity frameVelocity = new Velocity(v.getDx() * dt, v.getDy() * dt);
         // Get the trajectory.
-        Line traj = new Line(this.center, this.v.applyToPoint(this.center));
+        Line traj = new Line(this.center, frameVelocity.applyToPoint(this.center));
         // Calculate the collision point if such exists.
         CollisionInfo myInfo = gameEnv.getClosestCollision(traj);
         if (myInfo.collisionPoint() != null) {
             // Calculate and apply the brake speed so the ball's center point
             // wont go over the border.
-            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX() - (int) Math.signum(v.getDx()),
-                    myInfo.collisionPoint().getY() - this.getY() - (int) Math.signum(v.getDy()));
+            Velocity tempV = new Velocity(myInfo.collisionPoint().getX() - this.getX()
+                    - (int) Math.signum(frameVelocity.getDx()), myInfo.collisionPoint().getY() - this.getY()
+                    - (int) Math.signum(v.getDy()));
             this.center = tempV.applyToPoint(this.center);
             // Adjust the speed after collision
-            Velocity newV = (myInfo.collisionObject()).hit(this, myInfo.collisionPoint(), v);
+            Velocity newV = (myInfo.collisionObject()).hit(this, myInfo.collisionPoint(), frameVelocity);
             setVelocity(newV);
         } else {
-            this.center = v.applyToPoint(this.center);
+            this.center = frameVelocity.applyToPoint(this.center);
         }
     }
 
@@ -194,7 +196,7 @@ public class Ball implements Sprite {
      * timePassed calls the moveOneStep method in order to move the ball.
      */
     public void timePassed(double dt) {
-        moveOneStep();
+        moveOneStep(dt);
     }
 
     /**

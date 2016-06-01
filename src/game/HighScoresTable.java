@@ -9,21 +9,32 @@ import java.util.List;
  */
 public class HighScoresTable {
     private List <ScoreInfo> table;
+    private int tableCapacity;
 
     // Create an empty high-scores table with the specified size.
     // The size means that the table holds up to size top scores.
     public HighScoresTable(int size) {
-        table = new ArrayList(size);
+        table = new ArrayList<ScoreInfo>();
+        tableCapacity = size;
     }
 
     // Add a high-score.
     public void add(ScoreInfo score) {
-        int i = getRank(score.getScore());
-        if (i < table.size()) {
-            for (int j = table.size() - 1; j > i; j--) {
-                table.add(j, table.get(--j));
+        if (table.size() == 0) {
+            table.add(score);
+        } else {
+            List<ScoreInfo> newScoreInfo = new ArrayList<ScoreInfo>();
+            int i = getRank(score.getScore());
+            if (i < size()) {
+                for (int j = 0; j < i; ++j) {
+                    newScoreInfo.add(table.get(j));
+                }
+                newScoreInfo.add(score);
+                for (int j = i; j < table.size(); ++j) {
+                    newScoreInfo.add(table.get(j));
+                }
+                table = newScoreInfo;
             }
-            table.add(i,score);
         }
     }
 
@@ -34,9 +45,13 @@ public class HighScoresTable {
         }
     }
 
+    public int currentSize() {
+        return table.size();
+    }
+
     // Return table size.
     public int size() {
-        return table.size();
+        return this.tableCapacity;
     }
 
     // Return the current high scores.
@@ -54,7 +69,7 @@ public class HighScoresTable {
     //      be added to the list.
     public int getRank(int score) {
         int i = 0;
-        while (i < table.size() && table.get(i).getScore() > score) {
+        while (i < this.size() && i < table.size() && table.get(i).getScore() > score) {
             i++;
         }
         return i;
@@ -137,5 +152,9 @@ public class HighScoresTable {
         HighScoresTable newScores = new HighScoresTable(ds.size());
         newScores.add(ds);
         return newScores;
+    }
+
+    public ScoreInfo getScore(int index) {
+        return this.table.get(index);
     }
 }
