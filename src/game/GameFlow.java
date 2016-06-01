@@ -1,13 +1,15 @@
 package game;
 
+import animations.AnimationRunner;
 import animations.EndScreen;
 import animations.GameLevel;
+import biuoop.KeyboardSensor;
 import gamelevels.LevelInformation;
-import animations.AnimationRunner;
 import sprites.LiveIndicator;
 import sprites.ScoreIndicator;
-import biuoop.KeyboardSensor;
 
+import javax.swing.text.TabableView;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +27,8 @@ public class GameFlow {
     /**
      * Constructor for the GameFlow class.
      *
-     * @param ar The Animation Runner of the game.
-     * @param ks The KeyboardSensor of the game.
+     * @param ar    The Animation Runner of the game.
+     * @param ks    The KeyboardSensor of the game.
      * @param lives is the number of live.
      */
     public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives) {
@@ -42,9 +44,11 @@ public class GameFlow {
      * @param levels a list of levels.
      */
     public void runLevels(List<LevelInformation> levels) {
+        HighScoresTable tb = new HighScoresTable(3);
         for (LevelInformation levelInfo : levels) {
             GameLevel level = new GameLevel(levelInfo, this.ks, this.ar);
             level.initialize(liveIndicator, score);
+            tb.add(new ScoreInfo("Mat", score.getScore().getValue()));
             while (level.getBlockCounter().getValue() != 0 && liveIndicator.getValue() != 0) {
                 level.playOneTurn();
             }
@@ -58,6 +62,10 @@ public class GameFlow {
             }
         }
         ar.run(new EndScreen(ks, liveIndicator, score));
+        List<ScoreInfo> scores = tb.getHighScores();
+        for (ScoreInfo sc : scores) {
+            System.out.println(sc.getName() + ":" + sc.getScore());
+        }
         ar.getGui().close();
     }
 }
