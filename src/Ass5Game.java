@@ -31,7 +31,7 @@ public class Ass5Game {
     }
 
     /**
-     * The getListOfLevels method creates a list of levels according to the user's choise.
+     * The getListOfLevels method creates a list of levels according to the user's choice.
      *
      * @param args the user's choice.
      * @return the current level.

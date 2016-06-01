@@ -19,5 +19,5 @@ public interface Sprite {
     /**
      * Notify the sprite that time has passed.
      */
-    void timePassed();
+    void timePassed(double dt);
 }

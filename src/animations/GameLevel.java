@@ -230,14 +230,14 @@ public class GameLevel implements Animation {
      *
      * @param d the drawSurface to draw on.
      */
-    public void doOneFrame(DrawSurface d) {
+    public void doOneFrame(DrawSurface d, double dt) {
         // the logic from the previous playOneTurn method goes here.
         // the `return` or `break` statements should be replaced with
         // this.running = false;
         this.sprites.drawAllOn(d);
         d.setColor(Color.black);
 
-        this.sprites.notifyAllTimePassed();
+        this.sprites.notifyAllTimePassed(dt);
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboard));
         }

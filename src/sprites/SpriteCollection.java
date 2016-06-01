@@ -42,10 +42,10 @@ public class SpriteCollection {
     /**
      * notifyAllTimePassed calls the timePassed method on all sprites.
      */
-    public void notifyAllTimePassed() {
+    public void notifyAllTimePassed(double dt) {
         ArrayList spritesCopy = new ArrayList(sprites);
         for (Object s : spritesCopy) {
-            ((Sprite) s).timePassed();
+            ((Sprite) s).timePassed(dt);
         }
     }
 

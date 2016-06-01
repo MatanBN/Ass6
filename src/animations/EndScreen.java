@@ -42,7 +42,7 @@ public class EndScreen implements Animation {
      * @param d the drawSurface to draw on.
      */
     @Override
-    public void doOneFrame(DrawSurface d) {
+    public void doOneFrame(DrawSurface d, double dt) {
         if (liveIndicator.getValue() == 0) {
             d.setColor(Color.black);
             d.fillRectangle(0, 0, 800, 600);

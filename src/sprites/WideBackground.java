@@ -36,7 +36,7 @@ public class WideBackground implements Sprite {
     /**
      * Currently dosen't do anything.
      */
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 

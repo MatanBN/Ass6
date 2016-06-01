@@ -55,7 +55,7 @@ public class RainyBackground implements Sprite {
      * Currently dosen't do anything.
      */
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 }

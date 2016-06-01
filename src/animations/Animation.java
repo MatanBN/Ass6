@@ -16,7 +16,7 @@ public interface Animation {
      *
      * @param d the drawSurface to draw on.
      */
-    void doOneFrame(DrawSurface d);
+    void doOneFrame(DrawSurface d, double dt);
 
     /**
      * shouldStop method returns the value of running.

@@ -49,7 +49,7 @@ public class LiveIndicator implements Sprite {
      * Currently doesn't do anything.
      */
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 }

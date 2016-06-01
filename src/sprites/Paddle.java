@@ -35,7 +35,7 @@ public class Paddle implements Sprite, Collidable {
      */
     public Paddle(biuoop.KeyboardSensor key, Rectangle rec, Rectangle border, int speed, Color color) {
         this.keyboard = key;
-        this.speed = speed;
+        this.speed = speed*50;
         this.rectangle = new Rectangle(rec.getUpperLeft(), rec.getWidth(), rec.getHeight(), color);
         this.borders = border;
         this.regions = new ArrayList();
@@ -58,9 +58,9 @@ public class Paddle implements Sprite, Collidable {
      * whether the next x coordinate is out left edge or not and moves it as it
      * should.
      */
-    public void moveLeft() {
-        if (rectangle.getX() - this.speed >= borders.getX() + 20) {
-            rectangle.getUpperLeft().setX(rectangle.getX() - this.speed);
+    public void moveLeft(double newSpeed) {
+        if (rectangle.getX() - newSpeed >= borders.getX() + 20) {
+            rectangle.getUpperLeft().setX(rectangle.getX() - newSpeed);
             alignRegions();
         } else {
             rectangle.getUpperLeft().setX(borders.getX() + 20);
@@ -72,9 +72,9 @@ public class Paddle implements Sprite, Collidable {
      * whether the next x coordinate is out right edge or not and moves it as it
      * should.
      */
-    public void moveRight() {
-        if (rectangle.getX() + rectangle.getWidth() + this.speed <= borders.getWidth() - 20) {
-            rectangle.getUpperLeft().setX(rectangle.getX() + this.speed);
+    public void moveRight(double newSpeed) {
+        if (rectangle.getX() + rectangle.getWidth() + newSpeed <= borders.getWidth() - 20) {
+            rectangle.getUpperLeft().setX(rectangle.getX() + newSpeed);
             alignRegions();
         } else {
             rectangle.getUpperLeft().setX(borders.getWidth() - rectangle.getWidth() - 20);
@@ -112,12 +112,13 @@ public class Paddle implements Sprite, Collidable {
      * right key and calls the suitable method in order to move it to the right
      * side.
      */
-    public void timePassed() {
+    public void timePassed(double dt) {
+        double newSpeed=this.speed*dt;
         if (keyboard.isPressed(KeyboardSensor.LEFT_KEY)) {
-            moveLeft();
+            moveLeft(newSpeed);
         }
         if (keyboard.isPressed(KeyboardSensor.RIGHT_KEY)) {
-            moveRight();
+            moveRight(newSpeed);
         }
     }
 

@@ -34,7 +34,7 @@ public class PauseScreen implements Animation {
      *
      * @param d the drawSurface to draw on.
      */
-    public void doOneFrame(DrawSurface d) {
+    public void doOneFrame(DrawSurface d, double dt) {
         d.setColor(Color.YELLOW);
         d.fillRectangle(0, 0, d.getWidth(), d.getHeight());
         d.setColor(Color.BLACK);

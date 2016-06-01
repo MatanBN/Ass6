@@ -138,7 +138,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * Currently doesn't do anything.
      */
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 

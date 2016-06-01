@@ -193,7 +193,7 @@ public class Ball implements Sprite {
     /**
      * timePassed calls the moveOneStep method in order to move the ball.
      */
-    public void timePassed() {
+    public void timePassed(double dt) {
         moveOneStep();
     }
 

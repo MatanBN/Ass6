@@ -37,7 +37,7 @@ public class CountdownAnimation implements Animation {
      * doOneFrame method draws the numbers from contFrom to 1 on the screen.
      * @param d the drawSurface to draw on.
      */
-    public void doOneFrame(DrawSurface d) {
+    public void doOneFrame(DrawSurface d, double dt) {
         String s;
         Sleeper sleeper = new Sleeper();
         screen.drawAllOn(d);

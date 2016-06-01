@@ -31,13 +31,13 @@ public class AnimationRunner {
      */
     public void run(Animation animation) {
         Sleeper sleeper = new Sleeper();
-
+        double dt = 1/(double)framesPerSecond;
         int millisecondsPerFrame = 1000 / framesPerSecond;
         while (!animation.shouldStop()) {
             long startTime = System.currentTimeMillis(); // timing
             DrawSurface d = this.gui.getDrawSurface();
 
-            animation.doOneFrame(d);
+            animation.doOneFrame(d, dt);
             gui.show(d);
 
             long usedTime = System.currentTimeMillis() - startTime;
