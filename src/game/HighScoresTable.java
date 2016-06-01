@@ -54,7 +54,7 @@ public class HighScoresTable {
     //      be added to the list.
     public int getRank(int score) {
         int i = 0;
-        while (table.get(i).getScore() > score) {
+        while (i < table.size() && table.get(i).getScore() > score) {
             i++;
         }
         return i;
