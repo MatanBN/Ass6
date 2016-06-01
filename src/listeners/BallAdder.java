@@ -1,10 +1,10 @@
 package listeners;
 
+import animations.GameLevel;
+import game.Velocity;
 import geometry.Point;
 import sprites.Ball;
 import sprites.Block;
-import game.Velocity;
-import animations.GameLevel;
 
 
 /**

@@ -1,11 +1,12 @@
 package animations;
 
-import biuoop.GUI;
 import biuoop.DrawSurface;
+import biuoop.GUI;
 import biuoop.Sleeper;
 
 /**
  * AnimationRunner takes an Animation object and runs it.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -17,8 +18,9 @@ public class AnimationRunner {
     /**
      * The constructor initializes the frame rate to 60 frames per second
      * and creates the gui window of the game.
+     *
      * @param framesPerSecond the number of framers per second.
-     * @param gui the gui of the game.
+     * @param gui             the gui of the game.
      */
     public AnimationRunner(int framesPerSecond, GUI gui) {
         this.framesPerSecond = framesPerSecond;
@@ -27,6 +29,7 @@ public class AnimationRunner {
 
     /**
      * run method runs the animation loop.
+     *
      * @param animation the animation to run
      */
     public void run(Animation animation) {
@@ -50,6 +53,7 @@ public class AnimationRunner {
 
     /**
      * getGui returns the gui of the game.
+     *
      * @return the gui of the game.
      */
     public GUI getGui() {

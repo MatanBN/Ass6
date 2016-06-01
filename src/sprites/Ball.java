@@ -1,14 +1,14 @@
 package sprites;
 
+import animations.GameLevel;
+import biuoop.DrawSurface;
+import environment.CollisionInfo;
+import environment.GameEnvironment;
+import game.Velocity;
 import geometry.Line;
 import geometry.Point;
-import environment.CollisionInfo;
-import game.Velocity;
-import animations.GameLevel;
-import environment.GameEnvironment;
-import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * The Ball class has a center Point, a radius, a color, and a velocity. The
@@ -142,15 +142,6 @@ public class Ball implements Sprite {
     /**
      * setVelocity sets the balls velocity.
      *
-     * @param newV the velocity to set.
-     */
-    public void setVelocity(Velocity newV) {
-        this.v = newV;
-    }
-
-    /**
-     * setVelocity sets the balls velocity.
-     *
      * @param dx the velocity of the x plane.
      * @param dy the velocity of the y plane.
      */
@@ -165,6 +156,15 @@ public class Ball implements Sprite {
      */
     public Velocity getVelocity() {
         return v;
+    }
+
+    /**
+     * setVelocity sets the balls velocity.
+     *
+     * @param newV the velocity to set.
+     */
+    public void setVelocity(Velocity newV) {
+        this.v = newV;
     }
 
     /**

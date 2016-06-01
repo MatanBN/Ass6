@@ -5,6 +5,7 @@ import biuoop.DrawSurface;
 /**
  * LevelIndicator holds a string with the name of the current level and draws it on top
  * of the screen.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -14,6 +15,7 @@ public class LevelIndicator implements Sprite {
 
     /**
      * The constructor gets the name of the level.
+     *
      * @param name of the current level.
      */
     public LevelIndicator(String name) {
@@ -22,6 +24,7 @@ public class LevelIndicator implements Sprite {
 
     /**
      * drawOn draws the current level's name on the screen.
+     *
      * @param d the DrawSurface to draw the sprite on.
      */
     @Override

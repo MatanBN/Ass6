@@ -2,7 +2,7 @@ package sprites;
 
 import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 
 /**

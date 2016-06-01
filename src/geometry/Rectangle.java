@@ -2,7 +2,7 @@ package geometry;
 
 import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -163,15 +163,6 @@ public class Rectangle {
     }
 
     /**
-     * setColor method sets the color of the rectangle.
-     *
-     * @param c the desired color for the rectangle.
-     */
-    public void setColor(Color c) {
-        this.color = c;
-    }
-
-    /**
      * drawOn method draws the rectangle.
      *
      * @param d the DrawSurface to draw the rectangle on.
@@ -269,5 +260,14 @@ public class Rectangle {
      */
     public Color getColor() {
         return color;
+    }
+
+    /**
+     * setColor method sets the color of the rectangle.
+     *
+     * @param c the desired color for the rectangle.
+     */
+    public void setColor(Color c) {
+        this.color = c;
     }
 }

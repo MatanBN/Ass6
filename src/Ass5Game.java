@@ -1,11 +1,7 @@
-import game.GameFlow;
-import gamelevels.DirectHit;
-import gamelevels.FinalFour;
-import gamelevels.Green3;
-import gamelevels.WideEasy;
-import gamelevels.LevelInformation;
 import animations.AnimationRunner;
 import biuoop.GUI;
+import game.GameFlow;
+import gamelevels.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,8 +8,8 @@ public class ScoreInfo {
     private int score;
 
     public ScoreInfo(String name, int score) {
-        this.name=name;
-        this.score=score;
+        this.name = name;
+        this.score = score;
     }
     public String getName() {
         return this.name;

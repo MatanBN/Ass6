@@ -1,12 +1,11 @@
 package gamelevels;
 
+import game.Velocity;
 import sprites.Block;
 import sprites.GreenBackground;
 import sprites.Sprite;
-import game.Velocity;
 
-
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

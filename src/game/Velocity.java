@@ -49,24 +49,6 @@ public class Velocity {
     }
 
     /**
-     * setDx sets the ball's dx attribute.
-     *
-     * @param newDx the new x speed.
-     */
-    public void setDx(double newDx) {
-        this.dx = newDx;
-    }
-
-    /**
-     * setDy sets the ball's dy attribute.
-     *
-     * @param newDy is the y speed.
-     */
-    public void setDy(double newDy) {
-        this.dy = newDy;
-    }
-
-    /**
      * getDx returns the ball's dx attribute.
      *
      * @return the x speed.
@@ -76,11 +58,29 @@ public class Velocity {
     }
 
     /**
+     * setDx sets the ball's dx attribute.
+     *
+     * @param newDx the new x speed.
+     */
+    public void setDx(double newDx) {
+        this.dx = newDx;
+    }
+
+    /**
      * getDy returns the ball's dy attribute.
      *
      * @return the y speed.
      */
     public double getDy() {
         return dy;
+    }
+
+    /**
+     * setDy sets the ball's dy attribute.
+     *
+     * @param newDy is the y speed.
+     */
+    public void setDy(double newDy) {
+        this.dy = newDy;
     }
 }

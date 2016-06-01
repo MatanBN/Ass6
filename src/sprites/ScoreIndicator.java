@@ -1,9 +1,9 @@
 package sprites;
 
-import game.Counter;
 import biuoop.DrawSurface;
+import game.Counter;
 
-import java.awt.Color;
+import java.awt.*;
 
 
 /**

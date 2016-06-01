@@ -1,8 +1,8 @@
 package sprites;
 
-import java.util.ArrayList;
-
 import biuoop.DrawSurface;
+
+import java.util.ArrayList;
 
 /**
  * SpriteCollection is a list of the sprites in the game.

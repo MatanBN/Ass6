@@ -2,7 +2,7 @@ package sprites;
 
 import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * The GreenBackground class is a class for the background of third level.

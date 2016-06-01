@@ -2,10 +2,11 @@ package sprites;
 
 import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * The LiveIndicator class contains the current lives status and draws it on top of the screen.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 22 May 2016
  */
@@ -14,6 +15,7 @@ public class LiveIndicator implements Sprite {
 
     /**
      * The constructor gets the number of lives from the game.gameLevel.
+     *
      * @param lives is the lives status variable.
      */
     public LiveIndicator(int lives) {
@@ -29,6 +31,7 @@ public class LiveIndicator implements Sprite {
 
     /**
      * getValue returns the number of lives that has left.
+     *
      * @return number of lives that has left.
      */
     public int getValue() {
@@ -37,6 +40,7 @@ public class LiveIndicator implements Sprite {
 
     /**
      * drawOn draws the number of lives on top of the screen.
+     *
      * @param d the DrawSurface to draw the sprite on.
      */
     @Override

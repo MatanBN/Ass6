@@ -1,9 +1,9 @@
 package listeners;
 
+import animations.GameLevel;
+import game.Counter;
 import sprites.Ball;
 import sprites.Block;
-import game.Counter;
-import animations.GameLevel;
 
 /**
  * BlockRemover is in charge of removing blocks from the gameLevel, as well as keeping count

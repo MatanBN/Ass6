@@ -1,20 +1,21 @@
 package sprites;
 
+import animations.GameLevel;
+import biuoop.DrawSurface;
+import biuoop.KeyboardSensor;
+import environment.Collidable;
+import game.Velocity;
 import geometry.Line;
 import geometry.Point;
 import geometry.Rectangle;
-import environment.Collidable;
-import game.Velocity;
-import animations.GameLevel;
-import biuoop.KeyboardSensor;
-import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
  * The Paddle is a moving block in the lowest row on the surface. It's members
  * are rectangle, the surface borders and a keyboard sensor.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -27,11 +28,12 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * The constructor creates the paddle.
-     * @param key is the keyboard sensor in order to move it with the keyboard.
-     * @param rec is the rectangle with the parameter for the paddle.
+     *
+     * @param key    is the keyboard sensor in order to move it with the keyboard.
+     * @param rec    is the rectangle with the parameter for the paddle.
      * @param border is surface border.
-     * @param speed the speed of the paddle.
-     * @param color is the color of the paddle.
+     * @param speed  the speed of the paddle.
+     * @param color  is the color of the paddle.
      */
     public Paddle(biuoop.KeyboardSensor key, Rectangle rec, Rectangle border, int speed, Color color) {
         this.keyboard = key;
@@ -83,6 +85,7 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * relocatePaddle changes the paddle's location (only it's X value) on the screen.
+     *
      * @param x is the new upperleft's x value.
      */
     public void relocatePaddle(int x) {
@@ -124,6 +127,7 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * drawOn method draws the paddle on a given surface.
+     *
      * @param d is the surface to draw the paddle on
      */
     public void drawOn(DrawSurface d) {
@@ -133,6 +137,7 @@ public class Paddle implements Sprite, Collidable {
 
     /**
      * getCollisionRectangle returns the paddle's shape.
+     *
      * @return the given rectangle.
      */
     public Rectangle getCollisionRectangle() {
@@ -142,8 +147,9 @@ public class Paddle implements Sprite, Collidable {
     /**
      * hit return the new velocity after the hit based on force the object
      * inflicted on us.
-     * @param hitter the ball that hit this paddle.
-     * @param collisionPoint is the collision point of an object with the paddle.
+     *
+     * @param hitter          the ball that hit this paddle.
+     * @param collisionPoint  is the collision point of an object with the paddle.
      * @param currentVelocity is the current velocity of the object that will collide with the paddle.
      * @return the new velocity after the hit.
      */
@@ -165,6 +171,7 @@ public class Paddle implements Sprite, Collidable {
     /**
      * determineHitPoint checks in what region was the collision and returns the
      * angle accordingly.
+     *
      * @param collisionPoint is the collision point of an object with the paddle.
      * @return the angle to adjust the velocity.
      */
@@ -202,6 +209,7 @@ public class Paddle implements Sprite, Collidable {
     /**
      * addToGame is in charge of adding the paddle as a sprite and as a
      * environment.Collidable to the game's suitable lists.
+     *
      * @param g is the game object we created.
      */
     public void addToGame(GameLevel g) {

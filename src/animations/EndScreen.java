@@ -1,11 +1,11 @@
 package animations;
 
-import sprites.LiveIndicator;
-import sprites.ScoreIndicator;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
+import sprites.LiveIndicator;
+import sprites.ScoreIndicator;
 
-import java.awt.Color;
+import java.awt.*;
 
 
 /**
@@ -49,14 +49,14 @@ public class EndScreen implements Animation {
             d.setColor(Color.white);
             d.drawText(d.getWidth() / 4 + 110, d.getHeight() / 2 - 50, "game Over :(", 32);
             d.drawText(d.getWidth() / 4 + 100, d.getHeight() / 2 + 50, "Your score is "
-                   + score.getScore().getValue(), 32);
+                    + score.getScore().getValue(), 32);
         } else {
             d.setColor(Color.blue);
             d.fillRectangle(0, 0, 800, 600);
             d.setColor(Color.yellow);
             d.drawText(d.getWidth() / 4 + 40, d.getHeight() / 2 - 50, "Congratulations You Win!", 32);
             d.drawText(d.getWidth() / 4 + 80, d.getHeight() / 2 + 50, "Your score is "
-                   + score.getScore().getValue(), 32);
+                    + score.getScore().getValue(), 32);
         }
         if (this.ks.isPressed(KeyboardSensor.SPACE_KEY)) {
             this.exitGame = true;

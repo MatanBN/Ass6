@@ -1,24 +1,25 @@
 package sprites;
 
+import animations.GameLevel;
+import biuoop.DrawSurface;
+import environment.Collidable;
+import game.Velocity;
 import geometry.Line;
 import geometry.Point;
 import geometry.Rectangle;
 import listeners.HitListener;
 import listeners.HitNotifier;
-import environment.Collidable;
-import game.Velocity;
-import animations.GameLevel;
-import biuoop.DrawSurface;
 
-import java.util.List;
+import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Color;
+import java.util.List;
 
 
 /**
  * The Block is a Collidable and a Sprite object that can block moving objects.
  * The class has methods to draw the block, and a method hit which will change the velocity of the object that hits
  * the block.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -29,6 +30,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * sprites.Block creates a new rectangle block by a given rectangle.
+     *
      * @param r is a given rectangle.
      */
     public Block(Rectangle r) {
@@ -39,9 +41,10 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * sprites.Block creates a new rectangle block by it's width and height.
+     *
      * @param width  is the rectangle's width.
      * @param height is the rectangle's height.
-     * @param c the color of the block/rectangle.
+     * @param c      the color of the block/rectangle.
      */
     public Block(int width, int height, Color c) {
         this.rectangle = new Rectangle(width, height, c);
@@ -52,11 +55,12 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * sprites.Block creates a new rectangle block by it's left corner coordinates,
      * width and height.
-     * @param x is the x coordinate of left corner.
-     * @param y is the y coordinate of left corner.
-     * @param width is the rectangle's width.
+     *
+     * @param x      is the x coordinate of left corner.
+     * @param y      is the y coordinate of left corner.
+     * @param width  is the rectangle's width.
      * @param height is the rectangle's height.
-     * @param c the color of the block/rectangle.
+     * @param c      the color of the block/rectangle.
      */
     public Block(int x, int y, int width, int height, Color c) {
         this.rectangle = new Rectangle(x, y, width, height, c);
@@ -67,6 +71,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * drawOn method draws the block and the block's number of hits on a given
      * surface.
+     *
      * @param d is the surface to draw the blocks on.
      */
     public void drawOn(DrawSurface d) {
@@ -76,6 +81,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * getCollisionRectangle return the block's shape.
+     *
      * @return the given rectangle.
      */
     public Rectangle getCollisionRectangle() {
@@ -85,8 +91,9 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * hit return the new velocity after the hit based on force the object
      * inflicted on us.
-     * @param hitter is the specific ball that is about to hit the block
-     * @param collisionPoint is the collision point of an object with the block.
+     *
+     * @param hitter          is the specific ball that is about to hit the block
+     * @param collisionPoint  is the collision point of an object with the block.
      * @param currentVelocity is the current velocity of the object that will collide with the block.
      * @return the new velocity after the hit.
      */
@@ -114,6 +121,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * removeFromGame method removes the block from the gameLevel.
+     *
      * @param gameLevel the GameLevel to remove the block from.
      */
     public void removeFromGame(GameLevel gameLevel) {
@@ -124,8 +132,9 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * checkCollisionSide gets a collision point and an edge and checks. whether
      * the collision point is inside the given edge.
+     *
      * @param collisionPoint is the collision point of the ball with the object.
-     * @param edge is a given edge of an object.
+     * @param edge           is a given edge of an object.
      * @return true if the collision point is inside the edge and false otherwise.
      */
     public boolean checkCollisionSide(Point collisionPoint, Line edge) {
@@ -145,6 +154,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * addToGame is in charge of adding the block as a sprites.Sprite and as a
      * environment.Collidable to the game's suitable lists.
+     *
      * @param g is the game object we created.
      */
     public void addToGame(GameLevel g) {
@@ -154,6 +164,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * getRectangle gets the rectangle of the block.
+     *
      * @return the rectangle that is the shape of the block.
      */
     public Rectangle getRectangle() {
@@ -162,6 +173,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * addHitListener method adds a hit listener to the block hit listeners collection.
+     *
      * @param hl is the HitListener that is added.
      */
     public void addHitListener(HitListener hl) {
@@ -170,6 +182,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * removeHitListener removes the hitListener from the block's hit listeners collection.
+     *
      * @param hl is the HitListener that is removed.
      */
     public void removeHitListener(HitListener hl) {
@@ -178,6 +191,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * notifyHit method notifies all of the hit listeners that the block has been hit.
+     *
      * @param hitter the ball the hitted the block.
      */
     private void notifyHit(Ball hitter) {

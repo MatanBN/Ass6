@@ -1,8 +1,8 @@
 package listeners;
 
+import game.Counter;
 import sprites.Ball;
 import sprites.Block;
-import game.Counter;
 
 /**
  * ScoreTrackingListener updates the counter when blocks are being hit and removed from the game.

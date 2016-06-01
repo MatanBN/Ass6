@@ -1,10 +1,9 @@
 package animations;
 
-import biuoop.KeyboardSensor;
 import biuoop.DrawSurface;
+import biuoop.KeyboardSensor;
 
-
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * PauseScreen is an Animation that displays a pause screen when it

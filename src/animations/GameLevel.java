@@ -1,28 +1,21 @@
 package animations;
 
+import biuoop.DrawSurface;
+import biuoop.KeyboardSensor;
 import environment.Collidable;
+import environment.GameEnvironment;
 import game.Counter;
 import game.Velocity;
+import gamelevels.LevelInformation;
 import geometry.Point;
 import geometry.Rectangle;
 import listeners.BallAdder;
 import listeners.BallRemover;
 import listeners.BlockRemover;
 import listeners.ScoreTrackingListener;
-import sprites.SpriteCollection;
-import sprites.Paddle;
-import sprites.Block;
-import sprites.LiveIndicator;
-import sprites.ScoreIndicator;
-import sprites.LevelIndicator;
-import sprites.Ball;
-import sprites.Sprite;
-import environment.GameEnvironment;
-import gamelevels.LevelInformation;
-import biuoop.DrawSurface;
-import biuoop.KeyboardSensor;
+import sprites.*;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -102,7 +95,8 @@ public class GameLevel implements Animation {
     /**
      * initialize method draws the borders, ball, paddle and blocks on a new
      * gui.
-     * @param lives is the number of live
+     *
+     * @param lives   is the number of live
      * @param myScore is number of the score.
      */
     public void initialize(LiveIndicator lives, ScoreIndicator myScore) {

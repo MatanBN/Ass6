@@ -1,13 +1,14 @@
 package animations;
 
-import sprites.SpriteCollection;
 import biuoop.DrawSurface;
 import biuoop.Sleeper;
+import sprites.SpriteCollection;
 
 
 /**
  * CountDownAnimation will display the given gameScreen, for numOfSeconds seconds,
  * and on top of them it will show a countdown from countFrom back to 1.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -20,10 +21,10 @@ public class CountdownAnimation implements Animation {
 
     /**
      * The constructor initializes the members by the given parameters from the gameLevel.
-     * @param numOfSeconds is the number of seconds of the numbers to appear on screen.
-     * @param countFrom is the number to from backwards.
-     * @param gameScreen is the list of the sprites of the game.
      *
+     * @param numOfSeconds is the number of seconds of the numbers to appear on screen.
+     * @param countFrom    is the number to from backwards.
+     * @param gameScreen   is the list of the sprites of the game.
      */
     public CountdownAnimation(double numOfSeconds, int countFrom, SpriteCollection gameScreen) {
         this.numOfSeconds = numOfSeconds;
@@ -35,6 +36,7 @@ public class CountdownAnimation implements Animation {
 
     /**
      * doOneFrame method draws the numbers from contFrom to 1 on the screen.
+     *
      * @param d the drawSurface to draw on.
      */
     public void doOneFrame(DrawSurface d, double dt) {
@@ -58,6 +60,7 @@ public class CountdownAnimation implements Animation {
 
     /**
      * shouldStop method returns the value of running.
+     *
      * @return the value of the running variable.
      */
     public boolean shouldStop() {

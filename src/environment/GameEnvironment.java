@@ -1,9 +1,9 @@
 package environment;
 
+import biuoop.DrawSurface;
 import geometry.Line;
 import geometry.Rectangle;
 import sprites.Block;
-import biuoop.DrawSurface;
 
 import java.util.ArrayList;
 
