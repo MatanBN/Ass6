@@ -87,8 +87,9 @@ public class HighScoresTable {
         ObjectInputStream ois = null;
         try {
             ois = new ObjectInputStream(new FileInputStream(filename));
-            table.add((ScoreInfo) ois.readObject());
-            ois.close();
+            while (filename.canRead()){
+                add((ScoreInfo) ois.readObject());
+            }
         } catch (IOException e) {
             System.out.println("Error loading file");
         } catch (ClassNotFoundException e) {

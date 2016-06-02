@@ -25,7 +25,11 @@ public class Ass5Game {
         GUI gui = new GUI("Arkanoid", 800, 600);
         AnimationRunner myAnimationRunner = new AnimationRunner(60, gui);
         HighScoresTable myScores = new HighScoresTable(10);
-        myScores.loadFromFile(new File("highscores"));
+        try{
+            myScores.load(new File("highscores"));
+        }catch (Exception e){
+            System.out.print("Unable to load the file");
+        }
         GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores);
         gameFlow.runLevels(getListOfLevels(args));
     }

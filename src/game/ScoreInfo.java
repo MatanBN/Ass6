@@ -1,9 +1,11 @@
 package game;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 01/06/2016.
  */
-public class ScoreInfo {
+public class ScoreInfo implements Serializable {
     private String name;
     private int score;
 
