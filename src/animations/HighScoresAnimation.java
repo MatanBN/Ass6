@@ -8,7 +8,7 @@ import game.ScoreInfo;
 /**
  * Created by user on 01/06/2016.
  */
-public class HighScoresAnimation implements Animation {
+public class HighScoresAnimation extends KeyPressStoppableAnimation {
     private HighScoresTable scoresTable;
     private String endKey;
     private KeyboardSensor ks;
@@ -23,6 +23,7 @@ public class HighScoresAnimation implements Animation {
 
     @Override
     public void doOneFrame(DrawSurface d, double dt) {
+        super.doOneFrame(d, dt);
         for (int i = 0; i < scoresTable.currentSize(); ++i) {
             ScoreInfo score = scoresTable.getScore(i);
             d.drawText(50, 100 * (i + 1), score.getName() + ": " + score.getScore(), 20);

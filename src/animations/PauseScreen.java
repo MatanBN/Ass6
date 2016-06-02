@@ -13,7 +13,7 @@ import java.awt.*;
  * @version 1.0 9 April 2016
  */
 
-public class PauseScreen implements Animation {
+public class PauseScreen extends KeyPressStoppableAnimation {
     private KeyboardSensor keyboard; // The keyboard sensor of the game.
     private boolean stop; // A boolean member that tells if the game is on pause or not.
 
@@ -34,6 +34,7 @@ public class PauseScreen implements Animation {
      * @param d the drawSurface to draw on.
      */
     public void doOneFrame(DrawSurface d, double dt) {
+        super.doOneFrame(d, dt);
         d.setColor(Color.YELLOW);
         d.fillRectangle(0, 0, d.getWidth(), d.getHeight());
         d.setColor(Color.BLACK);
