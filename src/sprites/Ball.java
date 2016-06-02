@@ -172,7 +172,7 @@ public class Ball implements Sprite {
      * velocity.
      */
     public void moveOneStep(double dt) {
-        Velocity frameVelocity = new Velocity(v.getDx() * dt, v.getDy() * dt);
+        Velocity frameVelocity = new Velocity(v.getDx() * dt * 60, v.getDy() * dt * 60);
         // Get the trajectory.
         Line traj = new Line(this.center, frameVelocity.applyToPoint(this.center));
         // Calculate the collision point if such exists.

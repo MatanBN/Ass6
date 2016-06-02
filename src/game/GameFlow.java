@@ -12,6 +12,7 @@ import sprites.LiveIndicator;
 import sprites.ScoreIndicator;
 
 import javax.swing.text.TabableView;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,8 +69,7 @@ public class GameFlow {
             }
         }
         ar.run(new EndScreen(ks, liveIndicator, score));
-        GUI gui = new GUI("Name", 100, 100);
-        DialogManager dialog = gui.getDialogManager();
+        DialogManager dialog = ar.getGui().getDialogManager();
         String name = dialog.showQuestionDialog("Name", "What is your name?", "");
         scoresTable.add(new ScoreInfo(name, score.getScore().getValue()));
         ar.run(new HighScoresAnimation(scoresTable, "t", ks));
@@ -79,6 +79,5 @@ public class GameFlow {
             System.out.println("Error saving file");
         }
         ar.getGui().close();
-
     }
 }

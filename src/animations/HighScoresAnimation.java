@@ -25,7 +25,7 @@ public class HighScoresAnimation implements Animation {
     public void doOneFrame(DrawSurface d, double dt) {
         for (int i = 0; i < scoresTable.currentSize(); ++i) {
             ScoreInfo score = scoresTable.getScore(i);
-            d.drawText(50, 100 * (i + 1), score.getName() + ":" + score.getScore(), 20);
+            d.drawText(50, 100 * (i + 1), score.getName() + ": " + score.getScore(), 20);
         }
         if (this.ks.isPressed(endKey)) {
             this.stop = true;
