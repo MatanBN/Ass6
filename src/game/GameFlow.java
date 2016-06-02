@@ -1,9 +1,6 @@
 package game;
 
-import animations.AnimationRunner;
-import animations.EndScreen;
-import animations.GameLevel;
-import animations.HighScoresAnimation;
+import animations.*;
 import biuoop.DialogManager;
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
@@ -68,11 +65,11 @@ public class GameFlow {
                 break;
             }
         }
-        ar.run(new EndScreen(ks, liveIndicator, score));
+        ar.run(new StopScreenDecorator(ks, "o", new EndScreen(ks, liveIndicator, score)));
         DialogManager dialog = ar.getGui().getDialogManager();
         String name = dialog.showQuestionDialog("Name", "What is your name?", "");
         scoresTable.add(new ScoreInfo(name, score.getScore().getValue()));
-        ar.run(new HighScoresAnimation(scoresTable, "t", ks));
+        ar.run(new StopScreenDecorator(ks, "t", new HighScoresAnimation(scoresTable, "t", ks)));
         try {
             scoresTable.save(new File("highscores"));
         } catch (IOException e) {

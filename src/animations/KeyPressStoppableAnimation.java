@@ -22,7 +22,7 @@ public abstract class KeyPressStoppableAnimation implements Animation {
 
     @Override
     public void doOneFrame(DrawSurface d, double dt) {
-
+        animation.doOneFrame(d, dt);
     }
 
     @Override
