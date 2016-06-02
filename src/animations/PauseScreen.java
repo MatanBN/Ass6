@@ -3,7 +3,7 @@ package animations;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * PauseScreen is an Animation that displays a pause screen when it
@@ -13,7 +13,7 @@ import java.awt.*;
  * @version 1.0 9 April 2016
  */
 
-public class PauseScreen extends KeyPressStoppableAnimation {
+public class PauseScreen implements Animation {
     private KeyboardSensor keyboard; // The keyboard sensor of the game.
     private boolean stop; // A boolean member that tells if the game is on pause or not.
 
@@ -34,16 +34,13 @@ public class PauseScreen extends KeyPressStoppableAnimation {
      * @param d the drawSurface to draw on.
      */
     public void doOneFrame(DrawSurface d, double dt) {
-        super.doOneFrame(d, dt);
         d.setColor(Color.YELLOW);
         d.fillRectangle(0, 0, d.getWidth(), d.getHeight());
         d.setColor(Color.BLACK);
         d.drawText(d.getWidth() / 4 - 150, d.getHeight() / 2 - 100, "Dear Player,", 32);
         d.drawText(d.getWidth() / 4 - 150, d.getHeight() / 2 - 50, "It seems that you have paused the game.", 32);
         d.drawText(d.getWidth() / 4 - 150, d.getHeight() / 2, "If you would like to continue pleas press space :)", 32);
-        if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) {
-            this.stop = true;
-        }
+
     }
 
     /**

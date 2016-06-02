@@ -15,7 +15,7 @@ import java.awt.*;
  * @version 1.0 9 April 2016
  */
 
-public class EndScreen extends KeyPressStoppableAnimation {
+public class EndScreen implements Animation {
     private KeyboardSensor ks; // The keyboard sensor of the game.
     private LiveIndicator liveIndicator; // The LiveIndicator of the player.
     private ScoreIndicator score; // The ScoreIndicator of the player.
@@ -43,7 +43,6 @@ public class EndScreen extends KeyPressStoppableAnimation {
      */
     @Override
     public void doOneFrame(DrawSurface d, double dt) {
-        super.doOneFrame(d, dt);
         if (liveIndicator.getValue() == 0) {
             d.setColor(Color.black);
             d.fillRectangle(0, 0, 800, 600);
@@ -58,9 +57,6 @@ public class EndScreen extends KeyPressStoppableAnimation {
             d.drawText(d.getWidth() / 4 + 40, d.getHeight() / 2 - 50, "Congratulations You Win!", 32);
             d.drawText(d.getWidth() / 4 + 80, d.getHeight() / 2 + 50, "Your score is "
                     + score.getScore().getValue(), 32);
-        }
-        if (this.ks.isPressed(KeyboardSensor.SPACE_KEY)) {
-            this.exitGame = true;
         }
     }
 

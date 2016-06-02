@@ -230,17 +230,15 @@ public class GameLevel implements Animation {
         // this.running = false;
         this.sprites.drawAllOn(d);
         d.setColor(Color.black);
-
         this.sprites.notifyAllTimePassed(dt);
         if (this.keyboard.isPressed("p")) {
-            this.runner.run(new PauseScreen(this.keyboard));
+            this.runner.run(new StopScreenDecorator(keyboard, "j", new PauseScreen(keyboard)));
         }
         if (blockCounter.getValue() == 0) {
             this.running = false;
         } else if (ballCounter.getValue() == 0) {
             liveIndicator.decrease();
             this.running = false;
-
         }
     }
 

@@ -11,10 +11,13 @@ public abstract class KeyPressStoppableAnimation implements Animation {
     private KeyboardSensor sensor;
     private String key;
     private Animation animation;
+    private boolean stop;
+
     public KeyPressStoppableAnimation(KeyboardSensor sensor, String key, Animation animation){
         this.sensor = sensor;
         this.key=key;
         this.animation = animation;
+        stop = true;
     }
 
     @Override
@@ -24,6 +27,6 @@ public abstract class KeyPressStoppableAnimation implements Animation {
 
     @Override
     public boolean shouldStop() {
-        return false;
+        return animation.shouldStop();
     }
 }
