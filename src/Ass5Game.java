@@ -1,5 +1,6 @@
 import animations.AnimationRunner;
 import biuoop.GUI;
+import biuoop.KeyboardSensor;
 import game.GameFlow;
 import game.HighScoresTable;
 import gamelevels.*;
@@ -30,8 +31,8 @@ public class Ass5Game {
         }catch (Exception e){
             System.out.print("Unable to load the file");
         }
-        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores);
-        gameFlow.runLevels(getListOfLevels(args));
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores, getListOfLevels(args));
+        gameFlow.chooseTask();
     }
 
     /**

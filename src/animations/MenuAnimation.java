@@ -1,6 +1,8 @@
 package animations;
 
 import biuoop.DrawSurface;
+import biuoop.GUI;
+import biuoop.KeyboardSensor;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -10,21 +12,38 @@ import java.util.ArrayList;
  * Created by Matan on 6/2/2016.
  */
 public class MenuAnimation<T> implements Menu {
-    ArrayList<Selection> menuSelections;
+    private ArrayList<Selection> menuSelections;
+    private KeyboardSensor ks;
+    private boolean stopper;
+    private String key;
 
-    public MenuAnimation() {
+    public MenuAnimation(KeyboardSensor ks) {
         menuSelections = new ArrayList<Selection>();
+        this.ks = ks;
+        this.stopper = false;
     }
 
     @Override
     public void doOneFrame(DrawSurface d, double dt) {
         d.setColor(Color.blue);
         d.fillRectangle(0, 0, d.getWidth() - 20, d.getHeight());
+        d.setColor(Color.YELLOW);
+        d.drawText(200, 100, "please choose:", 32);
+        for (int i=1; i<=menuSelections.size(); i++) {
+            d.drawText(200, 100 + (i * 50), menuSelections.get(i-1).getMessage() + "- "
+                    + menuSelections.get(i-1).getKey(), 20);
+        }
+        for (int i=0; i<menuSelections.size();i++){
+           if (ks.isPressed(menuSelections.get(i).getKey())){
+               key = menuSelections.get(i).getKey();
+               this.stopper=true;
+           }
+        }
     }
 
     @Override
     public boolean shouldStop() {
-        return false;
+        return this.stopper;
     }
 
     @Override
@@ -34,7 +53,14 @@ public class MenuAnimation<T> implements Menu {
 
     @Override
     public T getStatus() {
-        return null;
+        switch (key){
+            case "h":
+                return menuSelections.get(0).returnVal;
+            case "s":
+                return menuSelections.get(1).returnVal;
+            default:
+                return menuSelections.get(2).returnVal;
+        }
     }
 
     private class Selection {

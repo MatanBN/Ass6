@@ -18,8 +18,8 @@ public abstract class KeyPressStoppableAnimation implements Animation {
         this.sensor = sensor;
         this.key=key;
         this.animation = animation;
-        isAlreadyPressed = true;
-        stop = false;
+        this.isAlreadyPressed = true;
+        this.stop = false;
 
     }
 

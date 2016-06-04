@@ -2,6 +2,7 @@ package animations;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
+import game.GameFlow;
 import game.HighScoresTable;
 import game.ScoreInfo;
 
@@ -18,7 +19,7 @@ public class HighScoresAnimation implements Animation {
         this.scoresTable = scores;
         this.endKey = endKey;
         this.ks = ks;
-        stop = false;
+        this.stop = false;
     }
 
     @Override
@@ -27,10 +28,14 @@ public class HighScoresAnimation implements Animation {
             ScoreInfo score = scoresTable.getScore(i);
             d.drawText(50, 50 * (i + 1), score.getName() + ": " + score.getScore(), 20);
         }
+        if (ks.isPressed(KeyboardSensor.SPACE_KEY)){
+            this.stop=true;
+        }
     }
 
     @Override
     public boolean shouldStop() {
-        return stop;
+        return this.stop;
+
     }
 }
