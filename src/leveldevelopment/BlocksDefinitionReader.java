@@ -16,7 +16,7 @@ public class BlocksDefinitionReader {
         BufferedReader buffer = new BufferedReader(reader);
         Map<String, BlockCreator> blockCreatorMap = new HashMap<String, BlockCreator>();
         Map<String, Integer> spaceCreatorMap = new HashMap<String, Integer>();
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> defaultMap = new HashMap<String, String>();
         try {
             String s;
             while ((s = buffer.readLine()) != null) {
@@ -25,9 +25,12 @@ public class BlocksDefinitionReader {
                 }
                 String[] info = s.split(" ");
                 if (info[0].equals("default")) {
-                    readDefaults(info, map);
+                    readDefaults(info, defaultMap);
                 } else if (info[0].equals("bdef")) {
-                    blockCreatorMap.put(map.get("symbol"), getBlockCreator(info, map));
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.putAll(defaultMap);
+                    BlockCreator blockFactory = getBlockCreator(info, map);
+                    blockCreatorMap.put(map.get("symbol"), blockFactory);
                 } else {
                     readSpaces(info, spaceCreatorMap);
                 }
@@ -64,13 +67,17 @@ public class BlocksDefinitionReader {
 
         ArrayList<Sprite> sprites = getFillings(map.entrySet());
         ColorParser colorParser = new ColorParser();
-        if (map.containsKey("stroke")) {
-            blockCreator = new BlockFactory(Integer.parseInt(map.get("width")), Integer.parseInt(map.get("height")),
-                    sprites, colorParser.colorFromString(map.get("stroke").split("\\(")[1]),
-                    Integer.parseInt(map.get("hit_points")));
-        } else {
-            blockCreator = new BlockFactory(Integer.parseInt(map.get("width")), Integer.parseInt(map.get("height")),
-                    sprites, null, Integer.parseInt(map.get("hit_points")));
+        try {
+            if (map.containsKey("stroke")) {
+                blockCreator = new BlockFactory(Integer.parseInt(map.get("width")), Integer.parseInt(map.get("height")),
+                        sprites, colorParser.colorFromString(map.get("stroke").split("\\(")[1]),
+                        Integer.parseInt(map.get("hit_points")));
+            } else {
+                blockCreator = new BlockFactory(Integer.parseInt(map.get("width")), Integer.parseInt(map.get("height")),
+                        sprites, null, Integer.parseInt(map.get("hit_points")));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Not enough details in block");
         }
 
         return blockCreator;

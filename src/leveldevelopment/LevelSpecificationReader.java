@@ -30,6 +30,9 @@ public class LevelSpecificationReader {
 
     public LevelSpecificationReader(Rectangle frame) {
         this.frame = frame;
+        rowHeight = -1;
+        startX = -1;
+        startY = -1;
     }
 
     public List<LevelInformation> fromReader(java.io.Reader reader) {
@@ -39,7 +42,12 @@ public class LevelSpecificationReader {
             String s;
             while ((s = buffer.readLine()) != null) {
                 if (s.equals("START_LEVEL")) {
-                    myLevels.add(getLevel(buffer));
+                    Level myLevel = getLevel(buffer);
+                    if (myLevel.checkLevel()) {
+                        myLevels.add(myLevel);
+                    } else {
+                        throw new RuntimeException("Not enough level details");
+                    }
                 }
             }
         } catch (IOException e) {
@@ -49,7 +57,7 @@ public class LevelSpecificationReader {
         return myLevels;
     }
 
-    private LevelInformation getLevel(BufferedReader buffer) {
+    private Level getLevel(BufferedReader buffer) {
         Level newLevel = new Level();
 
         try {
@@ -94,11 +102,10 @@ public class LevelSpecificationReader {
                 break;
             case "blocks_start_x":
                 this.startX = Integer.parseInt(info[1]);
-                ;
+
                 break;
             case "blocks_start_y":
                 this.startY = Integer.parseInt(info[1]);
-                ;
                 break;
             case "row_height":
                 this.rowHeight = Integer.parseInt(info[1]);
@@ -112,6 +119,9 @@ public class LevelSpecificationReader {
     }
 
     private List<Block> createListOfBlocks(BufferedReader reader) {
+        if (startX < 0 || startY < 0 || rowHeight < 0 || blockFactory == null) {
+            throw new RuntimeException("Error in details of level");
+        }
         int currentX = startX;
         int currentY = startY;
         List<Block> levelBlocks = new ArrayList<Block>();

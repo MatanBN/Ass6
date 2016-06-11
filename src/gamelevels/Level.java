@@ -4,6 +4,7 @@ import game.Velocity;
 import sprites.Block;
 import sprites.Sprite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,14 @@ public class Level implements LevelInformation {
     private Sprite background;
     private List<Block> levelBlocks;
     private int numOfBlocksToRemove;
+    private ArrayList<Boolean> checks;
 
+    public Level() {
+        checks = new ArrayList<Boolean>();
+        for (int i = 0; i < 7; ++i) {
+            checks.add(false);
+        }
+    }
 
     @Override
     public int numberOfBalls() {
@@ -27,6 +35,8 @@ public class Level implements LevelInformation {
 
     @Override
     public List<Velocity> initialBallVelocities() {
+
+        checks.add(true);
         return levelsVelocities;
     }
 
@@ -61,31 +71,48 @@ public class Level implements LevelInformation {
     }
 
     public void setLevelsVelocities(List<Velocity> levelsVelocities) {
+        checks.set(0, true);
+
         this.numberOfBalls = levelsVelocities.size();
         this.levelsVelocities = levelsVelocities;
     }
 
     public void setPaddSpeed(int paddSpeed) {
+        checks.set(1, true);
         this.paddSpeed = paddSpeed;
     }
 
     public void setPaddWidth(int paddWidth) {
+        checks.set(2, true);
         this.paddWidth = paddWidth;
     }
 
     public void setLevelName(String levelName) {
+        checks.set(3, true);
         this.levelName = levelName;
     }
 
     public void setLevelBlocks(List<Block> levelBlocks) {
+        checks.set(4, true);
         this.levelBlocks = levelBlocks;
     }
 
     public void setNumOfBlocksToRemove(int numOfBlocksToRemove) {
+        checks.set(5, true);
         this.numOfBlocksToRemove = numOfBlocksToRemove;
     }
 
     public void setBackground(Sprite background) {
+        checks.set(6, true);
         this.background = background;
+    }
+
+    public boolean checkLevel() {
+        for (boolean b : checks) {
+            if (!b) {
+                return false;
+            }
+        }
+        return true;
     }
 }

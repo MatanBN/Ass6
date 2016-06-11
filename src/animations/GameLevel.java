@@ -136,8 +136,8 @@ public class GameLevel implements Animation {
             b.addHitListener(new ScoreTrackingListener(myScore.getScore()));
             b.addHitListener(new BlockChanger());
             b.addToGame(this);
-            blockCounter.increase(1);
         }
+        blockCounter.increase(myLevel.numberOfBlocksToRemove());
 
         addSprite(lives);
         addSprite(myScore);
@@ -248,4 +248,6 @@ public class GameLevel implements Animation {
     public Counter getBlockCounter() {
         return blockCounter;
     }
+
+
 }

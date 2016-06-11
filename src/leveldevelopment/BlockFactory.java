@@ -3,7 +3,6 @@ package leveldevelopment;
 import geometry.Rectangle;
 import sprites.Background;
 import sprites.Block;
-import sprites.ColorSprite;
 import sprites.Sprite;
 
 import java.awt.Color;
@@ -47,4 +46,5 @@ public class BlockFactory implements BlockCreator {
     public void setWidth(int width) {
         this.width = width;
     }
+
 }
