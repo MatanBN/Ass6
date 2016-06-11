@@ -23,10 +23,12 @@ public class BlocksDefinitionReader {
      */
     public static BlocksFromSymbolsFactory fromReader(java.io.Reader reader) {
         BufferedReader buffer = new BufferedReader(reader);
+        ArrayList<String[]> fileInput = new ArrayList<String[]>();
         Map<String, BlockCreator> blockCreatorMap = new HashMap<String, BlockCreator>();
         Map<String, Integer> spaceCreatorMap = new HashMap<String, Integer>();
         Map<String, String> defaultMap = new HashMap<String, String>();
-        // Read a line by line, create BlockCreators and spaces and add to them to the maps of BlocksFromSymbolsFactory.
+
+        // Read a line by line, create the default map and add the non default values to an array list.
         try {
             String s;
             while ((s = buffer.readLine()) != null) {
@@ -38,17 +40,25 @@ public class BlocksDefinitionReader {
                 // Read the default values.
                 if (info[0].equals("default")) {
                     readDefaults(info, defaultMap);
-                } else if (info[0].equals("bdef")) {
-                    Map<String, String> map = new HashMap<String, String>();
-                    map.putAll(defaultMap);
-                    BlockCreator blockFactory = getBlockCreator(info, map);
-                    blockCreatorMap.put(map.get("symbol"), blockFactory);
                 } else {
-                    readSpaces(info, spaceCreatorMap);
+                    fileInput.add(info);
                 }
             }
         } catch (IOException e) {
             System.out.println("Unable to read line from file");
+        }
+
+        // Create the block creators.
+        for (int i = 0; i < fileInput.size(); ++i) {
+            String[] info = fileInput.get(i);
+            if (info[0].equals("bdef")) {
+                Map<String, String> map = new HashMap<String, String>();
+                map.putAll(defaultMap);
+                BlockCreator blockFactory = getBlockCreator(info, map);
+                blockCreatorMap.put(map.get("symbol"), blockFactory);
+            } else if (info[1].equals("sdef")) {
+                readSpaces(info, spaceCreatorMap);
+            }
         }
         return new BlocksFromSymbolsFactory(spaceCreatorMap, blockCreatorMap);
     }
