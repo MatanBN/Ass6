@@ -1,8 +1,9 @@
 package geometry;
 
 import biuoop.DrawSurface;
+import sprites.Sprite;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Rectangle {
     private Point upperLeft; // The upperLeft corner of the rectangle.
     private int width; // The width of the rectangle.
     private int height; // The height of the rectangle
-    private Color color; // The color of the rectangle
+    private Sprite filling; // The filling of the rectangle
+    private Color color; // The color of the frame.
 
     /**
      * Rectangle is the constructor and creates the rectangle with upper left
@@ -41,12 +43,14 @@ public class Rectangle {
      * @param width  the desired width of the rectangle.
      * @param height the desired height of the rectangle.
      * @param c      the desired color of the rectangle.
+     * @param filling the filling of the rectangle.
      */
-    public Rectangle(int width, int height, Color c) {
+    public Rectangle(int width, int height, Color c, Sprite filling) {
         this.upperLeft = new Point(0, 0);
         this.width = width;
         this.height = height;
         this.color = c;
+        this.filling = filling;
     }
 
     /**
@@ -74,11 +78,12 @@ public class Rectangle {
      * @param height the desired height of the rectangle.
      * @param c      the desired color of the rectangle.
      */
-    public Rectangle(int x, int y, int width, int height, Color c) {
+    public Rectangle(int x, int y, int width, int height, Color c, Sprite filling) {
         this.upperLeft = new Point(x, y);
         this.width = width;
         this.height = height;
         this.color = c;
+        this.filling = filling;
     }
 
     /**
@@ -90,11 +95,12 @@ public class Rectangle {
      * @param height    the desired height of the rectangle.
      * @param c         the desired color of the rectangle.
      */
-    public Rectangle(Point upperLeft, int width, int height, Color c) {
+    public Rectangle(Point upperLeft, int width, int height, Color c, Sprite filling) {
         this.upperLeft = upperLeft;
         this.width = width;
         this.height = height;
         this.color = c;
+        this.filling = filling;
     }
 
     /**
@@ -170,14 +176,11 @@ public class Rectangle {
      */
     public void drawOn(DrawSurface d) throws NullPointerException {
         try {
-            d.setColor(this.color);
-            d.fillRectangle(this.getX(), this.getY(), this.width, this.height);
-            d.setColor(Color.black);
-            d.drawRectangle(this.getX(), this.getY(), this.width, this.height);
-            d.setColor(Color.WHITE);
-            // d.fillRectangle(this.getX(), this.getY(), this.width,
-            // this.height);
-            // If the color of the rectangle hasn't been initialized yet.
+            filling.drawOn(d);
+            if (color != null) {
+                d.setColor(color);
+                d.drawRectangle(this.getX(), this.getY(), this.width, this.height);
+            }
         } catch (NullPointerException e) {
             System.out.println("You must set a color for the rectangle in order to draw it.");
         }
@@ -269,5 +272,14 @@ public class Rectangle {
      */
     public void setColor(Color c) {
         this.color = c;
+    }
+
+    /**
+     * Set the filler of the rectangle.
+     *
+     * @param filling the new filler of the rectangle.
+     */
+    public void setFilling(Sprite filling) {
+        this.filling = filling;
     }
 }

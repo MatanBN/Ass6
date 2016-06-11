@@ -4,13 +4,11 @@ import animations.GameLevel;
 import biuoop.DrawSurface;
 import environment.Collidable;
 import game.Velocity;
-import geometry.Line;
-import geometry.Point;
-import geometry.Rectangle;
+import geometry.*;
 import listeners.HitListener;
 import listeners.HitNotifier;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,31 +22,21 @@ import java.util.List;
  * @version 1.0 9 April 2016
  */
 public class Block implements Collidable, Sprite, HitNotifier {
-    private Rectangle rectangle; // The rectangle shape of the block.
+    private geometry.Rectangle rectangle; // The rectangle shape of the block.
     private int hitsNumber; // The number of hits of the block.
-    private java.util.List<HitListener> hitListeners;
+    private int totalHits;
+    private List<HitListener> hitListeners;
+    private List<Sprite> fillers;
 
     /**
-     * sprites.Block creates a new rectangle block by a given rectangle.
+     * Block creates a new rectangle block by a given rectangle.
      *
      * @param r is a given rectangle.
      */
     public Block(Rectangle r) {
         this.rectangle = r;
         this.hitListeners = new ArrayList();
-
-    }
-
-    /**
-     * sprites.Block creates a new rectangle block by it's width and height.
-     *
-     * @param width  is the rectangle's width.
-     * @param height is the rectangle's height.
-     * @param c      the color of the block/rectangle.
-     */
-    public Block(int width, int height, Color c) {
-        this.rectangle = new Rectangle(width, height, c);
-        this.hitListeners = new ArrayList();
+        fillers = new ArrayList<Sprite>();
 
     }
 
@@ -60,13 +48,33 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * @param y      is the y coordinate of left corner.
      * @param width  is the rectangle's width.
      * @param height is the rectangle's height.
-     * @param c      the color of the block/rectangle.
+     * @param frameColor the color of the block/rectangle frame.
+     * @param fillers the fillers of the block/rectangle.
      */
-    public Block(int x, int y, int width, int height, Color c) {
-        this.rectangle = new Rectangle(x, y, width, height, c);
+    public Block(int x, int y, int width, int height, Color frameColor, ArrayList<Sprite> fillers) {
+        this.rectangle = new Rectangle(x, y, width, height, frameColor, fillers.get(0));
         this.hitListeners = new ArrayList();
-
+        this.fillers = fillers;
     }
+
+    /**
+     * sprites.Block creates a new rectangle block by it's left corner coordinates,
+     * width and height.
+     *
+     * @param x      is the x coordinate of left corner.
+     * @param y      is the y coordinate of left corner.
+     * @param width  is the rectangle's width.
+     * @param height is the rectangle's height.
+     * @param frameColor the color of the block/rectangle frame.
+     * @param filler the filler of the block/rectangle.
+     */
+    public Block(int x, int y, int width, int height, Color frameColor, Sprite filler) {
+        this.rectangle = new Rectangle(x, y, width, height, frameColor, filler);
+        this.hitListeners = new ArrayList();
+        this.fillers = new ArrayList<Sprite>();
+        fillers.add(filler);
+    }
+
 
     /**
      * drawOn method draws the block and the block's number of hits on a given
@@ -219,7 +227,18 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * @param hits the adjusted number of hits.
      */
     public void setHitsNumber(int hits) {
+        totalHits = hits;
         hitsNumber = hits;
+    }
+
+    /**
+     * setFiller method sets the filler according to the number of hit points left to the block.
+     */
+    public void setFiller() {
+
+        if (fillers.size() > getHitPoints()) {
+            rectangle.setFilling(fillers.get(totalHits - hitsNumber));
+        }
     }
 
 

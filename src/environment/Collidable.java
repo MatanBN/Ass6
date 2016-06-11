@@ -1,8 +1,8 @@
 package environment;
 
 import game.Velocity;
-import geometry.Point;
 import geometry.Rectangle;
+import geometry.Point;
 import sprites.Ball;
 
 /**

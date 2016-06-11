@@ -7,12 +7,9 @@ import environment.GameEnvironment;
 import game.Counter;
 import game.Velocity;
 import gamelevels.LevelInformation;
-import geometry.Point;
 import geometry.Rectangle;
-import listeners.BallAdder;
-import listeners.BallRemover;
-import listeners.BlockRemover;
-import listeners.ScoreTrackingListener;
+import geometry.Point;
+import listeners.*;
 import sprites.*;
 
 import java.awt.*;
@@ -100,24 +97,28 @@ public class GameLevel implements Animation {
      * @param myScore is number of the score.
      */
     public void initialize(LiveIndicator lives, ScoreIndicator myScore) {
-        Rectangle borders = new Rectangle(800, 600);
+        geometry.Rectangle borders = new Rectangle(800, 600);
         liveIndicator = lives;
         addSprite(myLevel.getBackground());
 
         // Create the paddle.
         Rectangle paddleRec = new Rectangle(360 - myLevel.paddleWidth() / 2, borders.getHeight() - 51,
                 myLevel.paddleWidth(), 10);
-        paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.GREEN);
+        paddle = new Paddle(keyboard, paddleRec, borders, myLevel.paddleSpeed(), Color.black,
+                new ColorSprite(paddleRec, Color.GREEN));
         paddle.addToGame(this);
 
         // Create the death border.
-        Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20,
-                Color.WHITE);
+        Block deathBorder = new Block(0, borders.getMaxY(), borders.getMaxX(), 20, Color.white,
+                new ColorSprite(borders, Color.white));
         deathBorder.addHitListener(new BallRemover(this, ballCounter));
         addCollidable(deathBorder);
 
-        //Create the score indicator
-        Block playInfo = new Block(0, 0, borders.getMaxX(), 20, Color.white);
+        // Create the score indicator
+        Rectangle infoFrame = new Rectangle(0, 0, borders.getMaxX(), 20);
+        Rectangle infoFrameFilled = new Rectangle(infoFrame.getUpperLeft(), borders.getMaxX(), 20, Color.white,
+                new ColorSprite(infoFrame, Color.white));
+        Block playInfo = new Block(infoFrameFilled);
         playInfo.addToGame(this);
 
         // Create the top border.
@@ -133,12 +134,9 @@ public class GameLevel implements Animation {
         for (Block b : myBlocks) {
             b.addHitListener(new BlockRemover(this, blockCounter));
             b.addHitListener(new ScoreTrackingListener(myScore.getScore()));
+            b.addHitListener(new BlockChanger());
             b.addToGame(this);
             blockCounter.increase(1);
-            // Add ball adder to a magic block.
-            if (blockCounter.getValue() % 7 == 0) {
-                b.addHitListener(new BallAdder(this));
-            }
         }
 
         addSprite(lives);
@@ -156,7 +154,8 @@ public class GameLevel implements Animation {
      * @param c      the color of the border.
      */
     private void createBorder(int x, int y, int width, int height, Color c) {
-        Block block = new Block(x, y, width, height, c);
+        Block block = new Block(x, y, width, height, Color.black,
+                new ColorSprite(new Rectangle(x, y, width, height), c));
         block.setHitsNumber(0);
         block.addToGame(this);
     }
@@ -229,7 +228,6 @@ public class GameLevel implements Animation {
         // the `return` or `break` statements should be replaced with
         // this.running = false;
         this.sprites.drawAllOn(d);
-        d.setColor(Color.black);
         this.sprites.notifyAllTimePassed(dt);
         if (this.keyboard.isPressed("p")) {
             this.runner.run(new StopScreenDecorator(keyboard, "j", new PauseScreen(keyboard)));

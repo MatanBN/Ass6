@@ -1,11 +1,12 @@
 import animations.AnimationRunner;
 import biuoop.GUI;
-import biuoop.KeyboardSensor;
 import game.GameFlow;
 import game.HighScoresTable;
+import geometry.Rectangle;
+import leveldevelopment.LevelSpecificationReader;
 import gamelevels.*;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,37 +32,32 @@ public class Ass5Game {
         }catch (Exception e){
             System.out.print("Unable to load the file");
         }
-        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores, getListOfLevels(args));
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores,
+                getListOfLevels(args[0]));
         gameFlow.chooseTask();
     }
 
-    /**
-     * The getListOfLevels method creates a list of levels according to the user's choice.
-     *
-     * @param args the user's choice.
-     * @return the current level.
-     */
-    private static List<LevelInformation> getListOfLevels(String[] args) {
-        List<LevelInformation> myLevels = new ArrayList<LevelInformation>();
-        myLevels.add(new DirectHit());
-        myLevels.add(new WideEasy());
-        myLevels.add(new Green3());
-        myLevels.add(new FinalFour());
-        if (args.length == 0) {
-            return myLevels;
-        } else {
-            List<LevelInformation> levelsChoice = new ArrayList<LevelInformation>();
-            for (int i = 0; i < args.length; ++i) {
+    private static List<LevelInformation> getListOfLevels(String levelFileNames) {
+        BufferedReader buffer = null;
+        List<LevelInformation> levels = null;
+        LevelSpecificationReader levelReader = new LevelSpecificationReader(new Rectangle(0, 0, 800, 600));
+        try {
+            File file = new File(levelFileNames);
+            buffer = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            levels = levelReader.fromReader(buffer);
+        } catch (IOException e) {
+            System.out.println("Unable reading levels file");
+        } finally {
+            if (buffer != null) {
                 try {
-                    int levelNum = Integer.parseInt(args[i]);
-                    if (levelNum >= 1 && levelNum <= 4) {
-                        levelsChoice.add(myLevels.get(levelNum - 1));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Invalid level");
+                    buffer.close();
+                } catch (IOException e) {
+                    System.out.println("Error closing level file");
                 }
             }
-            return levelsChoice;
         }
+        return levels;
+
     }
+
 }

@@ -15,7 +15,7 @@ import sprites.Block;
 
 public class BlockRemover implements HitListener {
     private GameLevel gameLevel; //The current gamelevel
-    private Counter remainingBlocks; //A counter of the remaining balls
+    private Counter remainingBlocks; // A counter of the remaining balls
 
     /**
      * The constructor gets the gamelevel and a counter of the removed balls.

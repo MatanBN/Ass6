@@ -5,9 +5,9 @@ import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 import environment.Collidable;
 import game.Velocity;
-import geometry.Line;
-import geometry.Point;
+import geometry.*;
 import geometry.Rectangle;
+import geometry.Point;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -33,12 +33,14 @@ public class Paddle implements Sprite, Collidable {
      * @param rec    is the rectangle with the parameter for the paddle.
      * @param border is surface border.
      * @param speed  the speed of the paddle.
-     * @param color  is the color of the paddle.
+     * @param color  is the frame color of the paddle.
+     * @param filling is the filling of the paddle.
      */
-    public Paddle(biuoop.KeyboardSensor key, Rectangle rec, Rectangle border, int speed, Color color) {
+    public Paddle(biuoop.KeyboardSensor key, geometry.Rectangle rec, Rectangle border, int speed, Color color,
+                  Sprite filling) {
         this.keyboard = key;
-        this.speed = speed*50;
-        this.rectangle = new Rectangle(rec.getUpperLeft(), rec.getWidth(), rec.getHeight(), color);
+        this.speed = speed;
+        this.rectangle = new Rectangle(rec.getUpperLeft(), rec.getWidth(), rec.getHeight(), color, filling);
         this.borders = border;
         this.regions = new ArrayList();
         int fifthRec = rec.getWidth() / 5;
@@ -131,7 +133,6 @@ public class Paddle implements Sprite, Collidable {
      * @param d is the surface to draw the paddle on
      */
     public void drawOn(DrawSurface d) {
-        d.setColor(this.rectangle.getColor());
         rectangle.drawOn(d);
     }
 

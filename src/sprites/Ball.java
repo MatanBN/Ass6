@@ -172,7 +172,7 @@ public class Ball implements Sprite {
      * velocity.
      */
     public void moveOneStep(double dt) {
-        Velocity frameVelocity = new Velocity(v.getDx() * dt * 60, v.getDy() * dt * 60);
+        Velocity frameVelocity = new Velocity(v.getDx() * dt, v.getDy() * dt);
         // Get the trajectory.
         Line traj = new Line(this.center, frameVelocity.applyToPoint(this.center));
         // Calculate the collision point if such exists.
@@ -185,7 +185,7 @@ public class Ball implements Sprite {
                     - (int) Math.signum(v.getDy()));
             this.center = tempV.applyToPoint(this.center);
             // Adjust the speed after collision
-            Velocity newV = (myInfo.collisionObject()).hit(this, myInfo.collisionPoint(), frameVelocity);
+            Velocity newV = (myInfo.collisionObject()).hit(this, myInfo.collisionPoint(), v);
             setVelocity(newV);
         } else {
             this.center = frameVelocity.applyToPoint(this.center);
