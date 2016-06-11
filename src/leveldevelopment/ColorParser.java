@@ -5,11 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Matan on 6/9/2016.
+ * ColorParser class decodes string information to color object.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 11 June 2016
  */
 public class ColorParser {
+    // A map that will get a name of a color and returns a color object according to the name.
     Map<String, Color> colorMap;
 
+    /**
+     * ColorParser constructor initializes the map for all the colors needed.
+     */
     public ColorParser() {
         colorMap = new HashMap<String, Color>();
         colorMap.put("black", Color.black);
@@ -25,6 +31,12 @@ public class ColorParser {
         colorMap.put("yellow", Color.yellow);
     }
 
+    /**
+     * ColorFromString method creates a color according to the string given.
+     *
+     * @param s the string for the color.
+     * @return a new color that was created.
+     */
     public Color colorFromString(String s) {
         String[] color = s.split(",");
 

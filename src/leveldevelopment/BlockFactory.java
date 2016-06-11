@@ -9,15 +9,26 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- * Created by Matan on 6/9/2016.
+ * BlockFactory class creates blocks according to the parameters given to it.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 11 June 2016
  */
 public class BlockFactory implements BlockCreator {
-    private int width;
-    private int height;
-    private ArrayList<Sprite> fillers;
-    private Color strokeColor;
-    private int hitPoints;
+    private int width; // The width of the block to create.
+    private int height; // The height of the block to create.
+    private ArrayList<Sprite> fillers; // The fillers of the block to create.
+    private Color strokeColor; // The frame color of the block to create.
+    private int hitPoints; // The hit points of the block to create.
 
+    /**
+     * BlockFactory constructor creates a new block factory.
+     *
+     * @param width       the width of the block to create.
+     * @param height      the height of the block to create.
+     * @param fillers     the fillers of the block to create.
+     * @param strokeColor the frame color of the block to create.
+     * @param hitPoints   the hit points of the block to create.
+     */
     public BlockFactory(int width, int height, ArrayList<Sprite> fillers, Color strokeColor, int hitPoints) {
         this.width = width;
         this.height = height;
@@ -26,7 +37,12 @@ public class BlockFactory implements BlockCreator {
         this.hitPoints = hitPoints;
     }
 
-
+    /**
+     * create Method creates a new block according to the parameters of the factory in the xpos and ypos coordinates.
+     * @param xpos x coordinate to create the block.
+     * @param ypos y coordinate to create the block.
+     * @return the new block that was created.
+     */
     @Override
     public Block create(int xpos, int ypos) {
         ArrayList<Sprite> newSprites = new ArrayList<Sprite>();
@@ -37,14 +53,6 @@ public class BlockFactory implements BlockCreator {
         Block block = new Block(xpos, ypos, width, height, strokeColor, newSprites);
         block.setHitsNumber(hitPoints);
         return block;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
     }
 
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class MenuAnimation<T> implements Menu {
     private ArrayList<Selection> menuSelections;
+
     private KeyboardSensor ks;
     private boolean stopper;
     private String key;

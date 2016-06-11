@@ -239,6 +239,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
         }
     }
 
+    // Probably remove later...
     public Block copy() {
         Rectangle r = this.getRectangle();
         Block b = new Block(r.getX(), r.getY(), r.getWidth(), r.getHeight(), r.getColor(), fillers);

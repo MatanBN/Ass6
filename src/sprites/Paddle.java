@@ -9,7 +9,7 @@ import geometry.*;
 import geometry.Rectangle;
 import geometry.Point;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**

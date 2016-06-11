@@ -3,7 +3,7 @@ package sprites;
 import biuoop.DrawSurface;
 import game.Counter;
 
-import java.awt.*;
+import java.awt.Color;
 
 
 /**

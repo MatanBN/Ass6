@@ -87,7 +87,7 @@ public class GameFlow {
             };
 
             //Adding the tasks to the tasks list.
-            menu.addSelection("h", "Hi scores", hiScores);
+            menu.addSelection("h", "High scores", hiScores);
             menu.addSelection("s", "Play", playGame);
             menu.addSelection("q", "Quit", quitGame);
             while (true) {
