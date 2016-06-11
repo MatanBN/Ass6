@@ -3,9 +3,25 @@ package animations;
 import biuoop.DrawSurface;
 
 /**
- * Created by Matan on 6/2/2016.
+ * Menu holds 2 statements of any menu Object.
+ *
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 9 April 2016
  */
 public interface Menu<T> extends Animation {
+    /**
+     * addSelection adds a new task to the list of the game's tasks.
+     *
+     * @param key       is the key to press in order to run the task.
+     * @param message   is the task's name.
+     * @param returnVal is the object that runs the task.
+     */
     void addSelection(String key, String message, T returnVal);
+
+    /**
+     * getStatus checks which task has been chosen.
+     *
+     * @return the returnVal of that task.
+     */
     T getStatus();
 }
