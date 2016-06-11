@@ -131,7 +131,8 @@ public class GameLevel implements Animation {
         createBorder(borders.getMaxX() - 20, playInfo.getRectangle().getMaxY() + 20, 20, borders.getMaxY(), Color.gray);
 
         List<Block> myBlocks = myLevel.blocks();
-        for (Block b : myBlocks) {
+        for (Block block : myBlocks) {
+            Block b = block.copy();
             b.addHitListener(new BlockRemover(this, blockCounter));
             b.addHitListener(new ScoreTrackingListener(myScore.getScore()));
             b.addHitListener(new BlockChanger());
@@ -239,6 +240,7 @@ public class GameLevel implements Animation {
             this.running = false;
         }
     }
+
 
     /**
      * getBlockCounter returns the current number of blocks.

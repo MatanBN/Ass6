@@ -26,7 +26,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     private int hitsNumber; // The number of hits of the block.
     private int totalHits;
     private List<HitListener> hitListeners;
-    private List<Sprite> fillers;
+    private ArrayList<Sprite> fillers;
 
     /**
      * Block creates a new rectangle block by a given rectangle.
@@ -237,6 +237,13 @@ public class Block implements Collidable, Sprite, HitNotifier {
         if (fillers.size() > getHitPoints()) {
             rectangle.setFilling(fillers.get(totalHits - hitsNumber));
         }
+    }
+
+    public Block copy() {
+        Rectangle r = this.getRectangle();
+        Block b = new Block(r.getX(), r.getY(), r.getWidth(), r.getHeight(), r.getColor(), fillers);
+        b.setHitsNumber(totalHits);
+        return b;
     }
 
 

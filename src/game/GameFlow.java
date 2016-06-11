@@ -24,7 +24,7 @@ import java.util.List;
 public class GameFlow {
     private AnimationRunner ar;
     private KeyboardSensor ks;
-    private LiveIndicator liveIndicator;
+    private int lives;
     private ScoreIndicator score;
     private HighScoresTable scoresTable;
     private List<LevelInformation> levels;
@@ -42,7 +42,7 @@ public class GameFlow {
     public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives, HighScoresTable scoresTable, List levels) {
         this.ar = ar;
         this.ks = ks;
-        this.liveIndicator = new LiveIndicator(lives);
+        this.lives = lives;
         this.score = new ScoreIndicator();
         this.scoresTable = scoresTable;
         this.levels = levels;
@@ -108,6 +108,8 @@ public class GameFlow {
      * @param levels a list of levels.
      */
     public void runLevels(List<LevelInformation> levels) {
+        LiveIndicator liveIndicator = new LiveIndicator(lives);
+        score = new ScoreIndicator();
         for (LevelInformation levelInfo : levels) {
             GameLevel level = new GameLevel(levelInfo, this.ks, this.ar);
             level.initialize(liveIndicator, score);
