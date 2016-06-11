@@ -47,6 +47,13 @@ public class Ass6Game {
         gameFlow.chooseTask();
     }
 
+    /**
+     * readSubLevels method returns information on the keys of the level sets and the path of the files for them.
+     *
+     * @param fileName the file name for level sets.
+     * @return a map which will include the key to navigate through the sub menu and the value will be an array list
+     * of the name of the level set and the path of the file for them.
+     */
     private static Map<String, ArrayList<String>> readSubLevels(String fileName) {
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("resources\\" + fileName);
         LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
