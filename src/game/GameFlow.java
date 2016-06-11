@@ -10,7 +10,6 @@ import sprites.LiveIndicator;
 import sprites.ScoreIndicator;
 
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -28,16 +27,17 @@ public class GameFlow {
     private LiveIndicator liveIndicator;
     private ScoreIndicator score;
     private HighScoresTable scoresTable;
-    private List <LevelInformation> levels;
-
+    private List<LevelInformation> levels;
 
 
     /**
      * Constructor for the GameFlow class.
      *
-     * @param ar    The Animation Runner of the game.
-     * @param ks    The KeyboardSensor of the game.
-     * @param lives is the number of live.
+     * @param ar          The Animation Runner of the game.
+     * @param ks          The KeyboardSensor of the game.
+     * @param lives       is the number of live.
+     * @param scoresTable is the HighScores table of the game.
+     * @param levels      is a list with the levels of the game.
      */
     public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives, HighScoresTable scoresTable, List levels) {
         this.ar = ar;
@@ -50,15 +50,20 @@ public class GameFlow {
 
     }
 
-    public void chooseTask (){
+    /**
+     * chooseTask creates the tasks of the game, calls the menu to display them,
+     * and runs the task that the user chooses.
+     */
+    public void chooseTask() {
         try {
             Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks);
 
+            //Anonymous classes that defines each task's run method.
             Task<Void> hiScores = new Task<Void>() {
                 @Override
                 public Void run() {
                     ar.run(new HighScoresAnimation(scoresTable, "i", ks));
-                    if (ks.isPressed(KeyboardSensor.SPACE_KEY)){
+                    if (ks.isPressed(KeyboardSensor.SPACE_KEY)) {
                         chooseTask();
                     }
                     return null;
@@ -81,6 +86,7 @@ public class GameFlow {
                 }
             };
 
+            //Adding the tasks to the tasks list.
             menu.addSelection("h", "Hi scores", hiScores);
             menu.addSelection("s", "Play", playGame);
             menu.addSelection("q", "Quit", quitGame);
@@ -90,11 +96,10 @@ public class GameFlow {
                 Task<Void> task = menu.getStatus();
                 task.run();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.print("Task Error");
         }
     }
-
 
 
     /**
