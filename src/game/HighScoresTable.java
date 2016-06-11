@@ -122,9 +122,12 @@ public class HighScoresTable {
         ObjectInputStream ois = null;
         try {
             ois = new ObjectInputStream(new FileInputStream(filename));
-            while (filename.canRead()) {
+            int tableSize = ois.readInt();
+            for (int i = 0; i < tableSize; ++i) {
                 add((ScoreInfo) ois.readObject());
             }
+        } catch (FileNotFoundException e) {
+            e.getMessage();
         } catch (IOException e) {
             System.out.println("Error loading file");
         } catch (ClassNotFoundException e) {
@@ -151,6 +154,7 @@ public class HighScoresTable {
         ObjectOutputStream oos = null;
         try {
             oos = new ObjectOutputStream(new FileOutputStream(filename));
+            oos.writeInt(table.size());
             for (ScoreInfo score : table) {
                 oos.writeObject(score);
             }

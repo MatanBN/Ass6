@@ -6,8 +6,13 @@ import geometry.Rectangle;
 import leveldevelopment.LevelSpecificationReader;
 import gamelevels.*;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+
 import java.util.List;
 
 /**

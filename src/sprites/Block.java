@@ -123,7 +123,6 @@ public class Block implements Collidable, Sprite, HitNotifier {
             newVelocity.setDy(-currentVelocity.getDy());
         }
         this.notifyHit(hitter);
-
         return newVelocity;
     }
 
@@ -235,7 +234,6 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * setFiller method sets the filler according to the number of hit points left to the block.
      */
     public void setFiller() {
-
         if (fillers.size() > getHitPoints()) {
             rectangle.setFilling(fillers.get(totalHits - hitsNumber));
         }
