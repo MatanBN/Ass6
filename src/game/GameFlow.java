@@ -127,7 +127,7 @@ public class GameFlow {
         private String key; // The key to press to choose the level set.
         private String name; // The name of the level set.
         private String levelPath; // The file of the levels for the level set.
-        Task<Void> setTask; // The task of the levelSet.
+        private Task<Void> setTask; // The task of the levelSet.
 
         /**
          * Constructor for the level set.
