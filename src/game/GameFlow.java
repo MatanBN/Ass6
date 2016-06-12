@@ -127,14 +127,7 @@ public class GameFlow {
         private String key; // The key to press to choose the level set.
         private String name; // The name of the level set.
         private String levelPath; // The file of the levels for the level set.
-        Task<Void> setTask = new Task<Void>() {
-            @Override
-            public Void run() {
-                levels = getListOfLevels(getLevelPath());
-                runLevels(levels);
-                return null;
-            }
-        };
+        Task<Void> setTask;
 
         /**
          * Constructor for the level set.
@@ -185,6 +178,17 @@ public class GameFlow {
 
         public Task<Void> getSetTask() {
             return setTask;
+        }
+
+        public void setSetTask() {
+            setTask = new Task<Void>() {
+                @Override
+                public Void run() {
+                    levels = getListOfLevels(getLevelPath());
+                    runLevels(levels);
+                    return null;
+                }
+            };
         }
     }
 
@@ -246,6 +250,7 @@ public class GameFlow {
                     currentLevelSet = new LevelSet(levelKeyName[0], levelKeyName[1]);
                 } else {
                     currentLevelSet.setLevelPath(line);
+                    currentLevelSet.setSetTask();
                     levelSets.add(currentLevelSet);
                 }
             }
