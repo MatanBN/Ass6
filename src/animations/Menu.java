@@ -24,4 +24,13 @@ public interface Menu<T> extends Animation {
      * @return the returnVal of that task.
      */
     T getStatus();
+
+    /**
+     * addSubMenu adds a new sub-menu to an existed menu.
+     *
+     * @param key     is the key to press in order to run the task.
+     * @param message is the task's name.
+     * @param subMenu is a menu object.
+     */
+    void addSubMenu(String key, String message, Menu<T> subMenu);
 }

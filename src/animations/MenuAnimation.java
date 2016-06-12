@@ -94,6 +94,11 @@ public class MenuAnimation<T> implements Menu {
         }
     }
 
+    @Override
+    public void addSubMenu(String key, String message, Menu subMenu) {
+        Menu<Task<Void>> subM = new MenuAnimation<Task<Void>>(ks);
+    }
+
     /**
      * Selection is an inner class that holds the values of each task.
      */

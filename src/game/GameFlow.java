@@ -6,14 +6,18 @@ import biuoop.DialogManager;
 
 import biuoop.KeyboardSensor;
 import gamelevels.LevelInformation;
+import geometry.Rectangle;
+import leveldevelopment.LevelSpecificationReader;
 import sprites.LiveIndicator;
 import sprites.ScoreIndicator;
 
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The GameFlow class controls the different levels of the game.
@@ -28,6 +32,8 @@ public class GameFlow {
     private ScoreIndicator score;
     private HighScoresTable scoresTable;
     private List<LevelInformation> levels;
+    private String levelSets;
+    private Map<String, ArrayList<String>> levelsMap;
 
 
     /**
@@ -37,15 +43,15 @@ public class GameFlow {
      * @param ks          The KeyboardSensor of the game.
      * @param lives       is the number of live.
      * @param scoresTable is the HighScores table of the game.
-     * @param levels      is a list with the levels of the game.
+     * @param fileName      is a list with the levels of the game.
      */
-    public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives, HighScoresTable scoresTable, List levels) {
+    public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives, HighScoresTable scoresTable, String fileName) {
         this.ar = ar;
         this.ks = ks;
         this.lives = lives;
         this.score = new ScoreIndicator();
         this.scoresTable = scoresTable;
-        this.levels = levels;
+        this.levelSets = fileName;
 
 
     }
@@ -57,6 +63,7 @@ public class GameFlow {
     public void chooseTask() {
         try {
             Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks);
+
 
             //Anonymous classes that defines each task's run method.
             Task<Void> hiScores = new Task<Void>() {
@@ -73,9 +80,33 @@ public class GameFlow {
             Task<Void> playGame = new Task<Void>() {
                 @Override
                 public Void run() {
-                    runLevels(levels);
+                    Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
+                    levelsMap = readSubLevels(levelSets);
+                    subMenu.addSelection("h", "Hard", hardSet);
+                    subMenu.addSelection("e", "Easy", easySet);
+                    Task<Void> task = subMenu.getStatus();
+                    task.run();
                     return null;
                 }
+
+                Task<Void> easySet = new Task<Void> (){
+                    @Override
+                    public Void run() {
+                        levels = getListOfLevels(levelsMap.get("e").get(1));
+                        runLevels(levels);
+                        return null;
+                    }
+                };
+
+                Task<Void> hardSet = new Task<Void> (){
+                    @Override
+                    public Void run() {
+                        levels = getListOfLevels(levelsMap.get("h").get(1));
+                        runLevels(levels);
+                        return null;
+                    }
+                };
+
             };
 
             Task<Void> quitGame = new Task<Void>() {
@@ -90,6 +121,10 @@ public class GameFlow {
             menu.addSelection("h", "High scores", hiScores);
             menu.addSelection("s", "Play", playGame);
             menu.addSelection("q", "Quit", quitGame);
+
+            /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
+            levelsMap = readSubLevels(levelSets);
+            subMenu.addSelection("h", levelsMap.get("h").get(0), hardSet);*/
             while (true) {
                 ar.run(menu);
                 // wait for user selection
@@ -136,6 +171,54 @@ public class GameFlow {
             System.out.println("Error saving file");
         }
         this.chooseTask();
+    }
+
+    /**
+     * readSubLevels method returns information on the keys of the level sets and the path of the files for them.
+     *
+     * @param fileName the file name for level sets.
+     * @return a map which will include the key to navigate through the sub menu and the value will be an array list
+     * of the name of the level set and the path of the file for them.
+     */
+
+    public Map<String, ArrayList<String>> readSubLevels(String fileName) {
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("resources\\" + fileName);
+        LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
+        Map<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+        String[] levelKeyName = null;
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                if (reader.getLineNumber() % 2 == 1) {
+                    levelKeyName = line.split(":");
+                    ArrayList<String> levelNamePath = new ArrayList<String>();
+                    levelNamePath.add(levelKeyName[1]);
+                    map.put(levelKeyName[0], levelNamePath);
+                } else {
+                    map.get(levelKeyName[0]).add(line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read set files");
+        }
+        return map;
+    }
+
+    public List<LevelInformation> getListOfLevels(String levelFileNames) {
+        BufferedReader buffer = null;
+        List<LevelInformation> levels = null;
+        LevelSpecificationReader levelReader = new LevelSpecificationReader(new Rectangle(0, 0, 800, 600));
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream
+                ("resources\\" + levelFileNames);
+        buffer = new BufferedReader(new InputStreamReader(is));
+        levels = levelReader.fromReader(buffer);
+        try {
+            buffer.close();
+        } catch (IOException e) {
+            System.out.println("Error closing level file");
+        }
+        return levels;
+
     }
 
 }

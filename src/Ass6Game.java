@@ -41,19 +41,20 @@ public class Ass6Game {
         }catch (Exception e){
             System.out.print("Unable to load the file");
         }
-        Map<String, ArrayList<String>> map = readSubLevels(args[0]);
-        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores,
-                getListOfLevels(map.get("h").get(1)));
+       // Map<String, ArrayList<String>> map = readSubLevels(args[0]);
+        /*GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores,
+                getListOfLevels(map.get("h").get(1)));*/
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores, args[0]);
         gameFlow.chooseTask();
     }
-
+/*
     /**
      * readSubLevels method returns information on the keys of the level sets and the path of the files for them.
      *
      * @param fileName the file name for level sets.
      * @return a map which will include the key to navigate through the sub menu and the value will be an array list
      * of the name of the level set and the path of the file for them.
-     */
+
     private static Map<String, ArrayList<String>> readSubLevels(String fileName) {
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("resources\\" + fileName);
         LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
@@ -94,5 +95,6 @@ public class Ass6Game {
         return levels;
 
     }
+    */
 
 }
