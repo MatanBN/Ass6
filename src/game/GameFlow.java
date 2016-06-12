@@ -78,34 +78,18 @@ public class GameFlow {
             };
 
             Task<Void> playGame = new Task<Void>() {
+
                 @Override
                 public Void run() {
                     Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
-                    levelsMap = readSubLevels(levelSets);
-                    subMenu.addSelection("h", "Hard", hardSet);
-                    subMenu.addSelection("e", "Easy", easySet);
+                    List<LevelSet> myLevelSets = readSubLevels(levelSets);
+                    for (LevelSet set : myLevelSets) {
+                        subMenu.addSelection(set.getKey(), set.getName(), set.getSetTask());
+                    }
                     Task<Void> task = subMenu.getStatus();
                     task.run();
                     return null;
                 }
-
-                Task<Void> easySet = new Task<Void> (){
-                    @Override
-                    public Void run() {
-                        levels = getListOfLevels(levelsMap.get("e").get(1));
-                        runLevels(levels);
-                        return null;
-                    }
-                };
-
-                Task<Void> hardSet = new Task<Void> (){
-                    @Override
-                    public Void run() {
-                        levels = getListOfLevels(levelsMap.get("h").get(1));
-                        runLevels(levels);
-                        return null;
-                    }
-                };
 
             };
 
@@ -136,6 +120,73 @@ public class GameFlow {
         }
     }
 
+    /**
+     * LevelSet class is a private class for a level set.
+     */
+    private class LevelSet {
+        private String key; // The key to press to choose the level set.
+        private String name; // The name of the level set.
+        private String levelPath; // The file of the levels for the level set.
+        Task<Void> setTask = new Task<Void>() {
+            @Override
+            public Void run() {
+                levels = getListOfLevels(getLevelPath());
+                runLevels(levels);
+                return null;
+            }
+        };
+
+        /**
+         * Constructor for the level set.
+         *
+         * @param key  the key to press to choose the level set.
+         * @param name // The name of the level set.
+         */
+        public LevelSet(String key, String name) {
+            this.key = key;
+            this.name = name;
+        }
+
+        /**
+         * getKey returns the key to choose the level set.
+         *
+         * @return the key to choose the level set.
+         */
+        public String getKey() {
+            return key;
+        }
+
+        /**
+         * getName returns the name of the level set.
+         *
+         * @return the name of the level set.
+         */
+        public String getName() {
+            return name;
+        }
+
+        /**
+         * getLevelPath returns the file of the levels for the level set.
+         *
+         * @return The file of the levels for the level set.
+         */
+        public String getLevelPath() {
+            return levelPath;
+        }
+
+        /**
+         * setLevelPath sets the path for the file of the levels for the level set.
+         *
+         * @param levelPath the file of the levels for the level set.
+         */
+        public void setLevelPath(String levelPath) {
+            this.levelPath = levelPath;
+        }
+
+        public Task<Void> getSetTask() {
+            return setTask;
+        }
+    }
 
     /**
      * runLevels method runs a given list of levels.
@@ -181,27 +232,27 @@ public class GameFlow {
      * of the name of the level set and the path of the file for them.
      */
 
-    public Map<String, ArrayList<String>> readSubLevels(String fileName) {
+    public List<LevelSet> readSubLevels(String fileName) {
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("resources\\" + fileName);
         LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
-        Map<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+        List<LevelSet> levelSets = new ArrayList<LevelSet>();
         String[] levelKeyName = null;
         String line;
+        LevelSet currentLevelSet = null;
         try {
             while ((line = reader.readLine()) != null) {
                 if (reader.getLineNumber() % 2 == 1) {
                     levelKeyName = line.split(":");
-                    ArrayList<String> levelNamePath = new ArrayList<String>();
-                    levelNamePath.add(levelKeyName[1]);
-                    map.put(levelKeyName[0], levelNamePath);
+                    currentLevelSet = new LevelSet(levelKeyName[0], levelKeyName[1]);
                 } else {
-                    map.get(levelKeyName[0]).add(line);
+                    currentLevelSet.setLevelPath(line);
+                    levelSets.add(currentLevelSet);
                 }
             }
         } catch (IOException e) {
             System.out.println("Unable to read set files");
         }
-        return map;
+        return levelSets;
     }
 
     public List<LevelInformation> getListOfLevels(String levelFileNames) {
@@ -218,7 +269,6 @@ public class GameFlow {
             System.out.println("Error closing level file");
         }
         return levels;
-
     }
 
 }
