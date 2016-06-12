@@ -245,6 +245,9 @@ public class GameFlow {
         LevelSet currentLevelSet = null;
         try {
             while ((line = reader.readLine()) != null) {
+                if (line.equals("")) {
+                    continue;
+                }
                 if (reader.getLineNumber() % 2 == 1) {
                     levelKeyName = line.split(":");
                     currentLevelSet = new LevelSet(levelKeyName[0], levelKeyName[1]);
