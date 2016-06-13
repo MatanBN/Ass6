@@ -2,7 +2,6 @@ package animations;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
-import game.GameFlow;
 import game.HighScoresTable;
 import game.ScoreInfo;
 

@@ -10,6 +10,8 @@ public interface Task<T> {
 
     /**
      * run method runs the animation loop.
+     *
+     * @return the animation.
      */
     T run();
 }

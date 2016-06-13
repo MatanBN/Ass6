@@ -73,13 +73,13 @@ public class MenuAnimation<T> implements Menu {
     /**
      * addSelection adds a new task to the list of the game's tasks.
      *
-     * @param key       is the key to press in order to run the task.
-     * @param message   is the task's name.
-     * @param returnVal is the object that runs the task.
+     * @param newKey     is the key to press in order to run the task.
+     * @param newMessage is the task's name.
+     * @param returnVal  is the object that runs the task.
      */
     @Override
-    public void addSelection(String key, String message, Object returnVal) {
-        menuSelections.add(new Selection(key, message, (T) returnVal, false));
+    public void addSelection(String newKey, String newMessage, Object returnVal) {
+        menuSelections.add(new Selection(newKey, newMessage, (T) returnVal, false));
     }
 
     /**
@@ -106,13 +106,13 @@ public class MenuAnimation<T> implements Menu {
     /**
      * addSubMenu adds a new sub-menu to a menu's selections list.
      *
-     * @param key     is the key to press in order to run the task.
-     * @param message is the task's name.
-     * @param subMenu is a menu object.
+     * @param newKey     is the key to press in order to run the task.
+     * @param newMessage is the task's name.
+     * @param subMenu    is a menu object.
      */
     @Override
-    public void addSubMenu(String key, String message, Menu subMenu) {
-        menuSelections.add(new Selection(key, message, (T) subMenu, true));
+    public void addSubMenu(String newKey, String newMessage, Menu subMenu) {
+        menuSelections.add(new Selection(newKey, newMessage, (T) subMenu, true));
     }
 
     /**

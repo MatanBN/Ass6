@@ -6,7 +6,10 @@ import sprites.Sprite;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * BlocksDefinitionReader class reads a file that was given in the reader and creates a BlockFromSymbolsFactory
@@ -94,7 +97,7 @@ public class BlocksDefinitionReader {
     }
 
     /**
-     * getBlockCreator method reads the info for the block creator and adds it to the default values if needed
+     * getBlockCreator method reads the info for the block creator and adds it to the default values if needed.
      *
      * @param info the line of the block information.
      * @param map  the map for the information of the block.

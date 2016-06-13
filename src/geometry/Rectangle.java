@@ -77,13 +77,14 @@ public class Rectangle {
      * @param width  the desired width of the rectangle.
      * @param height the desired height of the rectangle.
      * @param c      the desired color of the rectangle.
+     * @param fill   the filling of the rectangle.
      */
-    public Rectangle(int x, int y, int width, int height, Color c, Sprite filling) {
+    public Rectangle(int x, int y, int width, int height, Color c, Sprite fill) {
         this.upperLeft = new Point(x, y);
         this.width = width;
         this.height = height;
         this.color = c;
-        this.filling = filling;
+        this.filling = fill;
     }
 
     /**
@@ -94,13 +95,14 @@ public class Rectangle {
      * @param width     the desired width of the rectangle.
      * @param height    the desired height of the rectangle.
      * @param c         the desired color of the rectangle.
+     * @param fill      the filling of the rectangle.
      */
-    public Rectangle(Point upperLeft, int width, int height, Color c, Sprite filling) {
+    public Rectangle(Point upperLeft, int width, int height, Color c, Sprite fill) {
         this.upperLeft = upperLeft;
         this.width = width;
         this.height = height;
         this.color = c;
-        this.filling = filling;
+        this.filling = fill;
     }
 
     /**
@@ -277,9 +279,9 @@ public class Rectangle {
     /**
      * Set the filler of the rectangle.
      *
-     * @param filling the new filler of the rectangle.
+     * @param fill the new filler of the rectangle.
      */
-    public void setFilling(Sprite filling) {
-        this.filling = filling;
+    public void setFilling(Sprite fill) {
+        this.filling = fill;
     }
 }

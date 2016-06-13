@@ -14,7 +14,7 @@ import java.util.List;
  * @version 1.0 9 April 2016
  */
 public class Level implements LevelInformation {
-    public int numberOfBalls; // The number of balls of the level.
+    private int numberOfBalls; // The number of balls of the level.
     private List<Velocity> levelsVelocities; // A list which will include every ball's velocity.
     private int paddSpeed; // The speed of the paddle.
     private int paddWidth; // The width of the paddle.
@@ -115,13 +115,13 @@ public class Level implements LevelInformation {
     /**
      * setLevelVelocities method sets the list of ball velocities according to the list given.
      *
-     * @param levelsVelocities is a list of balls velocities to set this level balls velocities.
+     * @param velocities is a list of balls velocities to set this level balls velocities.
      */
-    public void setLevelsVelocities(List<Velocity> levelsVelocities) {
+    public void setLevelsVelocities(List<Velocity> velocities) {
         checks.set(0, true);
 
         this.numberOfBalls = levelsVelocities.size();
-        this.levelsVelocities = levelsVelocities;
+        this.levelsVelocities = velocities;
     }
 
     /**
@@ -147,41 +147,41 @@ public class Level implements LevelInformation {
     /**
      * setLevelName method sets the method of the level.
      *
-     * @param levelName the new name of the level.
+     * @param name the new name of the level.
      */
-    public void setLevelName(String levelName) {
+    public void setLevelName(String name) {
         checks.add(true);
-        this.levelName = levelName;
+        this.levelName = name;
     }
 
     /**
      * setLevelBlocks sets the list of the blocks according to the blocks given.
      *
-     * @param levelBlocks the new list of the blocks of the level.
+     * @param blocks the new list of the blocks of the level.
      */
-    public void setLevelBlocks(List<Block> levelBlocks) {
+    public void setLevelBlocks(List<Block> blocks) {
         checks.add(true);
-        this.levelBlocks = levelBlocks;
+        this.levelBlocks = blocks;
     }
 
     /**
      * setNumOfBlocksToRemove method sets the number of blocks to remove according to the number given.
      *
-     * @param numOfBlocksToRemove the new number of blocks to remove.
+     * @param numOfBlocks the new number of blocks to remove.
      */
-    public void setNumOfBlocksToRemove(int numOfBlocksToRemove) {
+    public void setNumOfBlocksToRemove(int numOfBlocks) {
         checks.add(true);
-        this.numOfBlocksToRemove = numOfBlocksToRemove;
+        this.numOfBlocksToRemove = numOfBlocks;
     }
 
     /**
      * setBackground sets the background of the level according to the background given.
      *
-     * @param background the new background of the level.
+     * @param levelBackground the new background of the level.
      */
-    public void setBackground(Sprite background) {
+    public void setBackground(Sprite levelBackground) {
         checks.add(true);
-        this.background = background;
+        this.background = levelBackground;
     }
 
     /**

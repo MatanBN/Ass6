@@ -8,9 +8,10 @@ import sprites.Block;
 import sprites.ColorSprite;
 import sprites.ImageSprite;
 import sprites.Sprite;
-
-import java.io.*;
-
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -188,8 +189,7 @@ public class LevelSpecificationReader {
      */
     private void setBlockFactory(String fileName) {
         BufferedReader blockBuff = null;
-        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream
-                (fileName);
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(fileName);
         blockBuff = new BufferedReader(new InputStreamReader(is));
         blockFactory = BlocksDefinitionReader.fromReader(blockBuff);
         try {

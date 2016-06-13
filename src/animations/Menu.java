@@ -1,6 +1,5 @@
 package animations;
 
-import biuoop.DrawSurface;
 
 /**
  * Menu holds 2 statements of any menu Object.

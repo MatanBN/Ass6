@@ -5,7 +5,7 @@ import biuoop.KeyboardSensor;
 import sprites.LiveIndicator;
 import sprites.ScoreIndicator;
 
-import java.awt.*;
+import java.awt.Color;
 
 
 /**

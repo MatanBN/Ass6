@@ -9,10 +9,21 @@ import game.Velocity;
 import gamelevels.LevelInformation;
 import geometry.Rectangle;
 import geometry.Point;
-import listeners.*;
-import sprites.*;
+import listeners.BallRemover;
+import listeners.BlockChanger;
+import listeners.BlockRemover;
+import listeners.ScoreTrackingListener;
+import sprites.LiveIndicator;
+import sprites.Paddle;
+import sprites.Sprite;
+import sprites.SpriteCollection;
+import sprites.ScoreIndicator;
+import sprites.Block;
+import sprites.ColorSprite;
+import sprites.LevelIndicator;
+import sprites.Ball;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 
 /**
