@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @version 1.0 9 April 2016
  */
 public class MenuAnimation<T> implements Menu {
-    private ArrayList<Selection> menuSelections;
 
+    private ArrayList<Selection> menuSelections;
     private KeyboardSensor ks;
     private boolean stopper;
     private String key;
@@ -84,19 +84,32 @@ public class MenuAnimation<T> implements Menu {
      */
     @Override
     public T getStatus() {
-        switch (key) {
+
+        /*switch (key) {
             case "h":
                 return menuSelections.get(0).returnVal;
             case "s":
                 return menuSelections.get(1).returnVal;
             default:
                 return menuSelections.get(2).returnVal;
-        }
+        }*/
+
+        int i = getIndex(key);
+        return menuSelections.get(i).returnVal;
     }
 
     @Override
     public void addSubMenu(String key, String message, Menu subMenu) {
-        Menu<Task<Void>> subM = new MenuAnimation<Task<Void>>(ks);
+
+    }
+
+    public int getIndex (String s){
+        for (int i=0; i<menuSelections.size();i++){
+            if (menuSelections.get(i).getKey().equals(s)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -147,4 +160,5 @@ public class MenuAnimation<T> implements Menu {
             return this.returnVal;
         }
     }
+
 }

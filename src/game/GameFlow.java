@@ -62,7 +62,7 @@ public class GameFlow {
      */
     public void chooseTask() {
         try {
-            Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks);
+            final Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks);
 
 
             //Anonymous classes that defines each task's run method.
@@ -85,13 +85,25 @@ public class GameFlow {
                     List<LevelSet> myLevelSets = readSubLevels(levelSets);
                     for (LevelSet set : myLevelSets) {
                         subMenu.addSelection(set.getKey(), set.getName(), set.getSetTask());
+
                     }
-                    Task<Void> task = subMenu.getStatus();
-                    task.run();
+                    //menu.addSubMenu(set.getKey(), set.getName(),subMenu);
+                    /*Task<Void> task = subMenu.getStatus();
+                    task.run();*/
+                    ar.run(subMenu);
+                    Task <Void> t = subMenu.getStatus();
+                    t.run();
+                   /* switch (key){
+                        case "e": myLevelSets.get(0).
+                            break;
+                        default: myLevelSets.get(1).setSetTask();
+                            break;
+                    }*/
                     return null;
                 }
 
             };
+
 
             Task<Void> quitGame = new Task<Void>() {
                 @Override
@@ -106,9 +118,7 @@ public class GameFlow {
             menu.addSelection("s", "Play", playGame);
             menu.addSelection("q", "Quit", quitGame);
 
-            /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
-            levelsMap = readSubLevels(levelSets);
-            subMenu.addSelection("h", levelsMap.get("h").get(0), hardSet);*/
+            /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);*/
             while (true) {
                 ar.run(menu);
                 // wait for user selection
