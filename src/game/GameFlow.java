@@ -247,6 +247,14 @@ public class GameFlow {
             }
         } catch (IOException e) {
             System.out.println("Unable to read set files");
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println("Error closing sets file");
+                }
+            }
         }
         return levelSets;
     }

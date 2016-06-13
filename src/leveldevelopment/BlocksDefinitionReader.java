@@ -56,7 +56,7 @@ public class BlocksDefinitionReader {
                 map.putAll(defaultMap);
                 BlockCreator blockFactory = getBlockCreator(info, map);
                 blockCreatorMap.put(map.get("symbol"), blockFactory);
-            } else if (info[1].equals("sdef")) {
+            } else if (info[0].equals("sdef")) {
                 readSpaces(info, spaceCreatorMap);
             }
         }
