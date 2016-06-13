@@ -78,7 +78,7 @@ public class MenuAnimation<T> implements Menu {
      */
     @Override
     public void addSelection(String key, String message, Object returnVal) {
-        menuSelections.add(new Selection(key, message, (T) returnVal));
+        menuSelections.add(new Selection(key, message, (T) returnVal, false));
     }
 
     /**
@@ -98,19 +98,20 @@ public class MenuAnimation<T> implements Menu {
                 return menuSelections.get(2).returnVal;
         }*/
         int i = getIndex(key);
-        if (key.equals("s")) {
-            Menu<T> subMenu = (Menu<T>) menuSelections.get(i).returnVal;
+        Selection select = menuSelections.get(i);
+
+        if (select.isSubMenu()) {
+            Menu<T> subMenu = (Menu<T>) select.returnVal;
             ar.run(subMenu);
             T task = subMenu.getStatus();
             return task;
-
         }
         return menuSelections.get(i).returnVal;
     }
 
     @Override
     public void addSubMenu(String key, String message, Menu subMenu) {
-        menuSelections.add(new Selection(key, message, (T) subMenu));
+        menuSelections.add(new Selection(key, message, (T) subMenu, true));
     }
 
     public int getIndex (String s){
@@ -129,6 +130,7 @@ public class MenuAnimation<T> implements Menu {
         private String key;
         private String message;
         private T returnVal;
+        private boolean subMenu;
 
         /**
          * Constructor create the a tak.
@@ -137,10 +139,11 @@ public class MenuAnimation<T> implements Menu {
          * @param message   is the task's name.
          * @param returnVal is the object that runs the task.
          */
-        public Selection(String key, String message, T returnVal) {
+        public Selection(String key, String message, T returnVal, boolean subMenu) {
             this.key = key;
             this.message = message;
             this.returnVal = returnVal;
+            this.subMenu = subMenu;
         }
 
         /**
@@ -168,6 +171,10 @@ public class MenuAnimation<T> implements Menu {
          */
         public T getReturnVal() {
             return this.returnVal;
+        }
+
+        public boolean isSubMenu() {
+            return subMenu;
         }
     }
 
