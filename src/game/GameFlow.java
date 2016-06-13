@@ -61,50 +61,45 @@ public class GameFlow {
      * and runs the task that the user chooses.
      */
     public void chooseTask() {
-        try {
-            final Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks, ar, "please choose:");
+        final Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks, ar, "please choose:");
 
-
-            //Anonymous classes that defines each task's run method.
-            Task<Void> hiScores = new Task<Void>() {
-                @Override
-                public Void run() {
-                    ar.run(new HighScoresAnimation(scoresTable, "i", ks));
-                    if (ks.isPressed(KeyboardSensor.SPACE_KEY)) {
-                        chooseTask();
-                    }
-                    return null;
+        //Anonymous classes that defines each task's run method.
+        Task<Void> hiScores = new Task<Void>() {
+            @Override
+            public Void run() {
+                ar.run(new HighScoresAnimation(scoresTable, "i", ks));
+                if (ks.isPressed(KeyboardSensor.SPACE_KEY)) {
+                    chooseTask();
                 }
-            };
-
-            Task<Void> quitGame = new Task<Void>() {
-                @Override
-                public Void run() {
-                    Runtime.getRuntime().exit(1);
-                    return null;
-                }
-            };
-
-            Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks, ar, "Choose difficulty");
-            List<LevelSet> theLevelSets = readSubLevels(levelSets);
-            for (LevelSet currentLevelSet : theLevelSets) {
-                subMenu.addSelection(currentLevelSet.getKey(), currentLevelSet.getName(), currentLevelSet.getSetTask());
+                return null;
             }
+        };
 
-            // Adding the tasks to the tasks list.
-            menu.addSelection("h", "High scores", hiScores);
-            menu.addSubMenu("s", "Play", subMenu);
-            menu.addSelection("q", "Quit", quitGame);
-
-            /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);*/
-            while (true) {
-                ar.run(menu);
-                // wait for user selection
-                Task<Void> task = menu.getStatus();
-                task.run();
+        Task<Void> quitGame = new Task<Void>() {
+            @Override
+            public Void run() {
+                Runtime.getRuntime().exit(1);
+                return null;
             }
-        } catch (Exception e) {
-            System.out.print("Task Error");
+        };
+
+        Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks, ar, "Choose difficulty");
+        List<LevelSet> theLevelSets = readSubLevels(levelSets);
+        for (LevelSet currentLevelSet : theLevelSets) {
+            subMenu.addSelection(currentLevelSet.getKey(), currentLevelSet.getName(), currentLevelSet.getSetTask());
+        }
+
+        // Adding the tasks to the tasks list.
+        menu.addSelection("h", "High scores", hiScores);
+        menu.addSubMenu("s", "Play", subMenu);
+        menu.addSelection("q", "Quit", quitGame);
+
+        /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);*/
+        while (true) {
+            ar.run(menu);
+            // wait for user selection
+            Task<Void> task = menu.getStatus();
+            task.run();
         }
     }
 
@@ -225,7 +220,11 @@ public class GameFlow {
      */
 
     public List<LevelSet> readSubLevels(String fileName) {
-        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("resources\\" + fileName);
+        System.out.println(fileName);
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(fileName);
+        if (is == null) {
+            System.out.println(fileName);
+        }
         LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
         List<LevelSet> levelSets = new ArrayList<LevelSet>();
         String[] levelKeyName = null;
@@ -267,10 +266,12 @@ public class GameFlow {
                 ("resources\\" + levelFileNames);
         buffer = new BufferedReader(new InputStreamReader(is));
         levels = levelReader.fromReader(buffer);
-        try {
-            buffer.close();
-        } catch (IOException e) {
-            System.out.println("Error closing level file");
+        if (buffer != null) {
+            try {
+                buffer.close();
+            } catch (IOException e) {
+                System.out.println("Error closing level file");
+            }
         }
         return levels;
     }
