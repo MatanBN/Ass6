@@ -113,9 +113,11 @@ public class GameFlow {
                 }
             };
 
+            Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
+
             //Adding the tasks to the tasks list.
             menu.addSelection("h", "High scores", hiScores);
-            menu.addSelection("s", "Play", playGame);
+            menu.addSelection("s", "Play", (Object)subMenu);
             menu.addSelection("q", "Quit", quitGame);
 
             /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);*/
