@@ -100,7 +100,7 @@ public class MenuAnimation<T> implements Menu {
 
     @Override
     public void addSubMenu(String key, String message, Menu subMenu) {
-
+        menuSelections.add(new Selection(key, message, (T) subMenu));
     }
 
     public int getIndex (String s){

@@ -27,6 +27,15 @@ public class ImageParser {
             image = ImageIO.read(is);
         } catch (IOException e) {
             System.out.println("Unable to read image");
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    System.out.println("Error closing the image file");
+                }
+
+            }
         }
         return image;
     }
