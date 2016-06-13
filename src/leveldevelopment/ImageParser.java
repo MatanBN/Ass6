@@ -22,7 +22,7 @@ public class ImageParser {
      */
     public Image imageFromString(String s) {
         String myImage = s.substring(0, s.length() - 1);
-        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("resources\\" + myImage);
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(myImage);
         Image image = null;
         try {
             image = ImageIO.read(is);

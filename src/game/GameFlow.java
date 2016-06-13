@@ -15,7 +15,6 @@ import sprites.ScoreIndicator;
 import java.io.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -227,11 +226,7 @@ public class GameFlow {
      */
 
     public List<LevelSet> readSubLevels(String fileName) {
-        System.out.println(fileName);
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(fileName);
-        if (is == null) {
-            System.out.println(fileName);
-        }
         LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
         List<LevelSet> levelSets = new ArrayList<LevelSet>();
         String[] levelKeyName = null;
@@ -276,7 +271,7 @@ public class GameFlow {
         List<LevelInformation> levels = null;
         LevelSpecificationReader levelReader = new LevelSpecificationReader(new Rectangle(0, 0, 800, 600));
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream
-                ("resources\\" + levelFileNames);
+                (levelFileNames);
         buffer = new BufferedReader(new InputStreamReader(is));
         levels = levelReader.fromReader(buffer);
         if (buffer != null) {

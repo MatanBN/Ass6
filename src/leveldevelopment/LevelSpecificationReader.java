@@ -189,7 +189,7 @@ public class LevelSpecificationReader {
     private void setBlockFactory(String fileName) {
         BufferedReader blockBuff = null;
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream
-                ("resources\\" + fileName);
+                (fileName);
         blockBuff = new BufferedReader(new InputStreamReader(is));
         blockFactory = BlocksDefinitionReader.fromReader(blockBuff);
         try {
