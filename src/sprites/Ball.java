@@ -170,6 +170,8 @@ public class Ball implements Sprite {
     /**
      * moveOneStep Changes the center of the ball according to the balls
      * velocity.
+     *
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void moveOneStep(double dt) {
         Velocity frameVelocity = new Velocity(v.getDx() * dt, v.getDy() * dt);
@@ -194,6 +196,8 @@ public class Ball implements Sprite {
 
     /**
      * timePassed calls the moveOneStep method in order to move the ball.
+     *
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void timePassed(double dt) {
         moveOneStep(dt);

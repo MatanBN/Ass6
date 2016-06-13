@@ -223,6 +223,7 @@ public class GameLevel implements Animation {
      * doOneFrame method draws the game on the screen.
      *
      * @param d the drawSurface to draw on.
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void doOneFrame(DrawSurface d, double dt) {
         // the logic from the previous playOneTurn method goes here.

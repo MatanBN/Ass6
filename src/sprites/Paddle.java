@@ -116,6 +116,8 @@ public class Paddle implements Sprite, Collidable {
      * timePassed checks whether the key that the user pressed is left key or
      * right key and calls the suitable method in order to move it to the right
      * side.
+     *
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void timePassed(double dt) {
         double newSpeed=this.speed*dt;

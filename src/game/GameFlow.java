@@ -43,7 +43,7 @@ public class GameFlow {
      * @param ks          The KeyboardSensor of the game.
      * @param lives       is the number of live.
      * @param scoresTable is the HighScores table of the game.
-     * @param fileName      is a list with the levels of the game.
+     * @param fileName    is a list with the levels of the game.
      */
     public GameFlow(AnimationRunner ar, KeyboardSensor ks, int lives, HighScoresTable scoresTable, String fileName) {
         this.ar = ar;
@@ -94,7 +94,6 @@ public class GameFlow {
         menu.addSubMenu("s", "Play", subMenu);
         menu.addSelection("q", "Quit", quitGame);
 
-        /*Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);*/
         while (true) {
             ar.run(menu);
             // wait for user selection
@@ -116,7 +115,7 @@ public class GameFlow {
          * Constructor for the level set.
          *
          * @param key  the key to press to choose the level set.
-         * @param name // The name of the level set.
+         * @param name The name of the level set.
          */
         public LevelSet(String key, String name) {
             this.key = key;
@@ -159,10 +158,17 @@ public class GameFlow {
             this.levelPath = levelPath;
         }
 
+        /**
+         * getLevelTask gets the set of levels of the level set.
+         * @return the set of levels of the level set.
+         */
         public Task<Void> getSetTask() {
             return setTask;
         }
 
+        /**
+         * setSetTask sets a list of level for the level set.
+         */
         public void setSetTask() {
             setTask = new Task<Void>() {
                 @Override
@@ -258,6 +264,11 @@ public class GameFlow {
         return levelSets;
     }
 
+    /**
+     * getListOfLevels gets a file of levels and returns a list with levels.
+     * @param levelFileNames the file of the levels.
+     * @return list of levels.
+     */
     public List<LevelInformation> getListOfLevels(String levelFileNames) {
         BufferedReader buffer = null;
         List<LevelInformation> levels = null;

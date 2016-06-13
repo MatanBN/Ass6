@@ -18,6 +18,8 @@ public interface Sprite {
 
     /**
      * Notify the sprite that time has passed.
+     *
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     void timePassed(double dt);
 }

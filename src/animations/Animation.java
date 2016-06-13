@@ -15,6 +15,7 @@ public interface Animation {
      * doOneFrame method draws the game to the screen.
      *
      * @param d the drawSurface to draw on.
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     void doOneFrame(DrawSurface d, double dt);
 

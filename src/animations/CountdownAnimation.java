@@ -38,6 +38,7 @@ public class CountdownAnimation implements Animation {
      * doOneFrame method draws the numbers from contFrom to 1 on the screen.
      *
      * @param d the drawSurface to draw on.
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void doOneFrame(DrawSurface d, double dt) {
         String s;

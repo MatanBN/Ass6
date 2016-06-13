@@ -40,6 +40,7 @@ public class EndScreen implements Animation {
      * doOneFrame method draws the end screen.
      *
      * @param d the drawSurface to draw on.
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     @Override
     public void doOneFrame(DrawSurface d, double dt) {

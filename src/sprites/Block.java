@@ -153,6 +153,8 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * Currently doesn't do anything.
+     *
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void timePassed(double dt) {
 
@@ -239,7 +241,10 @@ public class Block implements Collidable, Sprite, HitNotifier {
         }
     }
 
-    // Probably remove later...
+    /**
+     * copy method copies a block and returns the copy.
+     * @return a copy of the block.
+     */
     public Block copy() {
         Rectangle r = this.getRectangle();
         Block b = new Block(r.getX(), r.getY(), r.getWidth(), r.getHeight(), r.getColor(), fillers);

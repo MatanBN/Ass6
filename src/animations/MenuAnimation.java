@@ -5,7 +5,6 @@ import biuoop.KeyboardSensor;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Map;
 
 
 /**
@@ -25,7 +24,9 @@ public class MenuAnimation<T> implements Menu {
     /**
      * Constructor to create the MenuAnimation.
      *
-     * @param ks is the keyboard sensor.
+     * @param ks      is the keyboard sensor.
+     * @param ar      is the animation runner from the gameflow.
+     * @param message is the message at the head of the menu.
      */
     public MenuAnimation(KeyboardSensor ks, AnimationRunner ar, String message) {
         this.ar = ar;
@@ -82,21 +83,14 @@ public class MenuAnimation<T> implements Menu {
     }
 
     /**
-     * getStatus checks which task has been chosen.
+     * getStatus checks which task has been chosen and return it;
+     * if it's a sub-menu the method runs this sub-menu an return its task.
      *
      * @return the returnVal of that task.
      */
     @Override
     public T getStatus() {
 
-        /*switch (key) {
-            case "h":
-                return menuSelections.get(0).returnVal;
-            case "s":
-                return menuSelections.get(1).returnVal;
-            default:
-                return menuSelections.get(2).returnVal;
-        }*/
         int i = getIndex(key);
         Selection select = menuSelections.get(i);
 
@@ -109,14 +103,27 @@ public class MenuAnimation<T> implements Menu {
         return menuSelections.get(i).returnVal;
     }
 
+    /**
+     * addSubMenu adds a new sub-menu to a menu's selections list.
+     *
+     * @param key     is the key to press in order to run the task.
+     * @param message is the task's name.
+     * @param subMenu is a menu object.
+     */
     @Override
     public void addSubMenu(String key, String message, Menu subMenu) {
         menuSelections.add(new Selection(key, message, (T) subMenu, true));
     }
 
-    public int getIndex (String s){
+    /**
+     * getIndex gets a string which represent a task and returns its index in the selections list.
+     *
+     * @param s is the string of the task to check it in the list.
+     * @return the index in the selections list.
+     */
+    public int getIndex(String s) {
         for (int i = 0; i < menuSelections.size(); i++) {
-            if (menuSelections.get(i).getKey().equals(s)){
+            if (menuSelections.get(i).getKey().equals(s)) {
                 return i;
             }
         }
@@ -138,6 +145,7 @@ public class MenuAnimation<T> implements Menu {
          * @param key       is the key to press in order to run the task.
          * @param message   is the task's name.
          * @param returnVal is the object that runs the task.
+         * @param subMenu   is a boolean that gets true in sub-menu types and false otherwise.
          */
         public Selection(String key, String message, T returnVal, boolean subMenu) {
             this.key = key;
@@ -173,6 +181,11 @@ public class MenuAnimation<T> implements Menu {
             return this.returnVal;
         }
 
+        /**
+         * isSubMenu returns true if its a sub-menu object and false otherwise.
+         *
+         * @return true if its a sub-menu object and false otherwise.
+         */
         public boolean isSubMenu() {
             return subMenu;
         }

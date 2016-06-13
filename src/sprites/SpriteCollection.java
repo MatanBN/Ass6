@@ -41,6 +41,8 @@ public class SpriteCollection {
 
     /**
      * notifyAllTimePassed calls the timePassed method on all sprites.
+     *
+     * @param dt specifies the amount of seconds passed since the last call.
      */
     public void notifyAllTimePassed(double dt) {
         ArrayList spritesCopy = new ArrayList(sprites);
