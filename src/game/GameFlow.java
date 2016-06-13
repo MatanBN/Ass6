@@ -62,7 +62,7 @@ public class GameFlow {
      */
     public void chooseTask() {
         try {
-            final Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks);
+            final Menu<Task<Void>> menu = new MenuAnimation<Task<Void>>(ks, ar, "please choose:");
 
 
             //Anonymous classes that defines each task's run method.
@@ -77,34 +77,6 @@ public class GameFlow {
                 }
             };
 
-            Task<Void> playGame = new Task<Void>() {
-
-                @Override
-                public Void run() {
-                    Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
-                    List<LevelSet> myLevelSets = readSubLevels(levelSets);
-                    for (LevelSet set : myLevelSets) {
-                        subMenu.addSelection(set.getKey(), set.getName(), set.getSetTask());
-
-                    }
-                    //menu.addSubMenu(set.getKey(), set.getName(),subMenu);
-                    /*Task<Void> task = subMenu.getStatus();
-                    task.run();*/
-                    ar.run(subMenu);
-                    Task <Void> t = subMenu.getStatus();
-                    t.run();
-                   /* switch (key){
-                        case "e": myLevelSets.get(0).
-                            break;
-                        default: myLevelSets.get(1).setSetTask();
-                            break;
-                    }*/
-                    return null;
-                }
-
-            };
-
-
             Task<Void> quitGame = new Task<Void>() {
                 @Override
                 public Void run() {
@@ -113,9 +85,13 @@ public class GameFlow {
                 }
             };
 
-            Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks);
+            Menu<Task<Void>> subMenu = new MenuAnimation<Task<Void>>(ks, ar, "Choose difficulty");
+            List<LevelSet> theLevelSets = readSubLevels(levelSets);
+            for (LevelSet currentLevelSet : theLevelSets) {
+                subMenu.addSelection(currentLevelSet.getKey(), currentLevelSet.getName(), currentLevelSet.getSetTask());
+            }
 
-            //Adding the tasks to the tasks list.
+            // Adding the tasks to the tasks list.
             menu.addSelection("h", "High scores", hiScores);
             menu.addSubMenu("s", "Play", subMenu);
             menu.addSelection("q", "Quit", quitGame);

@@ -5,6 +5,7 @@ import biuoop.KeyboardSensor;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 /**
@@ -14,20 +15,23 @@ import java.util.ArrayList;
  * @version 1.0 9 April 2016
  */
 public class MenuAnimation<T> implements Menu {
-
+    private AnimationRunner ar;
     private ArrayList<Selection> menuSelections;
     private KeyboardSensor ks;
     private boolean stopper;
     private String key;
+    private String message;
 
     /**
      * Constructor to create the MenuAnimation.
      *
      * @param ks is the keyboard sensor.
      */
-    public MenuAnimation(KeyboardSensor ks) {
+    public MenuAnimation(KeyboardSensor ks, AnimationRunner ar, String message) {
+        this.ar = ar;
         menuSelections = new ArrayList<Selection>();
         this.ks = ks;
+        this.message = message;
         this.stopper = false;
     }
 
@@ -42,7 +46,7 @@ public class MenuAnimation<T> implements Menu {
         d.setColor(Color.blue);
         d.fillRectangle(0, 0, d.getWidth() - 20, d.getHeight());
         d.setColor(Color.YELLOW);
-        d.drawText(200, 100, "please choose:", 32);
+        d.drawText(200, 100, message, 32);
         for (int i = 1; i <= menuSelections.size(); i++) {
             d.drawText(200, 100 + (i * 50), menuSelections.get(i - 1).getMessage() + "- "
                     + menuSelections.get(i - 1).getKey(), 20);
@@ -93,8 +97,14 @@ public class MenuAnimation<T> implements Menu {
             default:
                 return menuSelections.get(2).returnVal;
         }*/
-
         int i = getIndex(key);
+        if (key.equals("s")) {
+            Menu<T> subMenu = (Menu<T>) menuSelections.get(i).returnVal;
+            ar.run(subMenu);
+            T task = subMenu.getStatus();
+            return task;
+
+        }
         return menuSelections.get(i).returnVal;
     }
 
@@ -104,7 +114,7 @@ public class MenuAnimation<T> implements Menu {
     }
 
     public int getIndex (String s){
-        for (int i=0; i<menuSelections.size();i++){
+        for (int i = 0; i < menuSelections.size(); i++) {
             if (menuSelections.get(i).getKey().equals(s)){
                 return i;
             }
