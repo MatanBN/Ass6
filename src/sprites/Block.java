@@ -44,12 +44,12 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * sprites.Block creates a new rectangle block by it's left corner coordinates,
      * width and height.
      *
-     * @param x      is the x coordinate of left corner.
-     * @param y      is the y coordinate of left corner.
-     * @param width  is the rectangle's width.
-     * @param height is the rectangle's height.
+     * @param x          is the x coordinate of left corner.
+     * @param y          is the y coordinate of left corner.
+     * @param width      is the rectangle's width.
+     * @param height     is the rectangle's height.
      * @param frameColor the color of the block/rectangle frame.
-     * @param fillers the fillers of the block/rectangle.
+     * @param fillers    the fillers of the block/rectangle.
      */
     public Block(int x, int y, int width, int height, Color frameColor, ArrayList<Sprite> fillers) {
         this.rectangle = new Rectangle(x, y, width, height, frameColor, fillers.get(0));
@@ -61,12 +61,12 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * sprites.Block creates a new rectangle block by it's left corner coordinates,
      * width and height.
      *
-     * @param x      is the x coordinate of left corner.
-     * @param y      is the y coordinate of left corner.
-     * @param width  is the rectangle's width.
-     * @param height is the rectangle's height.
+     * @param x          is the x coordinate of left corner.
+     * @param y          is the y coordinate of left corner.
+     * @param width      is the rectangle's width.
+     * @param height     is the rectangle's height.
      * @param frameColor the color of the block/rectangle frame.
-     * @param filler the filler of the block/rectangle.
+     * @param filler     the filler of the block/rectangle.
      */
     public Block(int x, int y, int width, int height, Color frameColor, Sprite filler) {
         this.rectangle = new Rectangle(x, y, width, height, frameColor, filler);
@@ -243,6 +243,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
 
     /**
      * copy method copies a block and returns the copy.
+     *
      * @return a copy of the block.
      */
     public Block copy() {

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  * BlockFactory class creates blocks according to the parameters given to it.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */
@@ -39,6 +40,7 @@ public class BlockFactory implements BlockCreator {
 
     /**
      * create Method creates a new block according to the parameters of the factory in the xpos and ypos coordinates.
+     *
      * @param xpos x coordinate to create the block.
      * @param ypos y coordinate to create the block.
      * @return the new block that was created.

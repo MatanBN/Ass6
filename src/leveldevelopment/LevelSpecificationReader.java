@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * LevelSpecificationReader class reads a file and creates a list of level information of all the levels in the file.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */
@@ -40,6 +41,7 @@ public class LevelSpecificationReader {
 
     /**
      * fromReader method reads the file given and creates a list of level information.
+     *
      * @param reader the file to read.
      * @return a list of level information for the game.
      */
@@ -67,6 +69,7 @@ public class LevelSpecificationReader {
 
     /**
      * getLevel method creates a new level according to the information of the file.
+     *
      * @param buffer the file to read.
      * @return the new level that was created.
      */
@@ -96,8 +99,9 @@ public class LevelSpecificationReader {
 
     /**
      * setAttribute method sets the attribute of the level according to the information given.
+     *
      * @param newLevel the level that was created.
-     * @param info the information for the level.
+     * @param info     the information for the level.
      */
     private void setAttribute(Level newLevel, String[] info) {
         switch (info[0]) {
@@ -138,6 +142,7 @@ public class LevelSpecificationReader {
 
     /**
      * createListOfBlocks creates the blocks from the file given and from the BlocksFromSymbolsFactory.
+     *
      * @param reader the file to read.
      * @return a list of blocks for the level.
      */
@@ -178,6 +183,7 @@ public class LevelSpecificationReader {
 
     /**
      * setBlockFactory calls fromReader method of BlocksDefinitionReader to add the BlocksFromSymbolsFactory.
+     *
      * @param fileName the block definition file to read.
      */
     private void setBlockFactory(String fileName) {
@@ -195,6 +201,7 @@ public class LevelSpecificationReader {
 
     /**
      * getListOfVelocities creates a list of velocities for the balls of the level.
+     *
      * @param velocities information for the velocities.
      * @return a list of velocities.
      */
@@ -209,6 +216,7 @@ public class LevelSpecificationReader {
 
     /**
      * getBackground creates a background for the level.
+     *
      * @param backgroundInfo information for the background.
      * @return the background created.
      */

@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Level class is a level information which will be red from a file.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 9 April 2016
  */
@@ -145,6 +146,7 @@ public class Level implements LevelInformation {
 
     /**
      * setLevelName method sets the method of the level.
+     *
      * @param levelName the new name of the level.
      */
     public void setLevelName(String levelName) {
@@ -154,6 +156,7 @@ public class Level implements LevelInformation {
 
     /**
      * setLevelBlocks sets the list of the blocks according to the blocks given.
+     *
      * @param levelBlocks the new list of the blocks of the level.
      */
     public void setLevelBlocks(List<Block> levelBlocks) {
@@ -163,6 +166,7 @@ public class Level implements LevelInformation {
 
     /**
      * setNumOfBlocksToRemove method sets the number of blocks to remove according to the number given.
+     *
      * @param numOfBlocksToRemove the new number of blocks to remove.
      */
     public void setNumOfBlocksToRemove(int numOfBlocksToRemove) {
@@ -172,6 +176,7 @@ public class Level implements LevelInformation {
 
     /**
      * setBackground sets the background of the level according to the background given.
+     *
      * @param background the new background of the level.
      */
     public void setBackground(Sprite background) {
@@ -181,6 +186,7 @@ public class Level implements LevelInformation {
 
     /**
      * checkLevel checks if the level has all of the information it needs.
+     *
      * @return true if it has all the information needed, false otherwise.
      */
     public boolean checkLevel() {

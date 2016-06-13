@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * ColorParser class decodes string information to color object.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */

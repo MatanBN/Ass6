@@ -5,6 +5,7 @@ import sprites.Block;
 
 /**
  * BlockChanger class is in charge of changing the filler of the block.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */

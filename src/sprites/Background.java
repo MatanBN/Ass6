@@ -4,6 +4,7 @@ import geometry.Rectangle;
 
 /**
  * Background class is an abstract class for the background of the level/block.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */
@@ -28,6 +29,7 @@ public abstract class Background implements Sprite {
 
     /**
      * getFrame returns the frame of the background.
+     *
      * @return the frame of the background.
      */
     public Rectangle getFrame() {
@@ -36,6 +38,7 @@ public abstract class Background implements Sprite {
 
     /**
      * AddRectangle method returns a new Background with a frame.
+     *
      * @param r the new frame of the background.
      * @return the new background with a frame.
      */

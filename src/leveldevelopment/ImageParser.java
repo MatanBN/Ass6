@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 /**
  * ImageParser class creates a new Image object according to a string given.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */

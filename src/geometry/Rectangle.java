@@ -40,9 +40,9 @@ public class Rectangle {
      * point at (0,0) and initialize the width and height according to the user
      * parameters.
      *
-     * @param width  the desired width of the rectangle.
-     * @param height the desired height of the rectangle.
-     * @param c      the desired color of the rectangle.
+     * @param width   the desired width of the rectangle.
+     * @param height  the desired height of the rectangle.
+     * @param c       the desired color of the rectangle.
      * @param filling the filling of the rectangle.
      */
     public Rectangle(int width, int height, Color c, Sprite filling) {

@@ -29,11 +29,11 @@ public class Paddle implements Sprite, Collidable {
     /**
      * The constructor creates the paddle.
      *
-     * @param key    is the keyboard sensor in order to move it with the keyboard.
-     * @param rec    is the rectangle with the parameter for the paddle.
-     * @param border is surface border.
-     * @param speed  the speed of the paddle.
-     * @param color  is the frame color of the paddle.
+     * @param key     is the keyboard sensor in order to move it with the keyboard.
+     * @param rec     is the rectangle with the parameter for the paddle.
+     * @param border  is surface border.
+     * @param speed   the speed of the paddle.
+     * @param color   is the frame color of the paddle.
      * @param filling is the filling of the paddle.
      */
     public Paddle(biuoop.KeyboardSensor key, geometry.Rectangle rec, Rectangle border, int speed, Color color,
@@ -120,7 +120,7 @@ public class Paddle implements Sprite, Collidable {
      * @param dt specifies the amount of seconds passed since the last call.
      */
     public void timePassed(double dt) {
-        double newSpeed=this.speed*dt;
+        double newSpeed = this.speed * dt;
         if (keyboard.isPressed(KeyboardSensor.LEFT_KEY)) {
             moveLeft(newSpeed);
         }

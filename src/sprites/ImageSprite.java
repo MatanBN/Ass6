@@ -7,6 +7,7 @@ import java.awt.Image;
 
 /**
  * ImageSprite class is a background for block/level with an image.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */
@@ -24,6 +25,7 @@ public class ImageSprite extends Background implements Sprite {
 
     /**
      * ImageSprite constructor.
+     *
      * @param frame the frame for the image.
      * @param image the image to draw.
      */
@@ -34,6 +36,7 @@ public class ImageSprite extends Background implements Sprite {
 
     /**
      * drawOn method draws the image according to the frame upper left coordinates.
+     *
      * @param d the DrawSurface to draw the sprite on.
      */
     @Override
@@ -44,6 +47,7 @@ public class ImageSprite extends Background implements Sprite {
 
     /**
      * currently doesn't do anything.
+     *
      * @param dt the time interval.
      */
     @Override
@@ -53,6 +57,7 @@ public class ImageSprite extends Background implements Sprite {
 
     /**
      * AddRectangle method creates a new ImageSprite with a new frame and the same color.
+     *
      * @param r the new frame of the background.
      * @return a new ImageSprite with a a new frame and the same color.
      */

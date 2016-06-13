@@ -160,6 +160,7 @@ public class GameFlow {
 
         /**
          * getLevelTask gets the set of levels of the level set.
+         *
          * @return the set of levels of the level set.
          */
         public Task<Void> getSetTask() {
@@ -266,6 +267,7 @@ public class GameFlow {
 
     /**
      * getListOfLevels gets a file of levels and returns a list with levels.
+     *
      * @param levelFileNames the file of the levels.
      * @return list of levels.
      */

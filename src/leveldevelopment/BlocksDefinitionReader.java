@@ -11,6 +11,7 @@ import java.util.*;
 /**
  * BlocksDefinitionReader class reads a file that was given in the reader and creates a BlockFromSymbolsFactory
  * according to the file given.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 11 June 2016
  */
@@ -65,7 +66,8 @@ public class BlocksDefinitionReader {
 
     /**
      * readSpaces method reads spaces information from the file.
-     * @param s the line of the space information.
+     *
+     * @param s        the line of the space information.
      * @param spaceMap the map of spaces to add the space to.
      */
     private static void readSpaces(String[] s, Map<String, Integer> spaceMap) {
@@ -80,8 +82,9 @@ public class BlocksDefinitionReader {
     /**
      * readDefaults method reads the default values of the block and adds them to a map that will contain the values
      * for the block creator.
+     *
      * @param info the line of the default values.
-     * @param map for the information of the default values.
+     * @param map  for the information of the default values.
      */
     private static void readDefaults(String[] info, Map<String, String> map) {
         for (int i = 1; i < info.length; ++i) {
@@ -92,8 +95,9 @@ public class BlocksDefinitionReader {
 
     /**
      * getBlockCreator method reads the info for the block creator and adds it to the default values if needed
+     *
      * @param info the line of the block information.
-     * @param map the map for the information of the block.
+     * @param map  the map for the information of the block.
      * @return a new BlockCreator according to the information given.
      */
     private static BlockCreator getBlockCreator(String[] info, Map<String, String> map) {
@@ -125,6 +129,7 @@ public class BlocksDefinitionReader {
 
     /**
      * getFillings method creates an array list of fillings for the block.
+     *
      * @param setMap is a set that will contain all of the map's keys/values.
      * @return an arraylist with all of the fillings organized by their order.
      */
@@ -154,6 +159,7 @@ public class BlocksDefinitionReader {
 
     /**
      * getSprite method creates an image or color sprite according to the information given.
+     *
      * @param imageOrColor contains information on the background of the block.
      * @return A sprite for the background of the block according to the information given.
      */
