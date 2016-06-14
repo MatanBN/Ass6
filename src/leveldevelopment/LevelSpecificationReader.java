@@ -157,7 +157,7 @@ public class LevelSpecificationReader {
         // Read line by line until we get END_BLOCKS line and add each block/space according to its symbol.
         try {
             String s;
-            while (!(s = reader.readLine()).equals("END_BLOCKS")) {
+            while (!((s = reader.readLine()).equals("END_BLOCKS"))) {
                 // Skip comment and empty lines.
                 if (s.equals("") || s.charAt(0) == '#') {
                     continue;
@@ -208,7 +208,7 @@ public class LevelSpecificationReader {
     private List<Velocity> getListOfVelocities(String velocities) {
         List<Velocity> myVelocities = new ArrayList<Velocity>();
         for (String velocity : velocities.split("\\s+")) {
-            String xy[] = velocity.split(",");
+            String[] xy = velocity.split(",");
             myVelocities.add(new Velocity(Double.parseDouble(xy[0]), Double.parseDouble(xy[1])));
         }
         return myVelocities;

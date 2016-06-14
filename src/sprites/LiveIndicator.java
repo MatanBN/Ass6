@@ -2,7 +2,7 @@ package sprites;
 
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * The LiveIndicator class contains the current lives status and draws it on top of the screen.

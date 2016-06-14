@@ -4,7 +4,11 @@ import animations.GameLevel;
 import biuoop.DrawSurface;
 import environment.Collidable;
 import game.Velocity;
-import geometry.*;
+import geometry.Rectangle;
+import geometry.Point;
+import geometry.Line;
+
+
 import listeners.HitListener;
 import listeners.HitNotifier;
 

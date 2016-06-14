@@ -5,7 +5,7 @@ import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 import environment.Collidable;
 import game.Velocity;
-import geometry.*;
+import geometry.Line;
 import geometry.Rectangle;
 import geometry.Point;
 
@@ -61,6 +61,7 @@ public class Paddle implements Sprite, Collidable {
      * moveLeft is in charge of moving the paddle left. The method checks
      * whether the next x coordinate is out left edge or not and moves it as it
      * should.
+     * @param newSpeed the speed to move the paddle.
      */
     public void moveLeft(double newSpeed) {
         if (rectangle.getX() - newSpeed >= borders.getX() + 20) {
@@ -75,6 +76,8 @@ public class Paddle implements Sprite, Collidable {
      * moveRight is in charge of moving the paddle right. The method checks
      * whether the next x coordinate is out right edge or not and moves it as it
      * should.
+     * @param newSpeed the speed to move the paddle.
+
      */
     public void moveRight(double newSpeed) {
         if (rectangle.getX() + rectangle.getWidth() + newSpeed <= borders.getWidth() - 20) {

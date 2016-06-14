@@ -8,7 +8,7 @@ import game.Velocity;
 import geometry.Line;
 import geometry.Point;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * The Ball class has a center Point, a radius, a color, and a velocity. The

@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class ColorParser {
     // A map that will get a name of a color and returns a color object according to the name.
-    Map<String, Color> colorMap;
+    private Map<String, Color> colorMap;
 
     /**
      * ColorParser constructor initializes the map for all the colors needed.
