@@ -118,7 +118,7 @@ public class Level implements LevelInformation {
      * @param velocities is a list of balls velocities to set this level balls velocities.
      */
     public void setLevelsVelocities(List<Velocity> velocities) {
-        checks.set(0, true);
+        checks.add(true);
 
         this.numberOfBalls = velocities.size();
         this.levelsVelocities = velocities;
@@ -190,6 +190,6 @@ public class Level implements LevelInformation {
      * @return true if it has all the information needed, false otherwise.
      */
     public boolean checkLevel() {
-        return checks.size() == 6;
+        return checks.size() == 7;
     }
 }
