@@ -77,7 +77,9 @@ public class BlocksDefinitionReader {
         Map<String, String> readMap = new HashMap<String, String>();
         for (int i = 1; i < s.length; ++i) {
             String[] spaceInfo = s[i].split(":");
-            readMap.put(spaceInfo[0], spaceInfo[1]);
+            if (spaceInfo.length >= 2) {
+                readMap.put(spaceInfo[0], spaceInfo[1]);
+            }
         }
         spaceMap.put(readMap.get("symbol"), Integer.parseInt(readMap.get("width")));
     }
@@ -91,8 +93,11 @@ public class BlocksDefinitionReader {
      */
     private static void readDefaults(String[] info, Map<String, String> map) {
         for (int i = 1; i < info.length; ++i) {
+
             String[] attribute = info[i].split(":");
-            map.put(attribute[0], attribute[1]);
+            if (attribute.length >= 2) {
+                map.put(attribute[0], attribute[1]);
+            }
         }
     }
 
@@ -108,7 +113,9 @@ public class BlocksDefinitionReader {
         // Add the new information to the default values given.
         for (int i = 1; i < info.length; ++i) {
             String[] attribute = info[i].split(":");
-            map.put(attribute[0], attribute[1]);
+            if (attribute.length >= 2) {
+                map.put(attribute[0], attribute[1]);
+            }
         }
 
         // Get all the fillings for the block creator.
