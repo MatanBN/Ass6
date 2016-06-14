@@ -116,9 +116,6 @@ public class HighScoresTable {
         table.clear();
     }
 
-    // Load table data from file.
-    // Current table data is cleared.
-
     /**
      * load is in charge of loading the table data from file.
      *
@@ -192,7 +189,6 @@ public class HighScoresTable {
         try {
             ois = new ObjectInputStream(new FileInputStream(filename));
             ds.add((ScoreInfo) ois.readObject());
-            ois.close();
         } catch (IOException e) {
             System.out.println("Error loading from file");
         } catch (ClassNotFoundException e) {
