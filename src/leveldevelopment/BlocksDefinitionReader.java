@@ -81,7 +81,9 @@ public class BlocksDefinitionReader {
                 readMap.put(spaceInfo[0], spaceInfo[1]);
             }
         }
-        spaceMap.put(readMap.get("symbol"), Integer.parseInt(readMap.get("width")));
+        if (readMap.containsKey("symbol") && readMap.containsKey("width")) {
+            spaceMap.put(readMap.get("symbol"), Integer.parseInt(readMap.get("width")));
+        }
     }
 
     /**
