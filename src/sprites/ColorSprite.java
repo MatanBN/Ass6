@@ -64,7 +64,7 @@ public class ColorSprite extends Background implements Sprite {
      * @return a new ColorSprite with a a new frame and the same color.
      */
     @Override
-    public Background AddRectangle(Rectangle r) {
+    public Background addRectangle(Rectangle r) {
         return new ColorSprite(r, c);
     }
 }

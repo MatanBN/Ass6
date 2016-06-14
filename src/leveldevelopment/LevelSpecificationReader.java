@@ -156,10 +156,12 @@ public class LevelSpecificationReader {
         List<Block> levelBlocks = new ArrayList<Block>();
         // Read line by line until we get END_BLOCKS line and add each block/space according to its symbol.
         try {
-            String s;
-            while (!((s = reader.readLine()).equals("END_BLOCKS"))) {
+            String s = "";
+
+            while (!s.equals("END_BLOCKS")) {
                 // Skip comment and empty lines.
                 if (s.equals("") || s.charAt(0) == '#') {
+                    s = reader.readLine();
                     continue;
                 }
                 // Add a row of blocks/spaces.
@@ -175,6 +177,7 @@ public class LevelSpecificationReader {
                 }
                 currentY += rowHeight;
                 currentX = startX;
+                s = reader.readLine();
             }
         } catch (IOException e) {
             System.out.println("Error reading level file");

@@ -42,5 +42,5 @@ public abstract class Background implements Sprite {
      * @param r the new frame of the background.
      * @return the new background with a frame.
      */
-    public abstract Background AddRectangle(Rectangle r);
+    public abstract Background addRectangle(Rectangle r);
 }

@@ -50,7 +50,7 @@ public class BlockFactory implements BlockCreator {
         ArrayList<Sprite> newSprites = new ArrayList<Sprite>();
         for (Sprite c : fillers) {
             Background cSprite = (Background) c;
-            newSprites.add(cSprite.AddRectangle(new Rectangle(xpos, ypos, width, height)));
+            newSprites.add(cSprite.addRectangle(new Rectangle(xpos, ypos, width, height)));
         }
         Block block = new Block(xpos, ypos, width, height, strokeColor, newSprites);
         block.setHitsNumber(hitPoints);

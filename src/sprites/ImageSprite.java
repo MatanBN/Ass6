@@ -62,7 +62,7 @@ public class ImageSprite extends Background implements Sprite {
      * @return a new ImageSprite with a a new frame and the same color.
      */
     @Override
-    public Background AddRectangle(Rectangle r) {
+    public Background addRectangle(Rectangle r) {
         return new ImageSprite(r, this.image);
     }
 }
