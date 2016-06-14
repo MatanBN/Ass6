@@ -27,7 +27,13 @@ public class Ass6Game {
         } catch (Exception e) {
             System.out.print("Unable to load the file");
         }
-        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores, args[0]);
+        String fileName;
+        if (args.length >= 1) {
+            fileName = args[0];
+        } else {
+            fileName = "level_sets.txt";
+        }
+        GameFlow gameFlow = new GameFlow(myAnimationRunner, gui.getKeyboardSensor(), 7, myScores, fileName);
         gameFlow.chooseTask();
     }
 }

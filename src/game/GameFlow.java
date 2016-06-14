@@ -1,6 +1,15 @@
 package game;
 
-import animations.*;
+import animations.AnimationRunner;
+import animations.MenuAnimation;
+import animations.HighScoresAnimation;
+import animations.GameLevel;
+import animations.StopScreenDecorator;
+import animations.EndScreen;
+
+
+import animations.Task;
+
 import animations.Menu;
 import biuoop.DialogManager;
 
@@ -11,8 +20,12 @@ import leveldevelopment.LevelSpecificationReader;
 import sprites.LiveIndicator;
 import sprites.ScoreIndicator;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,10 +164,10 @@ public class GameFlow {
         /**
          * setLevelPath sets the path for the file of the levels for the level set.
          *
-         * @param levelPath the file of the levels for the level set.
+         * @param theLevelPath the file of the levels for the level set.
          */
-        public void setLevelPath(String levelPath) {
-            this.levelPath = levelPath;
+        public void setLevelPath(String theLevelPath) {
+            this.levelPath = theLevelPath;
         }
 
         /**
@@ -184,12 +197,12 @@ public class GameFlow {
     /**
      * runLevels method runs a given list of levels.
      *
-     * @param levels a list of levels.
+     * @param theLevels a list of levels.
      */
-    public void runLevels(List<LevelInformation> levels) {
+    public void runLevels(List<LevelInformation> theLevels) {
         LiveIndicator liveIndicator = new LiveIndicator(lives);
         score = new ScoreIndicator();
-        for (LevelInformation levelInfo : levels) {
+        for (LevelInformation levelInfo : theLevels) {
             GameLevel level = new GameLevel(levelInfo, this.ks, this.ar);
             level.initialize(liveIndicator, score);
             while (level.getBlockCounter().getValue() != 0 && liveIndicator.getValue() != 0) {
@@ -228,7 +241,7 @@ public class GameFlow {
     public List<LevelSet> readSubLevels(String fileName) {
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(fileName);
         LineNumberReader reader = new LineNumberReader(new InputStreamReader(is));
-        List<LevelSet> levelSets = new ArrayList<LevelSet>();
+        List<LevelSet> theLevelSets = new ArrayList<LevelSet>();
         String[] levelKeyName = null;
         String line;
         LevelSet currentLevelSet = null;
@@ -243,7 +256,7 @@ public class GameFlow {
                 } else {
                     currentLevelSet.setLevelPath(line);
                     currentLevelSet.setSetTask();
-                    levelSets.add(currentLevelSet);
+                    theLevelSets.add(currentLevelSet);
                 }
             }
         } catch (IOException e) {
@@ -257,7 +270,7 @@ public class GameFlow {
                 }
             }
         }
-        return levelSets;
+        return theLevelSets;
     }
 
     /**
@@ -268,12 +281,12 @@ public class GameFlow {
      */
     public List<LevelInformation> getListOfLevels(String levelFileNames) {
         BufferedReader buffer = null;
-        List<LevelInformation> levels = null;
+        List<LevelInformation> theLevels = null;
         LevelSpecificationReader levelReader = new LevelSpecificationReader(new Rectangle(0, 0, 800, 600));
-        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream
-                (levelFileNames);
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(
+                levelFileNames);
         buffer = new BufferedReader(new InputStreamReader(is));
-        levels = levelReader.fromReader(buffer);
+        theLevels = levelReader.fromReader(buffer);
         if (buffer != null) {
             try {
                 buffer.close();
@@ -281,7 +294,7 @@ public class GameFlow {
                 System.out.println("Error closing level file");
             }
         }
-        return levels;
+        return theLevels;
     }
 
 }

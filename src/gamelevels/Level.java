@@ -120,7 +120,7 @@ public class Level implements LevelInformation {
     public void setLevelsVelocities(List<Velocity> velocities) {
         checks.set(0, true);
 
-        this.numberOfBalls = levelsVelocities.size();
+        this.numberOfBalls = velocities.size();
         this.levelsVelocities = velocities;
     }
 
