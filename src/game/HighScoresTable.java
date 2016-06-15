@@ -194,8 +194,10 @@ public class HighScoresTable {
             }
         } catch (IOException e) {
             System.out.println("Error loading from file");
+            return new HighScoresTable(10);
         } catch (ClassNotFoundException e) {
             System.out.println("Class from file does not exist");
+            return new HighScoresTable(10);
         } finally {
             if (ois != null) {
                 try {
