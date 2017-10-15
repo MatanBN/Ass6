@@ -1,3 +1,1 @@
-
-Matan - Document game, RainyBackground, Target
-Nir - Others.
+Breaking Blocks game for assignment 6 of OOP course.
